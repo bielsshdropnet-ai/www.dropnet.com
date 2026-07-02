@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DROPNET VPN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        body {
+            background-color: #0F172A;
+            color: #F8FAFC;
+            line-height: 1.5;
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 8%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1E293B;
+            z-index: 999;
+        }
+        header h2 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        header h2 span {
+            color: #06B6D4;
+        }
+        nav a {
+            color: #CBD5E1;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #06B6D4;
+        }
+
+        /* Seção Inicial */
+        .intro {
+            width: 100%;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #131B2E;
+            margin-top: 62px;
+            padding: 40px 8%;
+            border-bottom: 1px solid #1E293B;
+        }
+        .intro h1 {
+            font-size: 40px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .intro h1 span {
+            color: #06B6D4;
+        }
+        .intro p {
+            font-size: 18px;
+            color: #CBD5E1;
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 13px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 6px 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #06B6D4;
+            color: #0F172A;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0EA5E9;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 2px solid #22C55E;
+            color: #22C55E;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: #22C55E;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Seções */
+        section {
+            padding: 50px 8%;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #F8FAFC;
+            font-weight: 600;
+        }
+
+        /* Operadoras */
+        .operadoras {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+        .operadora {
+            background-color: #1E293B;
+            padding: 16px 22px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .operadora img {
+            height: 65px;
+            width: auto;
+            background: #FFFFFF;
+            padding: 10px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        /* Planos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #1E293B;
+            padding: 28px 20px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .dias {
+            font-size: 17px;
+            color: #94A3B8;
+            margin-bottom: 8px;
+        }
+        .valor {
+            font-size: 32px;
+            font-weight: 700;
+            color: #06B6D4;
+        }
+
+        /* Contato */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 18px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .contato-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 18px 10px;
+            border-radius: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .contato-btn:hover {
+            transform: translateY(-4px);
+        }
+        .whatsapp { background-color: #22C55E; }
+        .telegram { background-color: #0EA5E9; }
+        .instagram { background: linear-gradient(45deg, #F97316, #EC4899); }
+        .gmail { background-color: #EF4444; }
+        .contato-btn i {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 8%;
+            background-color: #0F172A;
+            color: #94A3B8;
+            font-size: 14px;
+            border-top: 1px solid #1E293B;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 8%;
+            }
+            nav a {
+                margin-left: 12px;
+                font-size: 14px;
+            }
+            .intro h1 {
+                font-size: 32px;
+            }
+            section {
+                padding: 40px 8%;
+            }
+            .operadora img {
+                height: 55px;
+            }
+            .valor {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>DROPNET <span>VPN</span></h2>
+        <nav>
+            <a href="#operadoras">Operadoras</a>
+            <a href="#planos">Planos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="intro">
+        <div>
+            <h1>DROPNET <span>VPN</span></h1>
+            <p>Conexão segura, estável e compatível com todas as operadoras do Brasil</p>
+            <a class="btn btn-primary" href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" target="_blank">📥 Baixar APK</a>
+            <!-- Botão alterado para WhatsApp -->
+            <a class="btn btn-outline" href="https://wa.me/5591993276833" target="_blank">💬 COMPRAR ACESSO</a>
+        </div>
+    </section>
+
+    <section id="operadoras">
+        <h2>Operadoras Compatíveis</h2>
+        <div class="operadoras">
+            <div class="operadora">
+                <img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Vivo">
+            </div>
+            <div class="operadora">
+                <img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="TIM">
+            </div>
+            <div class="operadora">
+                <img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Claro">
+            </div>
+        </div>
+    </section>
+
+    <section id="planos">
+        <h2>Planos</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="dias">7 Dias</div>
+                <div class="valor">R$ 4,00</div>
+            </div>
+            <div class="card">
+                <div class="dias">15 Dias</div>
+                <div class="valor">R$ 8,00</div>
+            </div>
+            <div class="card">
+                <div class="dias">30 Dias</div>
+                <div class="valor">R$ 15,00</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <div class="contato-grid">
+            <a href="https://wa.me/5591993276833" class="contato-btn whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://t.me/BIEL_SSH" class="contato-btn telegram" target="_blank">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://instagram.com/dropnetvpn" class="contato-btn instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="mailto:bielsshdropnet@gmail.com" class="contato-btn gmail">
+                <i class="fas fa-envelope"></i>
+                <span>E‑mail</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Bolinha flutuante removida -->
+
+    <footer>
+        © 2018 DROPNET VPN • Todos os direitos reservados
+    </footer>
+</body>
+</html>
