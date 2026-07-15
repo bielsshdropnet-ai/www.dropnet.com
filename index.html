@@ -8,282 +8,267 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
 
+        /* ===== CORES BASE ===== */
         :root {
-            --verde: #10B981;
-            --verde-escuro: #052E1E;
-            --cinza-fundo: #121214;
-            --cinza-sidebar: #1A1A1E;
-            --cinza-card: #1F1F23;
-            --borda: #27272B;
-            --texto: #F8FAFC;
+            --cor-destaque: #10B981;
+            --fundo-escuro: #121214;
+            --fundo-menu: #1A1A1E;
+            --fundo-card: #1F1F23;
+            --texto-normal: #E2E8F0;
             --texto-suave: #94A3B8;
-            --destaque: rgba(16, 185, 129, 0.1);
+            --borda: #27272B;
+            --sombra: rgba(16, 185, 129, 0.15);
         }
 
-        body { background: var(--cinza-fundo); color: var(--texto); min-height: 100vh; display: flex; }
+        /* ===== OUTROS TEMAS ===== */
+        .tema-azul { --cor-destaque: #3B82F6; --sombra: rgba(59,130,246,0.15); }
+        .tema-roxo { --cor-destaque: #8B5CF6; --sombra: rgba(139,92,246,0.15); }
+        .tema-laranja { --cor-destaque: #F97316; --sombra: rgba(249,115,22,0.15); }
 
-        /* ===== MENU LATERAL MENOR ===== */
+        body { background: var(--fundo-escuro); color: var(--texto-normal); min-height: 100vh; display: flex; }
+
+        /* ===== MENU LATERAL ===== */
         .sidebar {
-            width: 200px; /* Ficou menor: antes 260px, agora 200px */
-            background: var(--cinza-sidebar);
-            border-right: 1px solid var(--borda);
-            padding: 18px 12px; /* Menos espaçamento interno */
+            width: 120px;
+            background: var(--fundo-menu);
+            border-right: 2px solid var(--cor-destaque);
+            padding: 12px 6px;
             position: fixed;
             height: 100vh;
-            overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Menos espaço entre itens */
+            gap: 12px;
         }
 
         .logo {
-            font-size: 18px; /* Logo menor */
+            font-size: 13px;
             font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding-bottom: 15px;
+            gap: 4px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--borda);
         }
-        .logo i { color: var(--verde); font-size: 20px; }
-        .logo span { color: var(--verde); }
+        .logo i, .logo span { color: var(--cor-destaque); }
 
-        .menu-lista { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-        .menu-item {
+        /* ===== SELETOR DE COR ===== */
+        .seletor-tema {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px; /* Botões mais compactos */
-            border-radius: 8px;
-            color: var(--texto-suave);
-            font-size: 14px; /* Fonte do menu menor */
-            font-weight: 500;
-            transition: all 0.25s ease;
-            border-left: 3px solid transparent;
-            cursor: pointer;
-            user-select: none;
-        }
-        .menu-item i { font-size: 15px; min-width: 18px; }
-        .menu-item:hover, .menu-item.ativo {
-            background: var(--destaque);
-            color: var(--verde);
-            border-left-color: var(--verde);
-        }
-
-        .sidebar-botoes {
-            display: flex;
-            flex-direction: column;
             gap: 8px;
-            padding-top: 15px;
-            border-top: 1px solid var(--borda);
-        }
-        .btn-sidebar {
-            padding: 10px; /* Botões menores */
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 13px; /* Fonte menor */
-            font-weight: 600;
-            text-align: center;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 6px;
+            padding: 10px 0;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
         }
-        .btn-principal { background: var(--verde); color: var(--verde-escuro); }
-        .btn-principal:hover { background: #059669; }
-        .btn-secundario { border: 1px solid var(--verde); color: var(--verde); background: transparent; }
-        .btn-secundario:hover { background: var(--destaque); }
+        .btn-cor {
+            width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent;
+            cursor: pointer; transition: 0.2s;
+        }
+        .btn-cor.ativo { border-color: #fff; transform: scale(1.15); }
+        .v { background: #10B981; } .a { background: #3B82F6; } .r { background: #8B5CF6; } .l { background: #F97316; }
 
-        .sidebar-rodape { font-size: 11px; color: var(--texto-suave); text-align: center; padding-top: 10px; }
-
-        /* ===== CONTEÚDO PRINCIPAL MAIOR ===== */
-        .conteudo-principal {
-            flex: 1;
-            margin-left: 200px; /* Ajusta para o novo tamanho do menu */
-            padding: 50px 60px; /* Mais espaço interno */
-            max-width: 100%; /* Usa todo o espaço livre */
+        .menu-lista { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+        .menu-item {
+            display: flex; align-items: center; gap: 5px; padding: 7px 8px;
+            border-radius: 5px; color: var(--texto-suave); font-size: 11px;
+            border-left: 3px solid transparent; cursor: pointer; white-space: nowrap;
+        }
+        .menu-item i { color: var(--cor-destaque); font-size: 12px; min-width: 14px; }
+        .menu-item:hover, .menu-item.ativo {
+            background: var(--sombra); color: var(--cor-destaque); border-left-color: var(--cor-destaque);
         }
 
-        .secao { display: none; animation: aparecer 0.3s ease; }
+        .sidebar-botoes { display: flex; flex-direction: column; gap: 4px; padding-top: 10px; }
+        .btn {
+            padding: 7px; border-radius: 5px; text-decoration: none; font-size: 10px;
+            font-weight: 600; text-align: center; transition: 0.3s; display: flex;
+            align-items: center; justify-content: center; gap: 3px;
+        }
+        .btn-principal { background: var(--cor-destaque); color: #fff; }
+        .btn-principal:hover { filter: brightness(1.1); }
+        .btn-secundario { border: 1px solid var(--cor-destaque); color: var(--cor-destaque); background: transparent; }
+        .btn-secundario:hover { background: var(--sombra); }
+
+        .sidebar-rodape { font-size: 8px; color: var(--texto-suave); text-align: center; padding-top: 6px; }
+
+        /* ===== CONTEÚDO ===== */
+        .conteudo { flex: 1; margin-left: 120px; padding: 35px 40px; max-width: 900px; }
+        .secao { display: none; animation: aparece 0.3s ease; }
         .secao.ativa { display: block; }
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateX(10px); }
-            to { opacity: 1; transform: translateX(0); }
+        @keyframes aparece { from {opacity:0;transform:translateX(10px)} to {opacity:1;transform:translateX(0)} }
+
+        .titulo {
+            font-size: 32px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px;
+            color: var(--cor-destaque); font-weight: 700;
+        }
+        .titulo i { color: var(--cor-destaque); font-size: 28px; }
+        .subtitulo {
+            color: var(--texto-suave); font-size: 18px; margin-bottom: 25px; padding-bottom: 12px;
+            border-bottom: 1px solid var(--borda); line-height: 1.5;
         }
 
-        .secao-titulo { font-size: 34px; /* Título bem maior */
-            margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
-        .secao-titulo i { color: var(--verde); font-size: 30px; }
-        .secao-subtitulo { color: var(--texto-suave); font-size: 19px; /* Subtítulo maior */
-            margin-bottom: 35px; padding-bottom: 18px; border-bottom: 1px solid var(--borda); }
+        .card { background: var(--fundo-card); border: 1px solid var(--borda); border-radius: 12px; padding: 25px 30px; margin-bottom: 20px; }
+        .card p { color: var(--texto-suave); font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
+        .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; }
 
-        .card { background: var(--cinza-card); border: 1px solid var(--borda); border-radius: 14px; padding: 35px; margin-bottom: 25px; }
-        .card p { color: var(--texto-suave); line-height: 1.8; margin-bottom: 15px; font-size: 17px; /* Texto maior */ }
-        .card strong { color: var(--verde); font-size: 18px; }
+        .operadoras { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px; }
+        .op { background: var(--fundo-card); padding: 20px 25px; border-radius: 10px; border: 1px solid var(--borda); }
+        .op img { height: 75px; width: auto; }
 
-        .grade-operadoras { display: flex; gap: 35px; flex-wrap: wrap; margin-top: 30px; justify-content: center; }
-        .op-item { background: var(--cinza-card); padding: 30px 35px; border-radius: 12px; border: 1px solid var(--borda); }
-        .op-item img { height: 85px; /* Logos maiores */ width: auto; }
+        .planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; margin-top: 25px; }
+        .plano {
+            background: var(--fundo-card); padding: 25px 20px; border-radius: 12px;
+            border: 1px solid var(--cor-destaque); text-align: center;
+        }
+        .plano.destaque { background: var(--sombra); }
+        .plano .dias { font-size: 17px; color: var(--texto-suave); margin-bottom: 6px; }
+        .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; }
 
-        .grade-planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 30px; }
-        .plano { background: var(--cinza-card); padding: 35px 25px; border-radius: 14px; border: 1px solid var(--borda); text-align: center; }
-        .plano.destaque { border-color: var(--verde); background: rgba(16, 185, 129, 0.05); }
-        .plano-dias { font-size: 18px; color: var(--texto-suave); margin-bottom: 8px; }
-        .plano-valor { font-size: 34px; font-weight: 800; color: var(--verde); margin-bottom: 5px; }
-
-        .lista-contato { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; justify-content: center; }
-        .contato-link { flex: 1; min-width: 160px; padding: 22px; border-radius: 12px; color: #fff; text-decoration: none; text-align: center; transition: 0.3s; font-size: 16px; }
-        .contato-link i { font-size: 28px; margin-bottom: 8px; }
-        .contato-link:hover { transform: translateY(-2px); }
-        .wpp { background: #25D366; }
-        .tg { background: #26A5E4; }
-        .ig { background: linear-gradient(45deg, #F58529, #DD2A7B); }
-        .mail { background: #EA4335; }
+        .contato { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 25px; }
+        .link {
+            flex: 1; min-width: 150px; padding: 18px; border-radius: 10px; color: #fff;
+            text-decoration: none; text-align: center; transition: 0.3s; font-size: 15px;
+        }
+        .link i { font-size: 26px; margin-bottom: 7px; }
+        .link:hover { transform: translateY(-2px); }
+        .wpp { background: #25D366; } .tg { background: #26A5E4; }
+        .ig { background: linear-gradient(45deg,#F58529,#DD2A7B); } .mail { background: #EA4335; }
 
         /* CELULAR */
-        @media (max-width: 768px) {
-            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--borda); }
-            .conteudo-principal { margin-left: 0; padding: 25px 20px; }
-            .secao-titulo { font-size: 26px; }
-            .grade-planos { grid-template-columns: 1fr; }
+        @media (max-width:768px) {
+            .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:2px solid var(--cor-destaque); }
+            .conteudo { margin-left:0; padding:20px 15px; max-width:100%; }
+            .titulo { font-size:26px; }
+            .operadoras, .contato { justify-content:center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- MENU LATERAL -->
     <aside class="sidebar">
-        <div class="logo">
-            <i class="fas fa-shield-virus"></i>
-            DROPNET <span>VPN</span>
+        <div class="logo"><i class="fas fa-shield-virus"></i> DROPNET <span>VPN</span></div>
+
+        <div class="seletor-tema">
+            <button class="btn-cor v ativo" onclick="trocar('')" title="Verde"></button>
+            <button class="btn-cor a" onclick="trocar('tema-azul')" title="Azul"></button>
+            <button class="btn-cor r" onclick="trocar('tema-roxo')" title="Roxo"></button>
+            <button class="btn-cor l" onclick="trocar('tema-laranja')" title="Laranja"></button>
         </div>
 
         <nav class="menu-lista">
-            <div class="menu-item ativo" data-secao="inicio">
-                <i class="fas fa-home"></i> Início
-            </div>
-            <div class="menu-item" data-secao="sobre">
-                <i class="fas fa-info-circle"></i> Sobre
-            </div>
-            <div class="menu-item" data-secao="recursos">
-                <i class="fas fa-list-check"></i> Recursos
-            </div>
-            <div class="menu-item" data-secao="operadoras">
-                <i class="fas fa-signal"></i> Operadoras
-            </div>
-            <div class="menu-item" data-secao="planos">
-                <i class="fas fa-tag"></i> Planos
-            </div>
-            <div class="menu-item" data-secao="como-usar">
-                <i class="fas fa-book-open"></i> Como Usar
-            </div>
-            <div class="menu-item" data-secao="contato">
-                <i class="fas fa-headset"></i> Contato
-            </div>
+            <div class="menu-item ativo" data-sec="inicio"><i class="fas fa-home"></i> Início</div>
+            <div class="menu-item" data-sec="sobre"><i class="fas fa-info-circle"></i> Sobre</div>
+            <div class="menu-item" data-sec="recursos"><i class="fas fa-list-check"></i> Recursos</div>
+            <div class="menu-item" data-sec="operadoras"><i class="fas fa-signal"></i> Operadoras</div>
+            <div class="menu-item" data-sec="planos"><i class="fas fa-tag"></i> Planos</div>
+            <div class="menu-item" data-sec="como"><i class="fas fa-book-open"></i> Como Usar</div>
+            <div class="menu-item" data-sec="contato"><i class="fas fa-headset"></i> Contato</div>
         </nav>
 
         <div class="sidebar-botoes">
-            <a href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" target="_blank" class="btn-sidebar btn-principal">
-                <i class="fab fa-google-play"></i> Baixar App
-            </a>
-            <a href="https://wa.me/5591993276833" target="_blank" class="btn-sidebar btn-secundario">
-                <i class="fab fa-whatsapp"></i> Comprar
-            </a>
+            <a href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" class="btn btn-principal"><i class="fab fa-google-play"></i> Baixar</a>
+            <a href="https://wa.me/5591993276833" class="btn btn-secundario"><i class="fab fa-whatsapp"></i> Comprar</a>
         </div>
-
-        <div class="sidebar-rodape">© 2026 DROPNET VPN</div>
+        <div class="sidebar-rodape">© 2026</div>
     </aside>
 
-    <!-- CONTEÚDO -->
-    <main class="conteudo-principal">
+    <main class="conteudo">
         <section id="inicio" class="secao ativa">
-            <h1 class="secao-titulo"><i class="fas fa-bolt"></i> Bem-vindo ao DROPNET VPN</h1>
-            <p class="secao-subtitulo">Conexão segura, estável e feita especialmente para todo o Brasil</p>
+            <h1 class="titulo"><i class="fas fa-bolt"></i> Bem-vindo ao DROPNET VPN</h1>
+            <p class="subtitulo">Conexão segura, estável e feita especialmente para todo o Brasil</p>
             <div class="card">
-                <p>O DROPNET VPN funciona perfeitamente com Vivo, TIM e Claro. Navegue com total privacidade, sem quedas e com a velocidade que você precisa para assistir, jogar e trabalhar.</p>
+                <p>O <strong>DROPNET VPN</strong> funciona perfeitamente com <strong>Vivo</strong>, <strong>TIM</strong> e <strong>Claro</strong>. Navegue com total privacidade, sem quedas e com a velocidade que você precisa.</p>
                 <p>Escolha qualquer opção no menu ao lado para ver mais detalhes!</p>
             </div>
         </section>
 
         <section id="sobre" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-info-circle"></i> Sobre o Serviço</h1>
-            <p class="secao-subtitulo">Conheça mais sobre nós</p>
+            <h1 class="titulo"><i class="fas fa-info-circle"></i> Sobre o Serviço</h1>
+            <p class="subtitulo">Conheça mais sobre nós</p>
             <div class="card">
-                <p>Criado especialmente para funcionar bem no Brasil, onde outros serviços falham por incompatibilidade ou quedas constantes.</p>
-                <p>Nosso foco é entregar estabilidade, segurança e um suporte rápido para você quando precisar.</p>
+                <p>Criado especialmente para funcionar bem no <strong>Brasil</strong>, onde outros serviços falham por incompatibilidade ou quedas constantes.</p>
+                <p>Nosso foco é entregar <strong>estabilidade</strong>, <strong>segurança</strong> e um <strong>suporte rápido</strong> para você.</p>
             </div>
         </section>
 
         <section id="recursos" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-list-check"></i> Nossos Recursos</h1>
-            <p class="secao-subtitulo">Tudo o que oferecemos para você</p>
+            <h1 class="titulo"><i class="fas fa-list-check"></i> Nossos Recursos</h1>
+            <p class="subtitulo">Tudo o que oferecemos para você</p>
             <div class="card">
-                <p>✅ Alta velocidade para jogos, streaming e downloads</p>
-                <p>✅ Criptografia forte que protege todos os seus dados</p>
-                <p>✅ Não guardamos registros do que você acessa na internet</p>
-                <p>✅ Reconecta automaticamente se a conexão cair</p>
+                <p>✅ <strong>Alta velocidade</strong> para jogos, streaming e downloads</p>
+                <p>✅ <strong>Criptografia forte</strong> que protege todos os seus dados</p>
+                <p>✅ <strong>Não guardamos registros</strong> do que você acessa</p>
+                <p>✅ <strong>Reconecta automaticamente</strong> se a conexão cair</p>
             </div>
         </section>
 
         <section id="operadoras" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-signal"></i> Operadoras Compatíveis</h1>
-            <p class="secao-subtitulo">Funciona perfeitamente com esses chips</p>
-            <div class="grade-operadoras">
-                <div class="op-item"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Vivo"></div>
-                <div class="op-item"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="TIM"></div>
-                <div class="op-item"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Claro"></div>
+            <h1 class="titulo"><i class="fas fa-signal"></i> Operadoras Compatíveis</h1>
+            <p class="subtitulo">Funciona perfeitamente com esses chips</p>
+            <div class="operadoras">
+                <div class="op"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Vivo"></div>
+                <div class="op"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="TIM"></div>
+                <div class="op"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Claro"></div>
             </div>
         </section>
 
         <section id="planos" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-tag"></i> Planos e Valores</h1>
-            <p class="secao-subtitulo">Escolha a opção ideal para você</p>
-            <div class="grade-planos">
-                <div class="plano"><div class="plano-dias">7 Dias</div><div class="plano-valor">R$ 4,00</div></div>
-                <div class="plano destaque"><div class="plano-dias">15 Dias</div><div class="plano-valor">R$ 8,00</div></div>
-                <div class="plano"><div class="plano-dias">30 Dias</div><div class="plano-valor">R$ 15,00</div></div>
+            <h1 class="titulo"><i class="fas fa-tag"></i> Planos e Valores</h1>
+            <p class="subtitulo">Escolha a opção ideal para você</p>
+            <div class="planos">
+                <div class="plano"><div class="dias">7 Dias</div><div class="valor">R$ 4,00</div></div>
+                <div class="plano destaque"><div class="dias">15 Dias</div><div class="valor">R$ 8,00</div></div>
+                <div class="plano"><div class="dias">30 Dias</div><div class="valor">R$ 15,00</div></div>
             </div>
         </section>
 
-        <section id="como-usar" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-book-open"></i> Como Usar</h1>
-            <p class="secao-subtitulo">Passo a passo bem simples</p>
+        <section id="como" class="secao">
+            <h1 class="titulo"><i class="fas fa-book-open"></i> Como Usar</h1>
+            <p class="subtitulo">Passo a passo bem simples</p>
             <div class="card">
-                <p>1. Baixe o aplicativo no botão do menu ao lado</p>
-                <p>2. Escolha o seu plano e faça o pagamento via Pix</p>
-                <p>3. Envie o comprovante para o nosso atendimento</p>
-                <p>4. Receba seu acesso e conecte-se — pronto!</p>
+                <p>1. <strong>Baixe o aplicativo</strong> no botão do menu</p>
+                <p>2. <strong>Escolha seu plano</strong> e pague via Pix</p>
+                <p>3. <strong>Envie o comprovante</strong> para o atendimento</p>
+                <p>4. <strong>Receba o acesso</strong> e conecte-se!</p>
             </div>
         </section>
 
         <section id="contato" class="secao">
-            <h1 class="secao-titulo"><i class="fas fa-headset"></i> Fale Conosco</h1>
-            <p class="secao-subtitulo">Estamos prontos para ajudar você</p>
-            <div class="lista-contato">
-                <a href="https://wa.me/5591993276833" target="_blank" class="contato-link wpp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/BIEL_SSH" target="_blank" class="contato-link tg"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://instagram.com/dropnetvpn" target="_blank" class="contato-link ig"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="mailto:bielsshdropnet@gmail.com" class="contato-link mail"><i class="fas fa-envelope"></i> E-mail</a>
+            <h1 class="titulo"><i class="fas fa-headset"></i> Fale Conosco</h1>
+            <p class="subtitulo">Estamos prontos para ajudar</p>
+            <div class="contato">
+                <a href="https://wa.me/5591993276833" class="link wpp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://t.me/BIEL_SSH" class="link tg"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://instagram.com/dropnetvpn" class="link ig"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="mailto:bielsshdropnet@gmail.com" class="link mail"><i class="fas fa-envelope"></i> E-mail</a>
             </div>
         </section>
     </main>
 
-    <!-- JAVASCRIPT -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const itensMenu = document.querySelectorAll('.menu-item');
-            itensMenu.forEach(item => {
-                item.addEventListener('click', function() {
-                    const idAbrir = this.getAttribute('data-secao');
-                    document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
-                    document.getElementById(idAbrir).classList.add('ativa');
-                    itensMenu.forEach(i => i.classList.remove('ativo'));
-                    this.classList.add('ativo');
+        function trocar(classe) {
+            document.body.className = classe;
+            document.querySelectorAll('.btn-cor').forEach(b=>b.classList.remove('ativo'));
+            event.target.classList.add('ativo');
+            localStorage.setItem('tema', classe);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const salvo = localStorage.getItem('tema') || '';
+            document.body.className = salvo;
+            document.querySelectorAll('.btn-cor').forEach(b=>{
+                if((salvo==='' && b.title==='Verde') || salvo.includes(b.title.toLowerCase())) b.classList.add('ativo');
+            });
+
+            document.querySelectorAll('.menu-item').forEach(item=>{
+                item.addEventListener('click', ()=>{
+                    document.querySelectorAll('.secao').forEach(s=>s.classList.remove('ativa'));
+                    document.getElementById(item.dataset.sec).classList.add('ativa');
+                    document.querySelectorAll('.menu-item').forEach(i=>i.classList.remove('ativo'));
+                    item.classList.add('ativo');
                 });
             });
         });
     </script>
-
 </body>
 </html>
