@@ -299,7 +299,7 @@
             transition: transform 0.3s;
         }
         .op:hover { transform: scale(1.05); }
-        .op img { height: 75px; width: auto; object-fit: contain; }
+        .op i { font-size: 45px; }
 
         .planos { display: flex; flex-direction: column; gap: 30px; margin-top: 25px; }
         .plano-titulo { 
@@ -401,6 +401,156 @@
             color: var(--aviso);
         }
 
+        /* 🤖 ASSISTENTE DE IA */
+        .botao-ia {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--cor-destaque);
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--sombra);
+            transition: all 0.3s;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .botao-ia:hover { transform: scale(1.1); box-shadow: 0 6px 20px var(--sombra); }
+
+        .janela-ia {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 380px;
+            max-width: 90vw;
+            height: 520px;
+            max-height: 80vh;
+            background: var(--fundo-card);
+            border-radius: 15px;
+            border: 1px solid var(--borda);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .janela-ia.aberta { display: flex; }
+
+        .cabecalho-ia {
+            background: var(--cor-destaque);
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .cabecalho-ia button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: 0.2s;
+        }
+        .cabecalho-ia button:hover { transform: scale(1.2); }
+
+        .mensagens-ia {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: var(--fundo-escuro);
+        }
+        .mensagem {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .mensagem.usuario {
+            background: var(--cor-destaque);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .mensagem.assistente {
+            background: var(--fundo-card);
+            color: var(--texto-normal);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--borda);
+        }
+        .digitando {
+            font-size: 12px;
+            color: var(--texto-suave);
+            font-style: italic;
+            padding: 0 15px 8px;
+        }
+
+        .entrada-ia {
+            display: flex;
+            padding: 12px;
+            gap: 8px;
+            border-top: 1px solid var(--borda);
+            background: var(--fundo-card);
+        }
+        .entrada-ia input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--borda);
+            background: var(--fundo-escuro);
+            color: var(--texto-normal);
+            font-size: 14px;
+            outline: none;
+        }
+        .entrada-ia input:focus { border-color: var(--cor-destaque); }
+        .entrada-ia button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--cor-destaque);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .entrada-ia button:hover { filter: brightness(1.1); }
+
+        .perguntas-rapidas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 15px 10px;
+            justify-content: center;
+        }
+        .btn-pergunta {
+            padding: 6px 12px;
+            border-radius: 15px;
+            border: 1px solid var(--cor-destaque);
+            background: rgba(16,185,129,0.1);
+            color: var(--cor-destaque);
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-pergunta:hover { background: var(--cor-destaque); color: #fff; }
+
         @media (max-width:768px) {
             .status-bar { left: 0; font-size: 12px; padding: 5px 15px; }
             body { flex-direction: column; }
@@ -422,6 +572,8 @@
             .faq-resposta { font-size: 13px; }
             .botoes-download { flex-direction: column; align-items: center; }
             .btn-download { width: 100%; max-width: 280px; }
+            .botao-ia { bottom: 15px; right: 15px; width: 55px; height: 55px; font-size: 22px; }
+            .janela-ia { bottom: 80px; right: 15px; left: 15px; width: auto; height: 70vh; }
         }
     </style>
 </head>
@@ -454,8 +606,8 @@
         </nav>
 
         <div class="sidebar-botoes">
-            <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn btn-principal" target="_blank"><i class="fab fa-google-play"></i> Play Store</a>
-            <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn btn-secundario" target="_blank"><i class="fab fa-android"></i> Mediafire</a>
+            <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn btn-principal" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> Play Store</a>
+            <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn btn-secundario" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i> Mediafire</a>
         </div>
 
         <div class="sidebar-rodape">© 2026 DROPNET VPN • Todos os direitos reservados</div>
@@ -494,15 +646,15 @@
                 <p>Ideal para jogos, streaming, redes sociais e trabalho sem interrupções!</p>
                 
                 <div class="botoes-download">
-                    <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn-download link-play" target="_blank">
+                    <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn-download link-play" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-google-play"></i> Opção 1 - Play Store
                     </a>
-                    <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn-download link-media" target="_blank">
+                    <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn-download link-media" target="_blank" rel="noopener noreferrer">
                         <i class="fas fa-download"></i> Opção 2 - Mediafire
                     </a>
                 </div>
 
-                <a href="https://wa.me/5591993276833" class="btn-comprar-grande">
+                <a href="https://wa.me/5591993276833" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> Comprar Acesso Agora
                 </a>
             </div>
@@ -536,9 +688,9 @@
             <h1 class="titulo"><i class="fas fa-signal"></i> Operadoras Compatíveis</h1>
             <p class="subtitulo">Funciona perfeitamente com esses chips</p>
             <div class="operadoras">
-                <div class="op"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Logo Vivo" loading="lazy"></div>
-                <div class="op"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="Logo TIM" loading="lazy"></div>
-                <div class="op"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Logo Claro" loading="lazy"></div>
+                <div class="op"><i class="fas fa-mobile-alt" style="color:#009C3B;"></i></div>
+                <div class="op"><i class="fas fa-mobile-alt" style="color:#FF6C00;"></i></div>
+                <div class="op"><i class="fas fa-mobile-alt" style="color:#E30613;"></i></div>
             </div>
             <div class="card" style="margin-top:20px;">
                 <p>Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!</p>
@@ -567,7 +719,7 @@
                 </div>
             </div>
 
-            <a href="https://wa.me/5591993276833" class="btn-comprar-grande">
+            <a href="https://wa.me/5591993276833" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> Comprar Acesso
             </a>
 
@@ -630,9 +782,9 @@
             </div>
 
             <div class="contato">
-                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="mailto:bielsshdropnet@gmail.com" class="link mail"><i class="fas fa-envelope"></i> E-mail</a>
             </div>
 
@@ -642,6 +794,37 @@
             </div>
         </section>
     </main>
+
+    <!-- 🤖 BOTÃO E JANELA DO ASSISTENTE DE IA -->
+    <button class="botao-ia" onclick="alternarJanelaIA()">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <div class="janela-ia" id="janelaIA">
+        <div class="cabecalho-ia">
+            <span><i class="fas fa-robot"></i> Assistente DROPNET</span>
+            <button onclick="alternarJanelaIA()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="mensagens-ia" id="caixaMensagens">
+            <div class="mensagem assistente">
+                Olá! 👋 Eu sou o assistente virtual do DROPNET VPN.<br>
+                Como posso ajudar você hoje?
+            </div>
+        </div>
+
+        <div class="perguntas-rapidas">
+            <button class="btn-pergunta" onclick="enviarPergunta('Como baixar o app?')">Como baixar?</button>
+            <button class="btn-pergunta" onclick="enviarPergunta('Quais os planos?')">Planos</button>
+            <button class="btn-pergunta" onclick="enviarPergunta('Funciona na minha operadora?')">Operadoras</button>
+            <button class="btn-pergunta" onclick="enviarPergunta('Como comprar?')">Comprar acesso</button>
+        </div>
+
+        <div class="entrada-ia">
+            <input type="text" id="entradaIA" placeholder="Digite sua dúvida..." onkeypress="if(event.key === 'Enter') enviarMensagem()">
+            <button onclick="enviarMensagem()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script>
         function trocar(classe) {
@@ -694,29 +877,16 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const salvo = localStorage.getItem('tema') || '';
-            document.body.className = salvo;
-            atualizarBotoes(salvo);
+        // 🤖 FUNÇÕES DO ASSISTENTE DE IA
+        function alternarJanelaIA() {
+            const janela = document.getElementById('janelaIA');
+            janela.classList.toggle('aberta');
+        }
 
-            verificarHorario();
-
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
-                    document.getElementById(item.dataset.sec).classList.add('ativa');
-                    document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('ativo'));
-                    item.classList.add('ativo');
-                });
-            });
-
-            document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
-                pergunta.addEventListener('click', () => {
-                    const item = pergunta.parentElement;
-                    item.classList.toggle('aberto');
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        function adicionarMensagem(texto, tipo) {
+            const caixa = document.getElementById('caixaMensagens');
+            const div = document.createElement('div');
+            div.className = `mensagem ${tipo}`;
+            div.innerHTML = texto;
+            caixa.appendChild(div);
+            caixa.scrollTop = caixa.scrollHeight;
