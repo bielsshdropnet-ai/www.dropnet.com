@@ -8,7 +8,6 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
 
-        /* ===== CORES BASE ===== */
         :root {
             --cor-destaque: #10B981;
             --fundo-escuro: #121214;
@@ -18,138 +17,426 @@
             --texto-suave: #94A3B8;
             --borda: #27272B;
             --sombra: rgba(16, 185, 129, 0.15);
+            --sucesso: #10B981;
+            --aviso: #F59E0B;
+            --erro: #EF4444;
         }
 
-        /* ===== OUTROS TEMAS ===== */
         .tema-azul { --cor-destaque: #3B82F6; --sombra: rgba(59,130,246,0.15); }
         .tema-roxo { --cor-destaque: #8B5CF6; --sombra: rgba(139,92,246,0.15); }
         .tema-laranja { --cor-destaque: #F97316; --sombra: rgba(249,115,22,0.15); }
 
-        body { background: var(--fundo-escuro); color: var(--texto-normal); min-height: 100vh; display: flex; }
+        body { 
+            background: var(--fundo-escuro); 
+            color: var(--texto-normal); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: row;
+        }
 
-        /* ===== MENU LATERAL ===== */
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 150px;
+            right: 0;
+            background: rgba(16, 185, 129, 0.1);
+            border-bottom: 1px solid var(--cor-destaque);
+            padding: 6px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            z-index: 999;
+        }
+        .status-ponto {
+            width: 10px; height: 10px;
+            background: var(--sucesso);
+            border-radius: 50%;
+            animation: piscar 2s infinite;
+        }
+        @keyframes piscar {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
         .sidebar {
-            width: 120px;
+            width: 150px;
             background: var(--fundo-menu);
             border-right: 2px solid var(--cor-destaque);
-            padding: 12px 6px;
+            padding: 15px 10px;
+            padding-bottom: 15px;
             position: fixed;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
+            transition: border-color 0.3s;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 13px;
-            font-weight: 800;
+            font-size: 18px;
+            font-weight: 900;
             display: flex;
             align-items: center;
-            gap: 4px;
-            padding-bottom: 10px;
+            justify-content: center;
+            gap: 6px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--borda);
+            text-align: center;
+            flex-shrink: 0;
         }
-        .logo i, .logo span { color: var(--cor-destaque); }
+        .logo i { font-size: 22px; }
+        .logo i, .logo span { color: var(--cor-destaque); transition: color 0.3s; }
 
-        /* ===== SELETOR DE COR ===== */
         .seletor-tema {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
-            padding: 10px 0;
+            padding: 12px 0;
             border-top: 1px solid var(--borda);
             border-bottom: 1px solid var(--borda);
+            flex-shrink: 0;
         }
         .btn-cor {
-            width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent;
+            width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent;
             cursor: pointer; transition: 0.2s;
         }
         .btn-cor.ativo { border-color: #fff; transform: scale(1.15); }
         .v { background: #10B981; } .a { background: #3B82F6; } .r { background: #8B5CF6; } .l { background: #F97316; }
 
-        .menu-lista { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+        .menu-lista { display: flex; flex-direction: column; gap: 6px; flex: 1; padding: 0 5px; overflow-y: auto; }
         .menu-item {
-            display: flex; align-items: center; gap: 5px; padding: 7px 8px;
-            border-radius: 5px; color: var(--texto-suave); font-size: 11px;
-            border-left: 3px solid transparent; cursor: pointer; white-space: nowrap;
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 10px 8px;
+            border-radius: 6px; color: var(--texto-suave); 
+            font-size: 14px;
+            border-left: 3px solid transparent; border-right: 3px solid transparent;
+            cursor: pointer; white-space: nowrap;
+            transition: all 0.2s;
+            text-align: center;
         }
-        .menu-item i { color: var(--cor-destaque); font-size: 12px; min-width: 14px; }
+        .menu-item i { 
+            color: var(--cor-destaque); 
+            font-size: 16px;
+            min-width: 18px; 
+            transition: color 0.3s; 
+        }
         .menu-item:hover, .menu-item.ativo {
-            background: var(--sombra); color: var(--cor-destaque); border-left-color: var(--cor-destaque);
+            background: var(--sombra); color: var(--cor-destaque); 
+            border-left-color: var(--cor-destaque); border-right-color: var(--cor-destaque);
+            transform: translateY(-1px);
         }
 
-        .sidebar-botoes { display: flex; flex-direction: column; gap: 4px; padding-top: 10px; }
-        .btn {
-            padding: 7px; border-radius: 5px; text-decoration: none; font-size: 10px;
-            font-weight: 600; text-align: center; transition: 0.3s; display: flex;
-            align-items: center; justify-content: center; gap: 3px;
+        .sidebar-botoes { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            padding: 0 5px;
+            flex-shrink: 0;
         }
-        .btn-principal { background: var(--cor-destaque); color: #fff; }
-        .btn-principal:hover { filter: brightness(1.1); }
-        .btn-secundario { border: 1px solid var(--cor-destaque); color: var(--cor-destaque); background: transparent; }
+        .btn {
+            padding: 12px 10px;
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-size: 15px;
+            font-weight: 700; 
+            text-align: center; 
+            transition: all 0.3s; 
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px; 
+            border: none;
+            cursor: pointer;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn i { font-size: 17px; }
+        .btn-principal { background: var(--cor-destaque); color: #fff; transition: background 0.3s; }
+        .btn-principal:hover { filter: brightness(1.1); box-shadow: 0 0 15px var(--sombra); }
+        .btn-secundario { border: 1px solid var(--cor-destaque); color: var(--cor-destaque); background: transparent; transition: all 0.3s; }
         .btn-secundario:hover { background: var(--sombra); }
 
-        .sidebar-rodape { font-size: 8px; color: var(--texto-suave); text-align: center; padding-top: 6px; }
+        .sidebar-rodape { 
+            font-size: 11px; 
+            color: var(--texto-suave); 
+            text-align: center; 
+            padding-top: 12px; 
+            margin-top: auto;
+            border-top: 1px solid var(--borda);
+            flex-shrink: 0;
+        }
 
-        /* ===== CONTEÚDO ===== */
-        .conteudo { flex: 1; margin-left: 120px; padding: 35px 40px; max-width: 900px; }
+        .conteudo { flex: 1; margin-left: 150px; padding: 45px 40px 35px; max-width: 900px; width: 100%; }
         .secao { display: none; animation: aparece 0.3s ease; }
         .secao.ativa { display: block; }
         @keyframes aparece { from {opacity:0;transform:translateX(10px)} to {opacity:1;transform:translateX(0)} }
 
         .titulo {
-            font-size: 32px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px;
-            color: var(--cor-destaque); font-weight: 700;
+            font-size: 32px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
+            gap: 12px;
+            color: var(--cor-destaque); font-weight: 700; transition: color 0.3s;
+            text-align: center;
         }
-        .titulo i { color: var(--cor-destaque); font-size: 28px; }
+        .titulo i { font-size: 28px; }
         .subtitulo {
             color: var(--texto-suave); font-size: 18px; margin-bottom: 25px; padding-bottom: 12px;
             border-bottom: 1px solid var(--borda); line-height: 1.5;
+            text-align: center;
         }
 
-        .card { background: var(--fundo-card); border: 1px solid var(--borda); border-radius: 12px; padding: 25px 30px; margin-bottom: 20px; }
+        .destaque-garantia {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--cor-destaque);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .destaque-garantia i { color: var(--cor-destaque); margin-right: 8px; font-size: 18px; }
+
+        .status-atendimento {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .status-atendimento.aberto { border-color: var(--sucesso); background: rgba(16,185,129,0.05); }
+        .status-atendimento.fechado { border-color: var(--aviso); background: rgba(245,158,11,0.05); }
+        .status-titulo { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+        .status-titulo.aberto { color: var(--sucesso); }
+        .status-titulo.fechado { color: var(--aviso); }
+        .horario-lista { font-size: 14px; color: var(--texto-suave); line-height: 1.7; margin-top: 10px; }
+        .horario-lista .fechado { color: var(--erro); font-weight: 600; }
+
+        .dados-rapidos {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .dado {
+            background: var(--fundo-card);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 130px;
+            border: 1px solid var(--borda);
+            transition: transform 0.3s;
+        }
+        .dado:hover { transform: translateY(-2px); }
+        .dado-numero { font-size: 24px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; }
+        .dado-texto { font-size: 13px; color: var(--texto-suave); }
+
+        .card { 
+            background: var(--fundo-card); border: 1px solid var(--borda); border-radius: 12px; 
+            padding: 25px 30px; margin-bottom: 20px; 
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: var(--cor-destaque); }
         .card p { color: var(--texto-suave); font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
-        .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; }
+        .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; transition: color 0.3s; }
 
-        .operadoras { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px; }
-        .op { background: var(--fundo-card); padding: 20px 25px; border-radius: 10px; border: 1px solid var(--borda); }
-        .op img { height: 75px; width: auto; }
+        .botoes-download {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .btn-download {
+            flex: 1;
+            min-width: 220px;
+            padding: 14px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--sombra); }
+        .btn-download i { font-size: 18px; }
+        .link-play { background: var(--cor-destaque); color: #fff; }
+        .link-media { background: var(--fundo-card); color: var(--cor-destaque); border: 2px solid var(--cor-destaque); }
 
-        .planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; margin-top: 25px; }
+        .btn-comprar-grande {
+            display: block;
+            max-width: 320px;
+            margin: 20px auto 0;
+            padding: 16px 25px;
+            border-radius: 8px;
+            background: var(--cor-destaque);
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-comprar-grande:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--sombra); filter: brightness(1.05); }
+        .btn-comprar-grande i { margin-right: 8px; font-size: 19px; }
+
+        .operadoras { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
+        .op { 
+            background: var(--fundo-card); padding: 20px 25px; border-radius: 10px; 
+            border: 1px solid var(--borda); display: flex; align-items: center; justify-content: center;
+            min-width: 120px;
+            transition: transform 0.3s;
+        }
+        .op:hover { transform: scale(1.05); }
+        .op img { height: 75px; width: auto; object-fit: contain; }
+
+        .planos { display: flex; flex-direction: column; gap: 30px; margin-top: 25px; }
+        .plano-titulo { 
+            font-size: 20px; font-weight: 700; margin-bottom: 15px; 
+            text-align: center;
+            padding: 8px;
+            border-top: 2px solid var(--cor-destaque);
+            border-bottom: 2px solid var(--cor-destaque);
+            position: relative;
+        }
+        .plano-novo {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--aviso);
+            color: #000;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .plano-vantagens {
+            font-size: 13px;
+            color: var(--texto-suave);
+            margin: -10px 0 15px;
+            text-align: center;
+        }
+        .grupo-planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; justify-content: center; }
         .plano {
             background: var(--fundo-card); padding: 25px 20px; border-radius: 12px;
             border: 1px solid var(--cor-destaque); text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
         }
-        .plano.destaque { background: var(--sombra); }
+        .plano:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--sombra); }
+        .plano.destaque { background: var(--sombra); transform: scale(1.03); }
+        .plano.destaque:hover { transform: scale(1.05); }
         .plano .dias { font-size: 17px; color: var(--texto-suave); margin-bottom: 6px; }
-        .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; }
+        .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; transition: color 0.3s; }
 
-        .contato { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 25px; }
+        .faq { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .faq-item:hover { border-color: var(--cor-destaque); }
+        .faq-pergunta {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .faq-pergunta:hover { background: rgba(255,255,255,0.03); }
+        .faq-resposta {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 20px;
+            color: var(--texto-suave);
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .faq-item.aberto .faq-resposta {
+            max-height: 220px;
+            padding: 0 20px 15px;
+        }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        .contato { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
         .link {
             flex: 1; min-width: 150px; padding: 18px; border-radius: 10px; color: #fff;
-            text-decoration: none; text-align: center; transition: 0.3s; font-size: 15px;
+            text-decoration: none; text-align: center; transition: all 0.3s; font-size: 15px;
+            border: none;
+            cursor: pointer;
         }
-        .link i { font-size: 26px; margin-bottom: 7px; }
-        .link:hover { transform: translateY(-2px); }
+        .link i { font-size: 26px; margin-bottom: 7px; display: block; }
+        .link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .wpp { background: #25D366; } .tg { background: #26A5E4; }
         .ig { background: linear-gradient(45deg,#F58529,#DD2A7B); } .mail { background: #EA4335; }
 
-        /* CELULAR */
+        .em-breve {
+            background: rgba(245,158,11,0.1);
+            border: 1px dashed var(--aviso);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--aviso);
+        }
+
         @media (max-width:768px) {
-            .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:2px solid var(--cor-destaque); }
-            .conteudo { margin-left:0; padding:20px 15px; max-width:100%; }
+            .status-bar { left: 0; font-size: 12px; padding: 5px 15px; }
+            body { flex-direction: column; }
+            .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:2px solid var(--cor-destaque); padding: 15px 10px; padding-bottom: 15px; }
+            .menu-lista { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 10px 0; gap: 8px; overflow: visible; }
+            .menu-item { border-left: none; border-right: none; border-bottom: 2px solid transparent; font-size: 15px; padding: 8px 10px; }
+            .menu-item:hover, .menu-item.ativo { border-left: none; border-right: none; border-bottom-color: var(--cor-destaque); transform: none; }
+            .sidebar-botoes { flex-direction: row; justify-content: center; gap: 12px; padding: 0; }
+            .btn { flex: 1; max-width: 180px; font-size: 16px; padding: 12px; }
+            .sidebar-rodape { margin-top: 15px; }
+            .conteudo { margin-left:0; padding: 55px 15px 20px; max-width:100%; }
             .titulo { font-size:26px; }
+            .plano-novo { display: none; }
             .operadoras, .contato { justify-content:center; }
+            .grupo-planos { grid-template-columns: 1fr; }
+            .plano.destaque { transform: scale(1); }
+            .plano:hover, .plano.destaque:hover { transform: translateY(-2px); }
+            .faq-pergunta { font-size: 14px; padding: 12px 15px; }
+            .faq-resposta { font-size: 13px; }
+            .botoes-download { flex-direction: column; align-items: center; }
+            .btn-download { width: 100%; max-width: 280px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="status-bar">
+        <span class="status-ponto"></span>
+        <span>Serviço funcionando normalmente • Todos os servidores online</span>
+    </div>
+
     <aside class="sidebar">
         <div class="logo"><i class="fas fa-shield-virus"></i> DROPNET <span>VPN</span></div>
 
         <div class="seletor-tema">
-            <button class="btn-cor v ativo" onclick="trocar('')" title="Verde"></button>
+            <button class="btn-cor v" onclick="trocar('')" title="Verde"></button>
             <button class="btn-cor a" onclick="trocar('tema-azul')" title="Azul"></button>
             <button class="btn-cor r" onclick="trocar('tema-roxo')" title="Roxo"></button>
             <button class="btn-cor l" onclick="trocar('tema-laranja')" title="Laranja"></button>
@@ -162,23 +449,62 @@
             <div class="menu-item" data-sec="operadoras"><i class="fas fa-signal"></i> Operadoras</div>
             <div class="menu-item" data-sec="planos"><i class="fas fa-tag"></i> Planos</div>
             <div class="menu-item" data-sec="como"><i class="fas fa-book-open"></i> Como Usar</div>
+            <div class="menu-item" data-sec="faq"><i class="fas fa-question-circle"></i> Dúvidas</div>
             <div class="menu-item" data-sec="contato"><i class="fas fa-headset"></i> Contato</div>
         </nav>
 
         <div class="sidebar-botoes">
-            <a href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" class="btn btn-principal"><i class="fab fa-google-play"></i> Baixar</a>
-            <a href="https://wa.me/5591993276833" class="btn btn-secundario"><i class="fab fa-whatsapp"></i> Comprar</a>
+            <a href="COLOQUE_SEU_LINK_PLAYSTORE_AQUI" class="btn btn-principal" target="_blank"><i class="fab fa-google-play"></i> Play Store</a>
+            <a href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" class="btn btn-secundario" target="_blank"><i class="fab fa-android"></i> Mediafire</a>
         </div>
-        <div class="sidebar-rodape">© 2026</div>
+
+        <div class="sidebar-rodape">© 2026 DROPNET VPN • Todos os direitos reservados</div>
     </aside>
 
     <main class="conteudo">
         <section id="inicio" class="secao ativa">
             <h1 class="titulo"><i class="fas fa-bolt"></i> Bem-vindo ao DROPNET VPN</h1>
             <p class="subtitulo">Conexão segura, estável e feita especialmente para todo o Brasil</p>
+
+            <div class="destaque-garantia">
+                <i class="fas fa-shield-alt"></i> GARANTIA DE 3 DIAS: Se não funcionar, devolvemos 100% do seu dinheiro!
+            </div>
+
+            <div class="dados-rapidos">
+                <div class="dado">
+                    <div class="dado-numero">99.9%</div>
+                    <div class="dado-texto">Estabilidade</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero">+5.000</div>
+                    <div class="dado-texto">Usuários Ativos</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero">Rápido</div>
+                    <div class="dado-texto">Atendimento</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero">Ilimitado</div>
+                    <div class="dado-texto">Dados</div>
+                </div>
+            </div>
+
             <div class="card">
                 <p>O <strong>DROPNET VPN</strong> funciona perfeitamente com <strong>Vivo</strong>, <strong>TIM</strong> e <strong>Claro</strong>. Navegue com total privacidade, sem quedas e com a velocidade que você precisa.</p>
-                <p>Escolha qualquer opção no menu ao lado para ver mais detalhes!</p>
+                <p>Ideal para jogos, streaming, redes sociais e trabalho sem interrupções!</p>
+                
+                <div class="botoes-download">
+                    <a href="COLOQUE_SEU_LINK_PLAYSTORE_AQUI" class="btn-download link-play" target="_blank">
+                        <i class="fab fa-google-play"></i> Opção 1 - Play Store
+                    </a>
+                    <a href="https://www.mediafire.com/file/nusqvcdvpjbmy2y/DROPNET+VPN.apk/file" class="btn-download link-media" target="_blank">
+                        <i class="fas fa-download"></i> Opção 2 - Mediafire
+                    </a>
+                </div>
+
+                <a href="https://wa.me/5591993276833" class="btn-comprar-grande">
+                    <i class="fab fa-whatsapp"></i> Comprar Acesso Agora
+                </a>
             </div>
         </section>
 
@@ -187,7 +513,8 @@
             <p class="subtitulo">Conheça mais sobre nós</p>
             <div class="card">
                 <p>Criado especialmente para funcionar bem no <strong>Brasil</strong>, onde outros serviços falham por incompatibilidade ou quedas constantes.</p>
-                <p>Nosso foco é entregar <strong>estabilidade</strong>, <strong>segurança</strong> e um <strong>suporte rápido</strong> para você.</p>
+                <p>Nosso foco é entregar <strong>estabilidade</strong>, <strong>segurança</strong> e um <strong>suporte rápido</strong> para você!</p>
+                <p>Usamos servidores de alta performance localizados no país, garantindo a menor latência possível para jogos e transmissões.</p>
             </div>
         </section>
 
@@ -199,6 +526,9 @@
                 <p>✅ <strong>Criptografia forte</strong> que protege todos os seus dados</p>
                 <p>✅ <strong>Não guardamos registros</strong> do que você acessa</p>
                 <p>✅ <strong>Reconecta automaticamente</strong> se a conexão cair</p>
+                <p>✅ <strong>Funciona em 3G, 4G e 5G</strong> de todas as operadoras</p>
+                <p>✅ <strong>Sem limite de dados</strong> e sem cortes de velocidade</p>
+                <p>✅ <strong>Troca de aparelho</strong> gratuita quando precisar</p>
             </div>
         </section>
 
@@ -206,19 +536,43 @@
             <h1 class="titulo"><i class="fas fa-signal"></i> Operadoras Compatíveis</h1>
             <p class="subtitulo">Funciona perfeitamente com esses chips</p>
             <div class="operadoras">
-                <div class="op"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Vivo"></div>
-                <div class="op"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="TIM"></div>
-                <div class="op"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Claro"></div>
+                <div class="op"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Logo Vivo" loading="lazy"></div>
+                <div class="op"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="Logo TIM" loading="lazy"></div>
+                <div class="op"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Logo Claro" loading="lazy"></div>
+            </div>
+            <div class="card" style="margin-top:20px;">
+                <p>Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!</p>
             </div>
         </section>
 
         <section id="planos" class="secao">
             <h1 class="titulo"><i class="fas fa-tag"></i> Planos e Valores</h1>
             <p class="subtitulo">Escolha a opção ideal para você</p>
+
             <div class="planos">
-                <div class="plano"><div class="dias">7 Dias</div><div class="valor">R$ 4,00</div></div>
-                <div class="plano destaque"><div class="dias">15 Dias</div><div class="valor">R$ 8,00</div></div>
-                <div class="plano"><div class="dias">30 Dias</div><div class="valor">R$ 15,00</div></div>
+                <h3 class="plano-titulo">Plano Básico</h3>
+                <p class="plano-vantagens">Ideal para testar ou uso curto</p>
+                <div class="grupo-planos">
+                    <div class="plano"><div class="dias">7 Dias</div><div class="valor">R$ 4,00</div></div>
+                    <div class="plano destaque"><div class="dias">15 Dias</div><div class="valor">R$ 8,00</div></div>
+                    <div class="plano"><div class="dias">30 Dias</div><div class="valor">R$ 15,00</div></div>
+                </div>
+
+                <h3 class="plano-titulo">Plano Prime <span class="plano-novo">NOVO</span></h3>
+                <p class="plano-vantagens">Melhor custo-benefício e economia</p>
+                <div class="grupo-planos">
+                    <div class="plano"><div class="dias">60 Dias</div><div class="valor">R$ 28,00</div></div>
+                    <div class="plano destaque"><div class="dias">90 Dias</div><div class="valor">R$ 40,00</div></div>
+                    <div class="plano"><div class="dias">100 Dias</div><div class="valor">R$ 50,00</div></div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/5591993276833" class="btn-comprar-grande">
+                <i class="fab fa-whatsapp"></i> Comprar Acesso
+            </a>
+
+            <div class="em-breve">
+                <i class="fas fa-clock"></i> Em breve: Plano Anual com desconto especial!
             </div>
         </section>
 
@@ -226,21 +580,65 @@
             <h1 class="titulo"><i class="fas fa-book-open"></i> Como Usar</h1>
             <p class="subtitulo">Passo a passo bem simples</p>
             <div class="card">
-                <p>1. <strong>Baixe o aplicativo</strong> no botão do menu</p>
-                <p>2. <strong>Escolha seu plano</strong> e pague via Pix</p>
-                <p>3. <strong>Envie o comprovante</strong> para o atendimento</p>
-                <p>4. <strong>Receba o acesso</strong> e conecte-se!</p>
+                <p>1. <strong>Baixe o aplicativo</strong> usando uma das opções acima</p>
+                <p>2. <strong>Escolha seu plano</strong> e pague via Pix, PicPay ou transferência</p>
+                <p>3. <strong>Envie o comprovante</strong> para o atendimento pelo WhatsApp</p>
+                <p>4. <strong>Receba o acesso</strong> em até 10 minutos e conecte-se!</p>
+                <p>5. <strong>Abra o app, insira seus dados e aproveite</strong> a conexão segura!</p>
+            </div>
+        </section>
+
+        <section id="faq" class="secao">
+            <h1 class="titulo"><i class="fas fa-question-circle"></i> Dúvidas Frequentes</h1>
+            <p class="subtitulo">Respostas para as perguntas mais comuns</p>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-pergunta">O que é o DROPNET VPN? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">É uma ferramenta que protege sua navegação, esconde sua localização e permite acessar conteúdos sem restrições, funcionando perfeitamente em redes móveis brasileiras.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Funciona no meu celular? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Sim! Funciona em todos os celulares com sistema Android 5.0 ou superior, sem necessidade de root ou configurações complicadas.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Posso usar em mais de um aparelho? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Cada acesso é válido para 1 aparelho por vez. Se quiser usar em outro celular, basta solicitar a troca gratuitamente ao suporte.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">E se não funcionar? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Oferecemos garantia total de <strong>3 dias</strong>. Se não funcionar como esperado, devolvemos 100% do seu dinheiro sem burocracia!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Quais formas de pagamento? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Aceitamos Pix, PicPay, transferência bancária e cartões de crédito. Todos os pagamentos são seguros e processados rapidamente.</div>
+                </div>
             </div>
         </section>
 
         <section id="contato" class="secao">
             <h1 class="titulo"><i class="fas fa-headset"></i> Fale Conosco</h1>
             <p class="subtitulo">Estamos prontos para ajudar</p>
+
+            <div class="status-atendimento" id="caixa-horario">
+                <div class="status-titulo" id="texto-status">Verificando horário...</div>
+                <div class="horario-lista">
+                    <p>📅 Segunda a Sexta: <strong>08:00 às 00:00</strong></p>
+                    <p>📅 Sábado: <strong>08:00 às 22:00</strong></p>
+                    <p class="fechado">📅 Domingo: <strong>FECHADO</strong></p>
+                </div>
+            </div>
+
             <div class="contato">
-                <a href="https://wa.me/5591993276833" class="link wpp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/BIEL_SSH" class="link tg"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://instagram.com/dropnetvpn" class="link ig"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="mailto:bielsshdropnet@gmail.com" class="link mail"><i class="fas fa-envelope"></i> E-mail</a>
+            </div>
+
+            <div class="card" style="margin-top:25px;">
+                <p>Localizado em <strong>Cametá, Pará</strong></p>
+                <p>Resposta rápida durante o horário de atendimento!</p>
             </div>
         </section>
     </main>
@@ -248,27 +646,78 @@
     <script>
         function trocar(classe) {
             document.body.className = classe;
-            document.querySelectorAll('.btn-cor').forEach(b=>b.classList.remove('ativo'));
-            event.target.classList.add('ativo');
             localStorage.setItem('tema', classe);
+            atualizarBotoes(classe);
+        }
+
+        function atualizarBotoes(classe) {
+            document.querySelectorAll('.btn-cor').forEach(b => b.classList.remove('ativo'));
+            if(classe === '') {
+                document.querySelector('.btn-cor.v').classList.add('ativo');
+            } else if(classe === 'tema-azul') {
+                document.querySelector('.btn-cor.a').classList.add('ativo');
+            } else if(classe === 'tema-roxo') {
+                document.querySelector('.btn-cor.r').classList.add('ativo');
+            } else if(classe === 'tema-laranja') {
+                document.querySelector('.btn-cor.l').classList.add('ativo');
+            }
+        }
+
+        function verificarHorario() {
+            const agora = new Date();
+            const diaSemana = agora.getDay();
+            const hora = agora.getHours();
+            const minuto = agora.getMinutes();
+            const totalMinutos = hora * 60 + minuto;
+
+            const caixa = document.getElementById('caixa-horario');
+            const texto = document.getElementById('texto-status');
+
+            let aberto = false;
+
+            if(diaSemana >= 1 && diaSemana <= 5) {
+                if(totalMinutos >= 480) aberto = true;
+            } else if(diaSemana === 6) {
+                if(totalMinutos >= 480 && totalMinutos <= 1320) aberto = true;
+            } else {
+                aberto = false;
+            }
+
+            if(aberto) {
+                caixa.className = 'status-atendimento aberto';
+                texto.className = 'status-titulo aberto';
+                texto.innerHTML = '<i class="fas fa-circle"></i> Atendimento ABERTO agora!';
+            } else {
+                caixa.className = 'status-atendimento fechado';
+                texto.className = 'status-titulo fechado';
+                texto.innerHTML = '<i class="fas fa-circle"></i> Atendimento FECHADO no momento';
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const salvo = localStorage.getItem('tema') || '';
             document.body.className = salvo;
-            document.querySelectorAll('.btn-cor').forEach(b=>{
-                if((salvo==='' && b.title==='Verde') || salvo.includes(b.title.toLowerCase())) b.classList.add('ativo');
+            atualizarBotoes(salvo);
+
+            verificarHorario();
+
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
+                    document.getElementById(item.dataset.sec).classList.add('ativa');
+                    document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('ativo'));
+                    item.classList.add('ativo');
+                });
             });
 
-            document.querySelectorAll('.menu-item').forEach(item=>{
-                item.addEventListener('click', ()=>{
-                    document.querySelectorAll('.secao').forEach(s=>s.classList.remove('ativa'));
-                    document.getElementById(item.dataset.sec).classList.add('ativa');
-                    document.querySelectorAll('.menu-item').forEach(i=>i.classList.remove('ativo'));
-                    item.classList.add('ativo');
+            document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+                pergunta.addEventListener('click', () => {
+                    const item = pergunta.parentElement;
+                    item.classList.toggle('aberto');
                 });
             });
         });
     </script>
 </body>
 </html>
+
