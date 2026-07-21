@@ -16,159 +16,263 @@
             --texto-normal: #E2E8F0;
             --texto-suave: #94A3B8;
             --borda: #27272B;
-            --sombra: rgba(16, 185, 129, 0.15);
+            --sombra: rgba(16, 185, 129, 0.2);
+            --sombra-forte: rgba(16, 185, 129, 0.35);
             --sucesso: #10B981;
             --aviso: #F59E0B;
             --erro: #EF4444;
+            --transicao: all 0.3s ease;
         }
 
-        .tema-azul { --cor-destaque: #3B82F6; --sombra: rgba(59,130,246,0.15); }
-        .tema-roxo { --cor-destaque: #8B5CF6; --sombra: rgba(139,92,246,0.15); }
-        .tema-laranja { --cor-destaque: #F97316; --sombra: rgba(249,115,22,0.15); }
+        .tema-azul { --cor-destaque: #3B82F6; --sombra: rgba(59,130,246,0.2); --sombra-forte: rgba(59,130,246,0.35); }
+        .tema-roxo { --cor-destaque: #8B5CF6; --sombra: rgba(139,92,246,0.2); --sombra-forte: rgba(139,92,246,0.35); }
+        .tema-laranja { --cor-destaque: #F97316; --sombra: rgba(249,115,22,0.2); --sombra-forte: rgba(249,115,22,0.35); }
 
         body { 
             background: var(--fundo-escuro); 
             color: var(--texto-normal); 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: row;
+            min-height: 100vh;
+            position: relative;
         }
 
-        .status-bar {
+        /* LOGO PRINCIPAL NO TOPO */
+        .logo-fixo {
             position: fixed;
-            top: 0;
-            left: 150px;
-            right: 0;
-            background: rgba(16, 185, 129, 0.1);
-            border-bottom: 1px solid var(--cor-destaque);
-            padding: 6px 20px;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1002;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 13px;
-            z-index: 999;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+            pointer-events: none;
         }
-        .status-ponto {
-            width: 10px; height: 10px;
-            background: var(--sucesso);
-            border-radius: 50%;
-            animation: piscar 2s infinite;
+        .logo-fixo.escondido {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+            visibility: hidden;
         }
-        @keyframes piscar {
-            0%,100% { opacity: 1; }
-            50% { opacity: 0.4; }
+        .logo-fixo img { 
+            height: 160px; 
+            width: auto; 
+            object-fit: contain;
+            display: block;
+            background: transparent !important;
         }
 
+        /* Botão Hambúrguer */
+        .btn-hamburguer {
+            position: fixed;
+            top: 25px;
+            left: 15px;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--cor-destaque);
+            color: #fff;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1003;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transicao);
+            box-shadow: 0 2px 8px var(--sombra);
+        }
+        .btn-hamburguer:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        .fundo-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transicao);
+        }
+        .fundo-menu.aberto { opacity: 1; visibility: visible; }
+
         .sidebar {
-            width: 150px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
             background: var(--fundo-menu);
             border-right: 2px solid var(--cor-destaque);
-            padding: 15px 10px;
-            padding-bottom: 15px;
-            position: fixed;
-            height: 100vh;
+            padding: 70px 15px 20px;
+            z-index: 1001;
+            transform: translateX(-100%);
+            transition: var(--transicao);
             display: flex;
             flex-direction: column;
             gap: 15px;
-            transition: border-color 0.3s;
-            z-index: 1000;
+            overflow-y: auto;
         }
+        .sidebar.aberto { transform: translateX(0); }
 
-        .logo {
+        .btn-fechar {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            color: var(--texto-suave);
+            border: none;
             font-size: 18px;
-            font-weight: 900;
+            cursor: pointer;
+            transition: var(--transicao);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--borda);
-            text-align: center;
-            flex-shrink: 0;
         }
-        .logo i { font-size: 22px; }
-        .logo i, .logo span { color: var(--cor-destaque); transition: color 0.3s; }
+        .btn-fechar:hover { background: var(--cor-destaque); color: #fff; }
+
+        /* NOME DO SISTEMA NO MENU LATERAL */
+        .nome-menu {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--cor-destaque);
+            padding: 10px 0 5px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px var(--sombra);
+        }
+        .subtitulo-menu {
+            text-align: center;
+            font-size: 11px;
+            color: var(--texto-suave);
+            margin-bottom: 5px;
+        }
 
         .seletor-tema {
             display: flex;
             gap: 10px;
             justify-content: center;
-            padding: 12px 0;
-            border-top: 1px solid var(--borda);
+            padding: 10px 0 12px;
             border-bottom: 1px solid var(--borda);
             flex-shrink: 0;
         }
         .btn-cor {
             width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent;
-            cursor: pointer; transition: 0.2s;
+            cursor: pointer; transition: var(--transicao);
         }
-        .btn-cor.ativo { border-color: #fff; transform: scale(1.15); }
+        .btn-cor.ativo { border-color: #fff; transform: scale(1.15); box-shadow: 0 0 8px var(--sombra); }
         .v { background: #10B981; } .a { background: #3B82F6; } .r { background: #8B5CF6; } .l { background: #F97316; }
 
-        .menu-lista { display: flex; flex-direction: column; gap: 6px; flex: 1; padding: 0 5px; overflow-y: auto; }
+        .menu-lista { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            flex: 1; 
+            padding: 10px 5px; 
+        }
         .menu-item {
-            display: flex; align-items: center; justify-content: center;
-            gap: 8px; padding: 10px 8px;
-            border-radius: 6px; color: var(--texto-suave); 
-            font-size: 14px;
-            border-left: 3px solid transparent; border-right: 3px solid transparent;
-            cursor: pointer; white-space: nowrap;
-            transition: all 0.2s;
-            text-align: center;
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start;
+            gap: 12px; 
+            padding: 12px 14px;
+            border-radius: 10px; 
+            color: var(--texto-suave); 
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer; 
+            transition: var(--transicao);
+            background: transparent;
+            border-left: 3px solid transparent;
         }
         .menu-item i { 
+            color: var(--texto-suave); 
+            font-size: 18px;
+            min-width: 20px; 
+            transition: color var(--transicao); 
+        }
+        .menu-item:hover {
+            background: rgba(16, 185, 129, 0.08); 
             color: var(--cor-destaque); 
-            font-size: 16px;
-            min-width: 18px; 
-            transition: color 0.3s; 
+            border-left-color: var(--cor-destaque);
+            transform: translateX(3px);
         }
-        .menu-item:hover, .menu-item.ativo {
-            background: var(--sombra); color: var(--cor-destaque); 
-            border-left-color: var(--cor-destaque); border-right-color: var(--cor-destaque);
-            transform: translateY(-1px);
+        .menu-item:hover i { color: var(--cor-destaque); }
+        .menu-item.ativo {
+            background: var(--sombra); 
+            color: var(--cor-destaque); 
+            border-left-color: var(--cor-destaque);
+            font-weight: 600;
+            box-shadow: 0 2px 8px var(--sombra-forte);
         }
+        .menu-item.ativo i { color: var(--cor-destaque); }
 
         .sidebar-botoes { 
             display: flex; 
             flex-direction: column; 
-            gap: 10px; 
+            gap: 12px; 
             padding: 0 5px;
             flex-shrink: 0;
         }
         .btn {
-            padding: 12px 10px;
-            border-radius: 6px; 
+            padding: 13px 10px;
+            border-radius: 10px; 
             text-decoration: none; 
             font-size: 15px;
-            font-weight: 700; 
+            font-weight: 600; 
             text-align: center; 
-            transition: all 0.3s; 
+            transition: var(--transicao); 
             display: flex;
             align-items: center; 
             justify-content: center; 
-            gap: 6px; 
+            gap: 8px; 
             border: none;
             cursor: pointer;
         }
         .btn:active { transform: scale(0.97); }
         .btn i { font-size: 17px; }
-        .btn-principal { background: var(--cor-destaque); color: #fff; transition: background 0.3s; }
-        .btn-principal:hover { filter: brightness(1.1); box-shadow: 0 0 15px var(--sombra); }
-        .btn-secundario { border: 1px solid var(--cor-destaque); color: var(--cor-destaque); background: transparent; transition: all 0.3s; }
-        .btn-secundario:hover { background: var(--sombra); }
+        .btn-principal { 
+            background: var(--cor-destaque); 
+            color: #fff; 
+            box-shadow: 0 2px 6px var(--sombra);
+        }
+        .btn-principal:hover { 
+            filter: brightness(1.1); 
+            box-shadow: 0 4px 12px var(--sombra-forte); 
+            transform: translateY(-2px);
+        }
+        .btn-secundario { 
+            border: 2px solid var(--cor-destaque); 
+            color: var(--cor-destaque); 
+            background: transparent; 
+        }
+        .btn-secundario:hover { 
+            background: var(--sombra); 
+            transform: translateY(-2px);
+        }
 
         .sidebar-rodape { 
             font-size: 11px; 
             color: var(--texto-suave); 
             text-align: center; 
-            padding-top: 12px; 
+            padding-top: 15px; 
             margin-top: auto;
             border-top: 1px solid var(--borda);
             flex-shrink: 0;
         }
 
-        .conteudo { flex: 1; margin-left: 150px; padding: 45px 40px 35px; max-width: 900px; width: 100%; }
+        .conteudo { 
+            padding: 190px 20px 30px; 
+            max-width: 900px; 
+            margin: 0 auto;
+            width: 100%;
+        }
         .secao { display: none; animation: aparece 0.3s ease; }
         .secao.ativa { display: block; }
         @keyframes aparece { from {opacity:0;transform:translateX(10px)} to {opacity:1;transform:translateX(0)} }
@@ -176,7 +280,7 @@
         .titulo {
             font-size: 32px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
             gap: 12px;
-            color: var(--cor-destaque); font-weight: 700; transition: color 0.3s;
+            color: var(--cor-destaque); font-weight: 700; transition: color var(--transicao);
             text-align: center;
         }
         .titulo i { font-size: 28px; }
@@ -219,7 +323,7 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            transition: 0.3s;
+            transition: var(--transicao);
         }
         .btn-ajuda:hover { transform: translateY(-2px); box-shadow: 0 3px 10px var(--sombra); }
 
@@ -253,7 +357,7 @@
             text-align: center;
             min-width: 130px;
             border: 1px solid var(--borda);
-            transition: transform 0.3s;
+            transition: transform var(--transicao);
         }
         .dado:hover { transform: translateY(-2px); }
         .dado-numero { font-size: 24px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; }
@@ -263,11 +367,11 @@
             background: var(--fundo-card); border: 1px solid var(--borda); border-radius: 12px; 
             padding: 25px 30px; margin-bottom: 20px; 
             text-align: center;
-            transition: border-color 0.3s;
+            transition: border-color var(--transicao);
         }
         .card:hover { border-color: var(--cor-destaque); }
         .card p { color: var(--texto-suave); font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
-        .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; transition: color 0.3s; }
+        .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; transition: color var(--transicao); }
 
         .botoes-download {
             display: flex;
@@ -280,7 +384,7 @@
             flex: 1;
             min-width: 220px;
             padding: 14px 18px;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
@@ -288,7 +392,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: all 0.3s;
+            transition: var(--transicao);
             border: none;
             cursor: pointer;
         }
@@ -302,18 +406,18 @@
             max-width: 320px;
             margin: 20px auto 0;
             padding: 16px 25px;
-            border-radius: 8px;
+            border-radius: 10px;
             background: var(--cor-destaque);
             color: #fff;
             text-decoration: none;
             font-size: 17px;
             font-weight: 700;
             text-align: center;
-            transition: all 0.3s;
+            transition: var(--transicao);
             border: none;
             cursor: pointer;
         }
-        .btn-comprar-grande:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--sombra); filter: brightness(1.05); }
+        .btn-comprar-grande:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--sombra-forte); filter: brightness(1.05); }
         .btn-comprar-grande i { margin-right: 8px; font-size: 19px; }
 
         .operadoras { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
@@ -321,7 +425,7 @@
             background: var(--fundo-card); padding: 20px 25px; border-radius: 10px; 
             border: 1px solid var(--borda); display: flex; align-items: center; justify-content: center;
             min-width: 120px;
-            transition: transform 0.3s;
+            transition: transform var(--transicao);
         }
         .op:hover { transform: scale(1.05); }
         .op img { height: 75px; width: auto; object-fit: contain; }
@@ -357,14 +461,14 @@
         .plano {
             background: var(--fundo-card); padding: 25px 20px; border-radius: 12px;
             border: 1px solid var(--cor-destaque); text-align: center;
-            transition: all 0.3s;
+            transition: var(--transicao);
             cursor: pointer;
         }
         .plano:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--sombra); }
         .plano.destaque { background: var(--sombra); transform: scale(1.03); }
         .plano.destaque:hover { transform: scale(1.05); }
         .plano .dias { font-size: 17px; color: var(--texto-suave); margin-bottom: 6px; }
-        .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; transition: color 0.3s; }
+        .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; transition: color var(--transicao); }
 
         .faq { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
         .faq-item {
@@ -372,7 +476,7 @@
             border: 1px solid var(--borda);
             border-radius: 10px;
             overflow: hidden;
-            transition: border-color 0.3s;
+            transition: border-color var(--transicao);
         }
         .faq-item:hover { border-color: var(--cor-destaque); }
         .faq-pergunta {
@@ -384,7 +488,7 @@
             font-weight: 600;
             font-size: 15px;
             text-align: left;
-            transition: background 0.2s;
+            transition: background var(--transicao);
         }
         .faq-pergunta:hover { background: rgba(255,255,255,0.03); }
         .faq-resposta {
@@ -406,7 +510,7 @@
         .contato { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
         .link {
             flex: 1; min-width: 150px; padding: 18px; border-radius: 10px; color: #fff;
-            text-decoration: none; text-align: center; transition: all 0.3s; font-size: 15px;
+            text-decoration: none; text-align: center; transition: var(--transicao); font-size: 15px;
             border: none;
             cursor: pointer;
         }
@@ -427,17 +531,10 @@
         }
 
         @media (max-width:768px) {
-            .status-bar { left: 0; font-size: 12px; padding: 5px 15px; }
-            body { flex-direction: column; }
-            .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:2px solid var(--cor-destaque); padding: 15px 10px; padding-bottom: 15px; }
-            .menu-lista { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 10px 0; gap: 8px; overflow: visible; }
-            .menu-item { border-left: none; border-right: none; border-bottom: 2px solid transparent; font-size: 15px; padding: 8px 10px; }
-            .menu-item:hover, .menu-item.ativo { border-left: none; border-right: none; border-bottom-color: var(--cor-destaque); transform: none; }
-            .sidebar-botoes { flex-direction: row; justify-content: center; gap: 12px; padding: 0; }
-            .btn { flex: 1; max-width: 180px; font-size: 16px; padding: 12px; }
-            .sidebar-rodape { margin-top: 15px; }
-            .conteudo { margin-left:0; padding: 55px 15px 20px; max-width:100%; }
-            .titulo { font-size:26px; }
+            .logo-fixo img { height: 110px; }
+            .btn-hamburguer { top: 25px; }
+            .conteudo { padding: 150px 15px 20px; }
+            .titulo { font-size: 26px; }
             .plano-novo { display: none; }
             .operadoras, .contato { justify-content:center; }
             .grupo-planos { grid-template-columns: 1fr; }
@@ -447,18 +544,31 @@
             .faq-resposta { font-size: 13px; }
             .botoes-download { flex-direction: column; align-items: center; }
             .btn-download { width: 100%; max-width: 280px; }
+            .nome-menu { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="status-bar">
-        <span class="status-ponto"></span>
-        <span>Serviço funcionando normalmente • Todos os servidores online</span>
+    <!-- LOGO QUE DESAPARECE AO ROLAR OU ABRIR MENU -->
+    <div class="logo-fixo" id="logoPrincipal">
+        <img src="https://i.ibb.co/LzHVppGk/1000359534.png" alt="Logo DROPNET VPN">
     </div>
 
-    <aside class="sidebar">
-        <div class="logo"><i class="fas fa-shield-virus"></i> DROPNET <span>VPN</span></div>
+    <button class="btn-hamburguer" id="btnMenu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="fundo-menu" id="fundoMenu"></div>
+
+    <aside class="sidebar" id="menuLateral">
+        <button class="btn-fechar" id="btnFechar">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- NOME ADICIONADO AQUI -->
+        <div class="nome-menu">DROPNET VPN</div>
+        <div class="subtitulo-menu">Segurança e privacidade online</div>
 
         <div class="seletor-tema">
             <button class="btn-cor v" onclick="trocar('')" title="Verde"></button>
@@ -479,11 +589,11 @@
         </nav>
 
         <div class="sidebar-botoes">
-            <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn btn-principal" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> Play Store</a>
-            <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn btn-secundario" target="_blank" rel="noopener noreferrer"><i class="fab fa-android"></i> Mediafire</a>
+            <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn btn-principal" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> Baixar App</a>
+            <a href="https://wa.me/5591993276833" class="btn btn-secundario" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Contato</a>
         </div>
 
-        <div class="sidebar-rodape">© 2026 DROPNET VPN • Todos os direitos reservados</div>
+        <div class="sidebar-rodape">© 2023 DROPNET VPN • Todos os direitos reservados</div>
     </aside>
 
     <main class="conteudo">
@@ -530,12 +640,12 @@
                     <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn-download link-play" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-google-play"></i> Opção 1 - Play Store
                     </a>
-                    <a href="https://www.mediafire.com/file/aj95p8d3rttuf0q/DROPNET_VPN.apk/file" class="btn-download link-media" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-download"></i> Opção 2 - Mediafire
+                    <a href="https://www.mediafire.com/file/jac5mj8ogiy7e58/DROPNET+VPN.apk/file" class="btn-download link-media" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Opção 2 - APK Direto
                     </a>
                 </div>
 
-                <a href="https://wa.me/5591993276833" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5591993276833?text=Quero%20comprar%20acesso%20ao%20DROPNET%20VPN" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> Comprar Acesso Agora
                 </a>
             </div>
@@ -586,23 +696,37 @@
                 <h3 class="plano-titulo">Plano Básico</h3>
                 <p class="plano-vantagens">Ideal para testar ou uso curto</p>
                 <div class="grupo-planos">
-                    <div class="plano"><div class="dias">7 Dias</div><div class="valor">R$ 4,00</div></div>
-                    <div class="plano destaque"><div class="dias">15 Dias</div><div class="valor">R$ 8,00</div></div>
-                    <div class="plano"><div class="dias">30 Dias</div><div class="valor">R$ 15,00</div></div>
+                    <div class="plano">
+                        <div class="dias">7 Dias</div>
+                        <div class="valor">R$ 4,00</div>
+                    </div>
+                    <div class="plano destaque">
+                        <div class="dias">15 Dias</div>
+                        <div class="valor">R$ 8,00</div>
+                    </div>
+                    <div class="plano">
+                        <div class="dias">30 Dias</div>
+                        <div class="valor">R$ 15,00</div>
+                    </div>
                 </div>
 
-                <h3 class="plano-titulo">Plano Prime <span class="plano-novo">NOVO</span></h3>
+                <h3 class="plano-titulo">Plano Prime <span class="plano-novo">MAIS VENDIDO</span></h3>
                 <p class="plano-vantagens">Melhor custo-benefício e economia</p>
                 <div class="grupo-planos">
-                    <div class="plano"><div class="dias">60 Dias</div><div class="valor">R$ 28,00</div></div>
-                    <div class="plano destaque"><div class="dias">90 Dias</div><div class="valor">R$ 40,00</div></div>
-                    <div class="plano"><div class="dias">100 Dias</div><div class="valor">R$ 50,00</div></div>
+                    <div class="plano">
+                        <div class="dias">60 Dias</div>
+                        <div class="valor">R$ 28,00</div>
+                    </div>
+                    <div class="plano destaque">
+                        <div class="dias">90 Dias</div>
+                        <div class="valor">R$ 40,00</div>
+                    </div>
+                    <div class="plano">
+                        <div class="dias">100 Dias</div>
+                        <div class="valor">R$ 50,00</div>
+                    </div>
                 </div>
             </div>
-
-            <a href="https://wa.me/5591993276833" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> Comprar Acesso
-            </a>
 
             <div class="em-breve">
                 <i class="fas fa-clock"></i> Em breve: Plano Anual com desconto especial!
@@ -663,10 +787,22 @@
             </div>
 
             <div class="contato">
-                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="mailto:bielsshdropnet@gmail.com" class="link mail"><i class="fas fa-envelope"></i> E-mail</a>
+                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram"></i>
+                    Telegram
+                </a>
+                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+                <a href="mailto:bielsshdropnet@gmail.com" class="link mail" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i>
+                    E-mail
+                </a>
             </div>
 
             <div class="card" style="margin-top:25px;">
@@ -677,27 +813,57 @@
     </main>
 
     <script>
-        // TROCA DE TEMA (COR) - 100% FUNCIONANDO
-        function trocar(classe) {
-            document.body.className = classe;
-            localStorage.setItem('tema', classe);
-            atualizarBotoes(classe);
-        }
+        const btnMenu = document.getElementById('btnMenu');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuLateral = document.getElementById('menuLateral');
+        const fundoMenu = document.getElementById('fundoMenu');
+        const logoPrincipal = document.getElementById('logoPrincipal');
+        const limiteRolagem = 80;
 
-        function atualizarBotoes(classe) {
-            document.querySelectorAll('.btn-cor').forEach(b => b.classList.remove('ativo'));
-            if(classe === '') {
-                document.querySelector('.btn-cor.v').classList.add('ativo');
-            } else if(classe === 'tema-azul') {
-                document.querySelector('.btn-cor.a').classList.add('ativo');
-            } else if(classe === 'tema-roxo') {
-                document.querySelector('.btn-cor.r').classList.add('ativo');
-            } else if(classe === 'tema-laranja') {
-                document.querySelector('.btn-cor.l').classList.add('ativo');
+        function atualizarVisibilidadeLogo() {
+            const menuAberto = menuLateral.classList.contains('aberto');
+            const rolarMuito = window.scrollY > limiteRolagem;
+            if (menuAberto || rolarMuito) {
+                logoPrincipal.classList.add('escondido');
+            } else {
+                logoPrincipal.classList.remove('escondido');
             }
         }
 
-        // VERIFICAR HORÁRIO DE ATENDIMENTO
+        window.addEventListener('scroll', atualizarVisibilidadeLogo);
+
+        function abrirMenu() {
+            menuLateral.classList.add('aberto');
+            fundoMenu.classList.add('aberto');
+            document.body.style.overflow = 'hidden';
+            atualizarVisibilidadeLogo();
+        }
+
+        function fecharMenu() {
+            menuLateral.classList.remove('aberto');
+            fundoMenu.classList.remove('aberto');
+            document.body.style.overflow = 'auto';
+            atualizarVisibilidadeLogo();
+        }
+
+        btnMenu.addEventListener('click', abrirMenu);
+        btnFechar.addEventListener('click', fecharMenu);
+        fundoMenu.addEventListener('click', fecharMenu);
+
+        function trocar(classe) {
+            document.body.className = classe;
+            localStorage.setItem('tema', classe);
+            atualizarBotoesTema(classe);
+        }
+
+        function atualizarBotoesTema(classe) {
+            document.querySelectorAll('.btn-cor').forEach(botao => botao.classList.remove('ativo'));
+            if (classe === '') document.querySelector('.btn-cor.v').classList.add('ativo');
+            else if (classe === 'tema-azul') document.querySelector('.btn-cor.a').classList.add('ativo');
+            else if (classe === 'tema-roxo') document.querySelector('.btn-cor.r').classList.add('ativo');
+            else if (classe === 'tema-laranja') document.querySelector('.btn-cor.l').classList.add('ativo');
+        }
+
         function verificarHorario() {
             const agora = new Date();
             const diaSemana = agora.getDay();
@@ -707,17 +873,17 @@
 
             const caixa = document.getElementById('caixa-horario');
             const texto = document.getElementById('texto-status');
-
             let aberto = false;
-            if(diaSemana >= 1 && diaSemana <= 5) {
-                if(totalMinutos >= 480) aberto = true;
-            } else if(diaSemana === 6) {
-                if(totalMinutos >= 480 && totalMinutos <= 1320) aberto = true;
+
+            if (diaSemana >= 1 && diaSemana <= 5) {
+                aberto = totalMinutos >= 480 && totalMinutos <= 1440;
+            } else if (diaSemana === 6) {
+                aberto = totalMinutos >= 480 && totalMinutos <= 1320;
             } else {
                 aberto = false;
             }
 
-            if(aberto) {
+            if (aberto) {
                 caixa.className = 'status-atendimento aberto';
                 texto.className = 'status-titulo aberto';
                 texto.innerHTML = '<i class="fas fa-circle"></i> Atendimento ABERTO agora!';
@@ -728,33 +894,30 @@
             }
         }
 
-        // NAVEGAÇÃO DO MENU - 100% FUNCIONANDO
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('ativo'));
+                document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
+                item.classList.add('ativo');
+                document.getElementById(item.dataset.sec).classList.add('ativa');
+                fecharMenu();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+            pergunta.addEventListener('click', () => {
+                const item = pergunta.parentElement;
+                item.classList.toggle('aberto');
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Carregar tema salvo
-            const salvo = localStorage.getItem('tema') || '';
-            document.body.className = salvo;
-            atualizarBotoes(salvo);
-
+            const temaSalvo = localStorage.getItem('tema') || '';
+            document.body.className = temaSalvo;
+            atualizarBotoesTema(temaSalvo);
             verificarHorario();
-
-            // Clique nos itens do menu
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('ativo'));
-                    document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
-
-                    item.classList.add('ativo');
-                    document.getElementById(item.dataset.sec).classList.add('ativa');
-                });
-            });
-
-            // Accordion das dúvidas
-            document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
-                pergunta.addEventListener('click', () => {
-                    const item = pergunta.parentElement;
-                    item.classList.toggle('aberto');
-                });
-            });
+            atualizarVisibilidadeLogo();
         });
     </script>
 </body>
