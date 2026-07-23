@@ -269,7 +269,7 @@
 
         .conteudo { 
             padding: 190px 20px 30px; 
-            max-width: 900px; 
+            max-width: 1000px; 
             margin: 0 auto;
             width: 100%;
         }
@@ -463,12 +463,60 @@
             border: 1px solid var(--cor-destaque); text-align: center;
             transition: var(--transicao);
             cursor: pointer;
+            position: relative;
         }
         .plano:hover { transform: translateY(-3px); box-shadow: 0 5px 15px var(--sombra); }
-        .plano.destaque { background: var(--sombra); transform: scale(1.03); }
+        .plano.destaque { 
+            background: var(--sombra); 
+            transform: scale(1.03); 
+            border: 2px solid var(--cor-destaque);
+        }
         .plano.destaque:hover { transform: scale(1.05); }
-        .plano .dias { font-size: 17px; color: var(--texto-suave); margin-bottom: 6px; }
+        .plano .selo {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--aviso);
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.plano .selo.lucro { 
+    background: var(--cor-destaque); 
+    color: #fff; 
+}
+
+.plano .dias {
+    font-size: 17px;
+    color: var(--texto-suave);
+    margin-bottom: 6px;
+    font-weight: 600;
+    margin-top: 12px; /* ✅ ESPAÇO GARANTIDO AQUI: afasta o texto do selo */
+}
+
+        .plano .selo.lucro { background: var(--cor-destaque); color: #fff; }
+        .plano .selo.iniciar { background: var(--cor-destaque); color: #fff; }
+        .plano .dias { font-size: 17px; color: var(--texto-suave); margin-bottom: 6px; font-weight: 600; }
         .plano .valor { font-size: 32px; font-weight: 800; color: var(--cor-destaque); margin-bottom: 5px; transition: color var(--transicao); }
+        .plano .valor small { font-size: 14px; color: var(--texto-suave); font-weight: 500; }
+        .plano .info { font-size: 12px; color: var(--texto-suave); margin-top: 8px; line-height: 1.5; }
+        .plano .info strong { color: var(--cor-destaque); font-size: 13px; }
+        .plano .lucro {
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(16,185,129,0.1);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--sucesso);
+        }
 
         .faq { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
         .faq-item {
@@ -530,6 +578,367 @@
             color: var(--aviso);
         }
 
+        /* =========================================
+           🔥 ESTILOS EXCLUSIVOS DA REVENDA PROFISSIONAL
+           ========================================= */
+        .revenda-hero {
+            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.02));
+            border: 1px solid var(--cor-destaque);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .revenda-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--sombra) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .revenda-hero h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--cor-destaque);
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .revenda-hero p {
+            font-size: 16px;
+            color: var(--texto-normal);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+        }
+        .revenda-hero .marca {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 18px;
+            background: var(--fundo-card);
+            border: 1px solid var(--cor-destaque);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cor-destaque);
+            position: relative;
+        }
+        .revenda-hero .marca i { margin-right: 6px; }
+
+        .kpis-revenda {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .kpi {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: var(--transicao);
+        }
+        .kpi:hover {
+            border-color: var(--cor-destaque);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--sombra);
+        }
+        .kpi i {
+            font-size: 24px;
+            color: var(--cor-destaque);
+            margin-bottom: 8px;
+        }
+        .kpi .numero {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--cor-destaque);
+            margin-bottom: 4px;
+        }
+        .kpi .rotulo {
+            font-size: 12px;
+            color: var(--texto-suave);
+            font-weight: 500;
+        }
+
+        /* ✅ NOVA TABELA DE LUCRO - 100% REFEITA E PROFISSIONAL */
+        .tabela-lucro-nova {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        .tabela-lucro-nova thead th {
+            background: transparent;
+            color: var(--cor-destaque);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 2px solid var(--cor-destaque);
+        }
+        .tabela-lucro-nova tbody tr {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            transition: var(--transicao);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .tabela-lucro-nova tbody tr:hover {
+            transform: scale(1.01);
+            border-color: var(--cor-destaque);
+            box-shadow: 0 4px 14px var(--sombra);
+        }
+        .tabela-lucro-nova tbody tr.linha-destaque {
+            background: linear-gradient(90deg, var(--sombra), transparent);
+            border: 2px solid var(--cor-destaque) !important;
+            transform: scale(1.02);
+            position: relative;
+        }
+        .tabela-lucro-nova tbody tr.linha-destaque::before {
+            content: "MAIS VENDIDO";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--aviso);
+            color: #000;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+        .tabela-lucro-nova td {
+            padding: 18px 10px;
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+        .tabela-lucro-nova td:first-child {
+            border-left: 1px solid var(--borda);
+            border-radius: 10px 0 0 10px;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--texto-normal);
+        }
+        .tabela-lucro-nova td:last-child {
+            border-right: 1px solid var(--borda);
+            border-radius: 0 10px 10px 0;
+        }
+        .tabela-lucro-nova .icone-pacote {
+            font-size: 20px;
+            margin-right: 6px;
+        }
+        .tabela-lucro-nova .valor-investe {
+            color: var(--cor-destaque);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .tabela-lucro-nova .custo-unit {
+            color: var(--texto-suave);
+            font-weight: 600;
+        }
+        .tabela-lucro-nova .lucro-unit {
+            color: var(--sucesso);
+            font-weight: 700;
+        }
+        .tabela-lucro-nova .lucro-total {
+            color: var(--sucesso);
+            font-weight: 900;
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(16,185,129,0.2);
+        }
+        .tabela-lucro-nova .seta {
+            color: var(--aviso);
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .aviso-calculo {
+            text-align: center;
+            font-size: 12px;
+            color: var(--texto-suave);
+            margin-top: -10px;
+            margin-bottom: 20px;
+            padding: 8px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            border: 1px dashed var(--borda);
+        }
+        .aviso-calculo strong { color: var(--cor-destaque); }
+
+        .resumo-lucro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 20px 0 30px;
+        }
+        .resumo-item {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: var(--transicao);
+        }
+        .resumo-item:hover { border-color: var(--cor-destaque); }
+        .resumo-item .rotulo {
+            font-size: 11px;
+            color: var(--texto-suave);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 5px;
+        }
+        .resumo-item .valor {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--cor-destaque);
+        }
+        .resumo-item .valor.lucro { color: var(--sucesso); }
+
+        .vantagens-revenda {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 30px 0;
+        }
+        .vantagem {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 22px 18px;
+            text-align: left;
+            transition: var(--transicao);
+        }
+        .vantagem:hover {
+            border-color: var(--cor-destaque);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+        .vantagem .icone {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--sombra);
+            color: var(--cor-destaque);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+        .vantagem h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--texto-normal);
+            margin-bottom: 6px;
+        }
+        .vantagem p {
+            font-size: 13px;
+            color: var(--texto-suave);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .passos-revenda {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .passo {
+            background: var(--fundo-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            transition: var(--transicao);
+        }
+        .passo:hover { border-color: var(--cor-destaque); }
+        .passo .numero-passo {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--cor-destaque);
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        .passo h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--cor-destaque);
+            margin-bottom: 6px;
+        }
+        .passo p {
+            font-size: 12px;
+            color: var(--texto-suave);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .cta-final-revenda {
+            background: linear-gradient(135deg, var(--cor-destaque), #059669);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px var(--sombra-forte);
+        }
+        .cta-final-revenda h3 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .cta-final-revenda p {
+            color: rgba(255,255,255,0.9);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .cta-final-revenda .botoes-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-final-revenda .btn-cta {
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transicao);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-final-revenda .btn-cta.branco {
+            background: #fff;
+            color: var(--cor-destaque);
+        }
+        .cta-final-revenda .btn-cta.preto {
+            background: var(--fundo-escuro);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .cta-final-revenda .btn-cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
         @media (max-width:768px) {
             .logo-fixo img { height: 110px; }
             .btn-hamburguer { top: 25px; }
@@ -545,6 +954,57 @@
             .botoes-download { flex-direction: column; align-items: center; }
             .btn-download { width: 100%; max-width: 280px; }
             .nome-menu { font-size: 20px; }
+            .revenda-hero h2 { font-size: 22px; }
+            
+            /* Tabela responsiva nova */
+            .tabela-lucro-nova {
+                font-size: 12px;
+                border-spacing: 0 8px;
+            }
+            .tabela-lucro-nova thead { display: none; }
+            .tabela-lucro-nova tbody tr {
+                display: block;
+                border-radius: 12px;
+                margin-bottom: 15px;
+                padding: 12px;
+            }
+            .tabela-lucro-nova tbody tr.linha-destaque {
+                transform: scale(1);
+                padding-top: 20px;
+            }
+            .tabela-lucro-nova td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 7px 4px !important;
+                border: none !important;
+                border-radius: 0 !important;
+                border-bottom: 1px solid var(--borda) !important;
+                text-align: right;
+            }
+            .tabela-lucro-nova td:last-child { border-bottom: none !important; }
+            .tabela-lucro-nova td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--cor-destaque);
+                text-transform: uppercase;
+                font-size: 10px;
+                letter-spacing: 0.3px;
+                text-align: left;
+            }
+            .tabela-lucro-nova td:first-child {
+                justify-content: center;
+                font-size: 16px;
+                padding-bottom: 10px !important;
+            }
+            .tabela-lucro-nova td:first-child::before { display: none; }
+            .tabela-lucro-nova .lucro-total { font-size: 17px; }
+            .tabela-lucro-nova tbody tr.linha-destaque::before {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .cta-final-revenda .botoes-cta { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
@@ -583,6 +1043,7 @@
             <div class="menu-item" data-sec="recursos"><i class="fas fa-list-check"></i> Recursos</div>
             <div class="menu-item" data-sec="operadoras"><i class="fas fa-signal"></i> Operadoras</div>
             <div class="menu-item" data-sec="planos"><i class="fas fa-tag"></i> Planos</div>
+            <div class="menu-item" data-sec="revenda"><i class="fas fa-handshake"></i> Seja Revendedor</div>
             <div class="menu-item" data-sec="como"><i class="fas fa-book-open"></i> Como Usar</div>
             <div class="menu-item" data-sec="faq"><i class="fas fa-question-circle"></i> Dúvidas</div>
             <div class="menu-item" data-sec="contato"><i class="fas fa-headset"></i> Contato</div>
@@ -730,6 +1191,221 @@
 
             <div class="em-breve">
                 <i class="fas fa-clock"></i> Em breve: Plano Anual com desconto especial!
+            </div>
+        </section>
+
+        <!-- =========================================
+             🔥 SEÇÃO DE REVENDA 100% PROFISSIONAL
+             ========================================= -->
+        <section id="revenda" class="secao">
+            <h1 class="titulo"><i class="fas fa-handshake"></i> Programa de Revendedores DROPNET</h1>
+            <p class="subtitulo">Transforme sua rede de contatos em renda recorrente com o painel CELESTROX</p>
+
+            <!-- HERO DE ENTRADA -->
+            <div class="revenda-hero">
+                <h2>Seu Negócio Próprio de VPN com Zero Investimento Alto</h2>
+                <p>Revenda o serviço DROPNET VPN com valores exclusivos de atacado, gerencie tudo pelo <strong>Painel Oficial CELESTROX</strong> e lucre até <strong>400% por venda</strong>. Ideal para quem quer renda extra ou escalar um negócio digital.</p>
+                <div class="marca"><i class="fas fa-crown"></i> Powered by CELESTROX — Sistema Oficial de Revendas</div>
+            </div>
+
+            <!-- KPIS PRINCIPAIS -->
+            <div class="kpis-revenda">
+                <div class="kpi">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="numero">Até 400%</div>
+                    <div class="rotulo">Margem de Lucro</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-clock"></i>
+                    <div class="numero">Imediata</div>
+                    <div class="rotulo">Liberação de Acessos</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-headset"></i>
+                    <div class="numero">Prioritário</div>
+                    <div class="rotulo">Suporte Exclusivo</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-trophy"></i>
+                    <div class="numero">+5.000</div>
+                    <div class="rotulo">Clientes na Base</div>
+                </div>
+            </div>
+
+            <!-- ✅ NOVA TABELA DE LUCRO - TOTALMENTE REFEITA -->
+            <h3 class="plano-titulo">💰 TABELA OFICIAL DE LUCRO REVENDEDOR</h3>
+            <p class="plano-vantagens">Valores exatos do Painel CELESTROX • Quanto mais comprar, MAIS VOCÊ GANHA</p>
+
+            <div class="resumo-lucro">
+                <div class="resumo-item">
+                    <div class="rotulo">Preço de venda sugerido</div>
+                    <div class="valor">R$ 15,00</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo">Validade por login</div>
+                    <div class="valor">30 DIAS</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo">Menor custo por login</div>
+                    <div class="valor">R$ 3,00</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo">Maior lucro total</div>
+                    <div class="valor lucro">R$ 360,00</div>
+                </div>
+            </div>
+            
+            <table class="tabela-lucro-nova">
+                <thead>
+                    <tr>
+                        <th>Pacote</th>
+                        <th>Você Investe</th>
+                        <th>Custo / Login</th>
+                        <th>Lucro / Login</th>
+                        <th>🤑 LUCRO TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Pacote"><span class="icone-pacote">📦</span>10 LOGINS</td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 40,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 4,00</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 11,00 <span class="seta">▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 110,00</td>
+                    </tr>
+                    <tr class="linha-destaque">
+                        <td data-label="Pacote"><span class="icone-pacote">🔥</span>20 LOGINS</td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 70,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 3,50</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 11,50 <span class="seta">▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 230,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Pacote"><span class="icone-pacote">💎</span>30 LOGINS</td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 90,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 3,00</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 12,00 <span class="seta">▲▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 360,00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="aviso-calculo">
+                💡 <strong>Cálculo baseado na revenda de cada login por R$ 15,00 (30 dias)</strong> • Você pode vender pelo preço que quiser e aumentar ainda mais seu lucro!
+            </div>
+
+            <!-- CARDS DE PACOTES COM SELOS -->
+            <div class="grupo-planos">
+                <div class="plano">
+                    <div class="selo iniciar">Ideal Iniciar</div>
+                    <div class="dias">📦 10 Logins</div>
+                    <div class="valor">R$ 40,00 <small>à vista</small></div>
+                    <div class="info">
+                        <strong>R$ 4,00 por login</strong><br>
+                        Perfeito para começar com pouco risco e testar o mercado
+                    </div>
+                    <div class="lucro">
+                        💰 Lucro estimado: R$ 110,00
+                    </div>
+                </div>
+                <div class="plano destaque">
+                    <div class="selo">Mais Vendido</div>
+                    <div class="dias">🔥 20 Logins</div>
+                    <div class="valor">R$ 70,00 <small>à vista</small></div>
+                    <div class="info">
+                        <strong>R$ 3,50 por login</strong><br>
+                        Melhor equilíbrio entre investimento e retorno financeiro
+                    </div>
+                    <div class="lucro">
+                        💰 Lucro estimado: R$ 230,00
+                    </div>
+                </div>
+                <div class="plano">
+                    <div class="selo lucro">Maior Lucro</div>
+                    <div class="dias">💎 30 Logins</div>
+                    <div class="valor">R$ 90,00 <small>à vista</small></div>
+                    <div class="info">
+                        <strong>R$ 3,00 por login</strong><br>
+                        Máxima margem de lucro para quem já tem carteira de clientes
+                    </div>
+                    <div class="lucro">
+                        💰 Lucro estimado: R$ 360,00
+                    </div>
+                </div>
+            </div>
+
+            <!-- VANTAGENS EXCLUSIVAS -->
+            <h3 class="plano-titulo" style="margin-top:40px;">🎯 Vantagens Exclusivas do Nosso Revendedor</h3>
+            <div class="vantagens-revenda">
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-laptop-code"></i></div>
+                    <h4>Painel CELESTROX Completo</h4>
+                    <p>Sistema profissional para criar, renovar, bloquear e gerenciar TODOS os seus logins em tempo real.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-bolt"></i></div>
+                    <h4>Liberação Imediata</h4>
+                    <p>Assim que o pagamento é confirmado, seu pacote é liberado automaticamente no painel.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-headset"></i></div>
+                    <h4>Suporte Prioritário</h4>
+                    <p>Atendimento exclusivo para revendedores com resposta em até 10 minutos durante o horário comercial.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-bullhorn"></i></div>
+                    <h4>Material de Divulgação</h4>
+                    <p>Receba artes prontas para WhatsApp, Instagram e grupos para vender sem precisar criar nada.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Treinamento Completo</h4>
+                    <p>Aprenda do zero: como vender, onde encontrar clientes, fidelizar e escalar seu negócio mês a mês.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-ban"></i></div>
+                    <h4>Sem Taxas Ocultas</h4>
+                    <p>Sem mensalidade, sem anuidade, sem porcentagem sobre venda. O lucro é TODO SEU.</p>
+                </div>
+            </div>
+
+            <!-- PASSO A PASSO -->
+            <h3 class="plano-titulo" style="margin-top:40px;">📝 Como Funciona em 4 Passos Simples</h3>
+            <div class="passos-revenda">
+                <div class="passo">
+                    <div class="numero-passo">1</div>
+                    <h4>Escolha seu Pacote</h4>
+                    <p>Opte por 10, 20 ou 30 logins conforme sua capacidade de venda.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">2</div>
+                    <h4>Efetue o Pagamento</h4>
+                    <p>Pague via Pix e envie o comprovante para nosso time comercial.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">3</div>
+                    <h4>Acesse o CELESTROX</h4>
+                    <p>Receba seu login e senha do painel oficial para gerenciar tudo.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">4</div>
+                    <h4>Revenda & Lucre</h4>
+                    <p>Crie acessos para seus clientes e fature toda a margem de lucro.</p>
+                </div>
+            </div>
+
+            <!-- CTA FINAL PROFISSIONAL -->
+            <div class="cta-final-revenda">
+                <h3>Pronto para Começar seu Negócio de VPN?</h3>
+                <p>Junte-se a centenas de revendedores DROPNET que lucram todos os meses com o sistema CELESTROX.</p>
+                <div class="botoes-cta">
+                    <a href="https://celestrox.com/dealer/signin" class="btn-cta branco" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Acessar Painel CELESTROX
+                    </a>
+                    <a href="https://wa.me/5591993276833?text=Quero%20ser%20REVENDEDOR%20DROPNET%20VPN%20-%20Pacote%2010%20/%2020%20ou%2030%20logins" class="btn-cta preto" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Quero Ser Revendedor
+                    </a>
+                </div>
             </div>
         </section>
 
