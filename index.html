@@ -1258,9 +1258,10 @@
                 .dropnet-slideshow-dots span.ativo { background: #fff; }
             </style>
             <script>
-                (function() {
+                document.addEventListener('DOMContentLoaded', function() {
                     const slides = document.querySelectorAll('#dropnetSlideshow .dropnet-slide');
                     const dotsContainer = document.getElementById('dropnetSlideshowDots');
+                    if (!slides.length || !dotsContainer) return;
                     let indiceAtual = 0;
 
                     slides.forEach((_, i) => {
@@ -1280,8 +1281,8 @@
                     setInterval(() => {
                         indiceAtual = (indiceAtual + 1) % slides.length;
                         mostrarSlide(indiceAtual);
-                    }, 10000);
-                })();
+                    }, 3500);
+                });
             </script>
 
             <div class="destaque-garantia">
@@ -1985,7 +1986,4 @@
                 "faq.p5pergunta": "What payment methods do you accept?",
                 "faq.p5resposta": "We accept Pix, PicPay, bank transfer, and credit cards. All payments are secure and processed quickly.",
                 "contato.titulo": "Contact Us",
-                "contato.subtitulo": "We're ready to help",
-                "contato.segASex": "Monday to Friday",
-                "contato.sabado": "Saturday",
-  
+                "contato.subtitulo": "We're ready to he
