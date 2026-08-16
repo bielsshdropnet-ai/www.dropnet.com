@@ -255,7 +255,6 @@
             transition: var(--transicao);
             background: transparent;
             border-left: 3px solid transparent;
-            text-decoration: none;
         }
         .menu-item i { 
             color: var(--texto-suave); 
@@ -1174,83 +1173,6 @@
         @media (min-width:1025px) {
             .conteudo { max-width: 820px; margin: 0 auto; }
         }
-
-        /* SLIDE / CARROSSEL DE DESTAQUE */
-        .slide-carrossel {
-            position: relative;
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 18px;
-            border: 1px solid var(--borda);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-        }
-        .slide-trilho {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .slide-item {
-            min-width: 100%;
-            position: relative;
-            height: 360px;
-        }
-        .slide-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .slide-sombra {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
-        }
-        .slide-texto {
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            bottom: 30px;
-            color: #fff;
-        }
-        .slide-texto h3 {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-        }
-        .slide-texto p {
-            font-size: 14px;
-            color: #E2E8F0;
-            line-height: 1.4;
-            max-width: 90%;
-        }
-        .slide-pontos {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 0;
-            background: var(--fundo-card);
-        }
-        .slide-ponto {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--borda);
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: var(--transicao);
-        }
-        .slide-ponto.ativo {
-            width: 22px;
-            border-radius: 4px;
-            background: var(--cor-destaque);
-        }
-        @media (max-width: 480px) {
-            .slide-item { height: 300px; }
-            .slide-texto h3 { font-size: 19px; }
-            .slide-texto p { font-size: 13px; }
-        }
     </style>
 </head>
 <body>
@@ -1294,8 +1216,8 @@
             <div class="menu-item" data-sec="sobre" role="button" tabindex="0"><i class="fas fa-info-circle"></i> <span data-i18n="menu.sobre">Sobre</span></div>
             <div class="menu-item" data-sec="recursos" role="button" tabindex="0"><i class="fas fa-list-check"></i> <span data-i18n="menu.recursos">Recursos</span></div>
             <div class="menu-item" data-sec="operadoras" role="button" tabindex="0"><i class="fas fa-signal"></i> <span data-i18n="menu.operadoras">Operadoras</span></div>
-            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/customer" target="_blank" rel="noopener noreferrer"><i class="fas fa-cart-shopping"></i> <span data-i18n="menu.comprarAcesso">Comprar Acesso</span></a>
-            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/dealer" target="_blank" rel="noopener noreferrer"><i class="fas fa-handshake"></i> <span data-i18n="menu.revenda">Seja Revendedor</span></a>
+            <div class="menu-item" data-sec="planos" role="button" tabindex="0"><i class="fas fa-tag"></i> <span data-i18n="menu.planos">Planos</span></div>
+            <div class="menu-item" data-sec="revenda" role="button" tabindex="0"><i class="fas fa-handshake"></i> <span data-i18n="menu.revenda">Seja Revendedor</span></div>
             <div class="menu-item" data-sec="como" role="button" tabindex="0"><i class="fas fa-book-open"></i> <span data-i18n="menu.como">Como Usar</span></div>
             <div class="menu-item" data-sec="faq" role="button" tabindex="0"><i class="fas fa-question-circle"></i> <span data-i18n="menu.faq">Dúvidas</span></div>
             <div class="menu-item" data-sec="contato" role="button" tabindex="0"><i class="fas fa-headset"></i> <span data-i18n="menu.contato">Contato</span></div>
@@ -1369,30 +1291,6 @@
                     <span><i class="fas fa-headset"></i> Suporte humano</span>
                 </div>
             </div>
-
-            <div class="slide-carrossel" id="slideCarrossel">
-                <div class="slide-trilho" id="slideTrilho">
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/d4jpwJnv/1000503680.png" alt="DROPNET VPN">
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/DNVZCbH/1000503698.png" alt="DROPNET VPN">
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/Ps5bCNRJ/1000503697.png" alt="DROPNET VPN">
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/sdpMD4dw/1000503678.png" alt="DROPNET VPN">
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/GQGSj54g/1000503667.png" alt="DROPNET VPN">
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://i.ibb.co/nMWnQZcS/1000503669.png" alt="DROPNET VPN">
-                    </div>
-                </div>
-                <div class="slide-pontos" id="slidePontos"></div>
-            </div>
         </section>
 
         <section id="sobre" class="secao">
@@ -1429,6 +1327,51 @@
             </div>
             <div class="card" style="margin-top:20px;">
                 <p data-i18n="operadoras.extra">Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!</p>
+            </div>
+        </section>
+
+        <section id="planos" class="secao">
+            <h2 class="titulo"><i class="fas fa-tag"></i> <span data-i18n="planos.titulo">Planos e Valores</span></h2>
+            <p class="subtitulo" data-i18n="planos.subtitulo">Escolha a opção ideal para você</p>
+
+            <div class="planos">
+                <h3 class="plano-titulo" data-i18n="planos.basicoTitulo">Plano Básico</h3>
+                <p class="plano-vantagens" data-i18n="planos.basicoVantagens">Ideal para testar ou uso curto</p>
+                <div class="grupo-planos">
+                    <div class="plano">
+                        <div class="dias" data-i18n="planos.dias7">7 Dias</div>
+                        <div class="valor">R$ 4,00</div>
+                    </div>
+                    <div class="plano destaque">
+                        <div class="dias" data-i18n="planos.dias15">15 Dias</div>
+                        <div class="valor">R$ 8,00</div>
+                    </div>
+                    <div class="plano">
+                        <div class="dias" data-i18n="planos.dias30">30 Dias</div>
+                        <div class="valor">R$ 15,00</div>
+                    </div>
+                </div>
+
+                <h3 class="plano-titulo"><span data-i18n="planos.primeTitulo">Plano Prime</span> <span class="plano-novo" data-i18n="planos.maisVendido">MAIS VENDIDO</span></h3>
+                <p class="plano-vantagens" data-i18n="planos.primeVantagens">Melhor custo-benefício e economia</p>
+                <div class="grupo-planos">
+                    <div class="plano">
+                        <div class="dias" data-i18n="planos.dias60">60 Dias</div>
+                        <div class="valor">R$ 28,00</div>
+                    </div>
+                    <div class="plano destaque">
+                        <div class="dias" data-i18n="planos.dias90">90 Dias</div>
+                        <div class="valor">R$ 40,00</div>
+                    </div>
+                    <div class="plano">
+                        <div class="dias" data-i18n="planos.dias100">100 Dias</div>
+                        <div class="valor">R$ 50,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="em-breve">
+                <i class="fas fa-clock"></i> <span data-i18n="planos.embreve">Em breve: Plano Anual com desconto especial!</span>
             </div>
         </section>
 
@@ -1740,7 +1683,7 @@
             <div class="rodape-legal">
                 <details>
                     <summary>Termos de Uso</summary>
-                    <p>Ao utilizar o DROPNET VPN, você concorda em usar o serviço de forma lícita, não compartilhar seu acesso com terceiros fora das condições contratadas e respeitar os limites de cada plano adquirido. O serviço é fornecido "como está", com garantia de reembolso de 3 dias conforme as condições de compra. Reservamo-nos o direito de suspender contas que violem estes termos.</p>
+                    <p>Ao utilizar o DROPNET VPN, você concorda em usar o serviço de forma lícita, não compartilhar seu acesso com terceiros fora das condições contratadas e respeitar os limites de cada plano adquirido. O serviço é fornecido "como está", com garantia de reembolso conforme descrito na seção de planos. Reservamo-nos o direito de suspender contas que violem estes termos.</p>
                 </details>
                 <details>
                     <summary>Política de Privacidade</summary>
@@ -1762,8 +1705,8 @@
                 "menu.sobre": "Sobre",
                 "menu.recursos": "Recursos",
                 "menu.operadoras": "Operadoras",
+                "menu.planos": "Planos",
                 "menu.revenda": "Seja Revendedor",
-                "menu.comprarAcesso": "Comprar Acesso",
                 "menu.como": "Como Usar",
                 "menu.faq": "Dúvidas",
                 "menu.contato": "Contato",
@@ -1804,6 +1747,20 @@
                 "operadoras.titulo": "Operadoras Compatíveis",
                 "operadoras.subtitulo": "Funciona perfeitamente com esses chips",
                 "operadoras.extra": "Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!",
+                "planos.titulo": "Planos e Valores",
+                "planos.subtitulo": "Escolha a opção ideal para você",
+                "planos.basicoTitulo": "Plano Básico",
+                "planos.basicoVantagens": "Ideal para testar ou uso curto",
+                "planos.dias7": "7 Dias",
+                "planos.dias15": "15 Dias",
+                "planos.dias30": "30 Dias",
+                "planos.primeTitulo": "Plano Prime",
+                "planos.maisVendido": "MAIS VENDIDO",
+                "planos.primeVantagens": "Melhor custo-benefício e economia",
+                "planos.dias60": "60 Dias",
+                "planos.dias90": "90 Dias",
+                "planos.dias100": "100 Dias",
+                "planos.embreve": "Em breve: Plano Anual com desconto especial!",
                 "revenda.titulo": "Programa de Revendedores DROPNET",
                 "revenda.subtitulo": "Transforme sua rede de contatos em renda recorrente com o painel CELESTROX",
                 "revenda.heroTitulo": "Seu Negócio Próprio de VPN com Zero Investimento Alto",
@@ -1910,8 +1867,8 @@
                 "menu.sobre": "About",
                 "menu.recursos": "Features",
                 "menu.operadoras": "Carriers",
+                "menu.planos": "Plans",
                 "menu.revenda": "Become a Reseller",
-                "menu.comprarAcesso": "Buy Access",
                 "menu.como": "How to Use",
                 "menu.faq": "FAQ",
                 "menu.contato": "Contact",
@@ -1952,6 +1909,20 @@
                 "operadoras.titulo": "Compatible Carriers",
                 "operadoras.subtitulo": "Works perfectly with these SIM cards",
                 "operadoras.extra": "Also works with <strong>Algar, Sercomtel, Correios Celular</strong>, and other regional carriers!",
+                "planos.titulo": "Plans and Pricing",
+                "planos.subtitulo": "Choose the best option for you",
+                "planos.basicoTitulo": "Basic Plan",
+                "planos.basicoVantagens": "Great for testing or short-term use",
+                "planos.dias7": "7 Days",
+                "planos.dias15": "15 Days",
+                "planos.dias30": "30 Days",
+                "planos.primeTitulo": "Prime Plan",
+                "planos.maisVendido": "BEST SELLER",
+                "planos.primeVantagens": "Best value and savings",
+                "planos.dias60": "60 Days",
+                "planos.dias90": "90 Days",
+                "planos.dias100": "100 Days",
+                "planos.embreve": "Coming soon: Annual Plan with a special discount!",
                 "revenda.titulo": "DROPNET Reseller Program",
                 "revenda.subtitulo": "Turn your network of contacts into recurring income with the CELESTROX panel",
                 "revenda.heroTitulo": "Your Own VPN Business With No Big Upfront Investment",
@@ -2036,4 +2007,678 @@
                 "faq.p3resposta": "Each access is valid for 1 device at a time. If you want to use another phone, just request a free swap from support.",
                 "faq.p4pergunta": "What if it doesn't work?",
                 "faq.p4resposta": "We offer a full <strong>3-day</strong> guarantee. If it doesn't work as expected, we refund 100% of your money, no hassle!",
-                "faq.p5pergunta": "What payment methods d
+                "faq.p5pergunta": "What payment methods do you accept?",
+                "faq.p5resposta": "We accept Pix, PicPay, bank transfer, and credit cards. All payments are secure and processed quickly.",
+                "contato.titulo": "Contact Us",
+                "contato.subtitulo": "We're ready to help",
+                "contato.segASex": "Monday to Friday",
+                "contato.sabado": "Saturday",
+                "contato.domingo": "Sunday",
+                "contato.fechado": "CLOSED",
+                "contato.local": "Located in <strong>Cametá, Pará</strong>",
+                "contato.resposta": "Quick response during business hours!",
+                "status.aberto": "Support is OPEN now!",
+                "status.fechado": "Support is CLOSED right now",
+                "status.verificando": "Checking hours..."
+            },
+            es: {
+                tituloPagina: "DROPNET VPN",
+                htmlLang: "es",
+                "menu.subtitulo": "Seguridad y privacidad en línea",
+                "menu.inicio": "Inicio",
+                "menu.sobre": "Sobre Nosotros",
+                "menu.recursos": "Funciones",
+                "menu.operadoras": "Operadoras",
+                "menu.planos": "Planes",
+                "menu.revenda": "Sé Revendedor",
+                "menu.como": "Cómo Usar",
+                "menu.faq": "Preguntas",
+                "menu.contato": "Contacto",
+                "menu.baixarApp": "Descargar App",
+                "menu.contatoBtn": "Contacto",
+                "menu.rodape": "© <span class=\"ano-atual\">2026</span> DROPNET VPN • Todos los derechos reservados",
+                "inicio.titulo": "Bienvenido a DROPNET VPN",
+                "inicio.subtitulo": "Conexión segura y estable, hecha especialmente para todo Brasil",
+                "inicio.garantia": "GARANTÍA DE 3 DÍAS: Si no funciona, te devolvemos el 100% de tu dinero!",
+                "inicio.ajudaTitulo": "¿Necesitas ayuda rápida?",
+                "inicio.ajudaTexto": "Tenemos soporte listo para responder tus dudas",
+                "inicio.ajudaBotao": "Hablar con Soporte",
+                "inicio.dadoEstabilidade": "Estabilidad",
+                "inicio.dadoUsuarios": "Usuarios Activos",
+                "inicio.dadoRapidoNum": "Rápido",
+                "inicio.dadoAtendimento": "Atención",
+                "inicio.dadoIlimitadoNum": "Ilimitado",
+                "inicio.dadoDados": "Datos",
+                "inicio.card1": "<strong>DROPNET VPN</strong> funciona perfectamente con <strong>Vivo</strong>, <strong>TIM</strong> y <strong>Claro</strong>. Navega con total privacidad, sin cortes y con la velocidad que necesitas.",
+                "inicio.card2": "¡Ideal para juegos, streaming, redes sociales y trabajo sin interrupciones!",
+                "inicio.opcao1": "Opción 1 - Play Store",
+                "inicio.opcao2": "Opción 2 - APK Directo",
+                "inicio.comprarBotao": "Comprar Acceso Ahora",
+                "sobre.titulo": "Sobre el Servicio",
+                "sobre.subtitulo": "Conoce más sobre nosotros",
+                "sobre.p1": "Creado especialmente para funcionar bien en <strong>Brasil</strong>, donde otros servicios fallan por incompatibilidad o cortes constantes.",
+                "sobre.p2": "¡Nuestro enfoque es ofrecerte <strong>estabilidad</strong>, <strong>seguridad</strong> y un <strong>soporte rápido</strong>!",
+                "sobre.p3": "Usamos servidores de alto rendimiento ubicados en el país, garantizando la menor latencia posible para juegos y transmisiones.",
+                "recursos.titulo": "Nuestras Funciones",
+                "recursos.subtitulo": "Todo lo que te ofrecemos",
+                "recursos.item1": "✅ <strong>Alta velocidad</strong> para juegos, streaming y descargas",
+                "recursos.item2": "✅ <strong>Cifrado fuerte</strong> que protege todos tus datos",
+                "recursos.item3": "✅ <strong>No guardamos registros</strong> de lo que accedes",
+                "recursos.item4": "✅ <strong>Reconexión automática</strong> si la conexión se cae",
+                "recursos.item5": "✅ <strong>Funciona en 3G, 4G y 5G</strong> de todas las operadoras",
+                "recursos.item6": "✅ <strong>Sin límite de datos</strong> y sin reducción de velocidad",
+                "recursos.item7": "✅ <strong>Cambio de dispositivo</strong> gratuito cuando lo necesites",
+                "operadoras.titulo": "Operadoras Compatibles",
+                "operadoras.subtitulo": "Funciona perfectamente con estos chips",
+                "operadoras.extra": "¡También funciona con <strong>Algar, Sercomtel, Correios Celular</strong> y otras operadoras regionales!",
+                "planos.titulo": "Planes y Precios",
+                "planos.subtitulo": "Elige la opción ideal para ti",
+                "planos.basicoTitulo": "Plan Básico",
+                "planos.basicoVantagens": "Ideal para probar o uso corto",
+                "planos.dias7": "7 Días",
+                "planos.dias15": "15 Días",
+                "planos.dias30": "30 Días",
+                "planos.primeTitulo": "Plan Prime",
+                "planos.maisVendido": "MÁS VENDIDO",
+                "planos.primeVantagens": "Mejor relación costo-beneficio y ahorro",
+                "planos.dias60": "60 Días",
+                "planos.dias90": "90 Días",
+                "planos.dias100": "100 Días",
+                "planos.embreve": "¡Próximamente: Plan Anual con descuento especial!",
+                "revenda.titulo": "Programa de Revendedores DROPNET",
+                "revenda.subtitulo": "Convierte tu red de contactos en ingresos recurrentes con el panel CELESTROX",
+                "revenda.heroTitulo": "Tu Propio Negocio de VPN Sin una Gran Inversión Inicial",
+                "revenda.heroTexto": "Revende el servicio DROPNET VPN con precios exclusivos de mayoreo, gestiona todo desde el <strong>Panel Oficial CELESTROX</strong> y gana hasta <strong>400% por venta</strong>. Ideal para ingresos extra o escalar un negocio digital.",
+                "revenda.heroMarca": "Con tecnología de CELESTROX — Sistema Oficial de Revendedores",
+                "revenda.kpi1Num": "Hasta 400%",
+                "revenda.kpi1Rotulo": "Margen de Ganancia",
+                "revenda.kpi2Num": "Inmediata",
+                "revenda.kpi2Rotulo": "Entrega de Accesos",
+                "revenda.kpi3Num": "Prioritario",
+                "revenda.kpi3Rotulo": "Soporte Exclusivo",
+                "revenda.kpi4Rotulo": "Clientes Atendidos",
+                "revenda.tabelaTitulo": "💰 TABLA OFICIAL DE GANANCIAS DEL REVENDEDOR",
+                "revenda.tabelaSubtitulo": "Precios exactos del Panel CELESTROX • Cuanto más compras, MÁS GANAS",
+                "revenda.resumo1": "Precio de venta sugerido",
+                "revenda.resumo2": "Vigencia por login",
+                "revenda.resumo2valor": "30 DÍAS",
+                "revenda.resumo3": "Menor costo por login",
+                "revenda.resumo4": "Mayor ganancia total",
+                "revenda.col1": "Paquete",
+                "revenda.col2": "Tú Inviertes",
+                "revenda.col3": "Costo / Login",
+                "revenda.col4": "Ganancia / Login",
+                "revenda.col5": "🤑 GANANCIA TOTAL",
+                "revenda.pacote10": "10 LOGINS",
+                "revenda.pacote20": "20 LOGINS",
+                "revenda.pacote30": "30 LOGINS",
+                "revenda.avisoCalculo": "<strong>Cálculo basado en revender cada login a R$ 15,00 (30 días)</strong> • ¡Puedes vender al precio que quieras y aumentar aún más tu ganancia!",
+                "revenda.seloIniciar": "Ideal para Empezar",
+                "revenda.card1dias": "10 Logins",
+                "revenda.avista": "de contado",
+                "revenda.card1info": "<strong>R$ 4,00 por login</strong><br>Perfecto para empezar con poco riesgo y probar el mercado",
+                "revenda.card1lucro": "💰 Ganancia estimada: R$ 110,00",
+                "revenda.seloMaisVendido": "Más Vendido",
+                "revenda.card2dias": "20 Logins",
+                "revenda.card2info": "<strong>R$ 3,50 por login</strong><br>Mejor equilibrio entre inversión y retorno financiero",
+                "revenda.card2lucro": "💰 Ganancia estimada: R$ 230,00",
+                "revenda.seloMaiorLucro": "Mayor Ganancia",
+                "revenda.card3dias": "30 Logins",
+                "revenda.card3info": "<strong>R$ 3,00 por login</strong><br>Máximo margen de ganancia para quienes ya tienen cartera de clientes",
+                "revenda.card3lucro": "💰 Ganancia estimada: R$ 360,00",
+                "revenda.vantagensTitulo": "🎯 Ventajas Exclusivas para Nuestros Revendedores",
+                "revenda.v1titulo": "Panel CELESTROX Completo",
+                "revenda.v1texto": "Sistema profesional para crear, renovar, bloquear y gestionar TODOS tus logins en tiempo real.",
+                "revenda.v2titulo": "Entrega Inmediata",
+                "revenda.v2texto": "En cuanto se confirma el pago, tu paquete se libera automáticamente en el panel.",
+                "revenda.v3titulo": "Soporte Prioritario",
+                "revenda.v3texto": "Atención exclusiva para revendedores con respuesta en hasta 10 minutos durante el horario comercial.",
+                "revenda.v4titulo": "Material de Difusión",
+                "revenda.v4texto": "Recibe artes listos para WhatsApp, Instagram y grupos para vender sin tener que crear nada.",
+                "revenda.v5titulo": "Capacitación Completa",
+                "revenda.v5texto": "Aprende desde cero: cómo vender, dónde encontrar clientes, fidelizarlos y escalar tu negocio mes a mes.",
+                "revenda.v6titulo": "Sin Tarifas Ocultas",
+                "revenda.v6texto": "Sin mensualidad, sin anualidad, sin porcentaje sobre la venta. La ganancia es TODA TUYA.",
+                "revenda.passosTitulo": "📝 Cómo Funciona en 4 Pasos Simples",
+                "revenda.passo1titulo": "Elige tu Paquete",
+                "revenda.passo1texto": "Opta por 10, 20 o 30 logins según tu capacidad de venta.",
+                "revenda.passo2titulo": "Realiza el Pago",
+                "revenda.passo2texto": "Paga vía Pix y envía el comprobante a nuestro equipo comercial.",
+                "revenda.passo3titulo": "Accede a CELESTROX",
+                "revenda.passo3texto": "Recibe tu usuario y contraseña del panel oficial para gestionar todo.",
+                "revenda.passo4titulo": "Revende y Gana",
+                "revenda.passo4texto": "Crea accesos para tus clientes y factura todo el margen de ganancia.",
+                "revenda.ctaTitulo": "¿Listo para Empezar tu Negocio de VPN?",
+                "revenda.ctaTexto": "Únete a cientos de revendedores DROPNET que ganan todos los meses con el sistema CELESTROX.",
+                "revenda.ctaBotao1": "Acceder al Panel CELESTROX",
+                "revenda.ctaBotao2": "Quiero Ser Revendedor",
+                "como.titulo": "Cómo Usar",
+                "como.subtitulo": "Paso a paso muy simple",
+                "como.p1": "1. <strong>Descarga la aplicación</strong> usando una de las opciones de arriba",
+                "como.p2": "2. <strong>Elige tu plan</strong> y paga vía Pix, PicPay o transferencia",
+                "como.p3": "3. <strong>Envía el comprobante</strong> al soporte por WhatsApp",
+                "como.p4": "4. <strong>Recibe el acceso</strong> en hasta 10 minutos y conéctate",
+                "como.p5": "5. <strong>Abre la app, ingresa tus datos y disfruta</strong> de la conexión segura!",
+                "faq.titulo": "Preguntas Frecuentes",
+                "faq.subtitulo": "Respuestas a las preguntas más comunes",
+                "faq.p1pergunta": "¿Qué es DROPNET VPN?",
+                "faq.p1resposta": "Es una herramienta que protege tu navegación, oculta tu ubicación y permite acceder a contenidos sin restricciones, funcionando perfectamente en redes móviles brasileñas.",
+                "faq.p2pergunta": "¿Funciona en mi celular?",
+                "faq.p2resposta": "¡Sí! Funciona en todos los celulares con Android 5.0 o superior, sin necesidad de root ni configuraciones complicadas.",
+                "faq.p3pergunta": "¿Puedo usarlo en más de un dispositivo?",
+                "faq.p3resposta": "Cada acceso es válido para 1 dispositivo a la vez. Si quieres usar otro celular, solo solicita el cambio gratuito al soporte.",
+                "faq.p4pergunta": "¿Y si no funciona?",
+                "faq.p4resposta": "Ofrecemos garantía total de <strong>3 días</strong>. Si no funciona como esperas, te devolvemos el 100% de tu dinero sin trámites.",
+                "faq.p5pergunta": "¿Qué formas de pago aceptan?",
+                "faq.p5resposta": "Aceptamos Pix, PicPay, transferencia bancaria y tarjetas de crédito. Todos los pagos son seguros y se procesan rápidamente.",
+                "contato.titulo": "Contáctanos",
+                "contato.subtitulo": "Estamos listos para ayudarte",
+                "contato.segASex": "Lunes a Viernes",
+                "contato.sabado": "Sábado",
+                "contato.domingo": "Domingo",
+                "contato.fechado": "CERRADO",
+                "contato.local": "Ubicados en <strong>Cametá, Pará</strong>",
+                "contato.resposta": "¡Respuesta rápida durante el horario de atención!",
+                "status.aberto": "¡Atención ABIERTA ahora!",
+                "status.fechado": "Atención CERRADA en este momento",
+                "status.verificando": "Verificando horario..."
+            },
+            fr: {
+                tituloPagina: "DROPNET VPN",
+                htmlLang: "fr",
+                "menu.subtitulo": "Sécurité et confidentialité en ligne",
+                "menu.inicio": "Accueil",
+                "menu.sobre": "À propos",
+                "menu.recursos": "Fonctionnalités",
+                "menu.operadoras": "Opérateurs",
+                "menu.planos": "Forfaits",
+                "menu.revenda": "Devenir Revendeur",
+                "menu.como": "Comment Utiliser",
+                "menu.faq": "FAQ",
+                "menu.contato": "Contact",
+                "menu.baixarApp": "Télécharger l'App",
+                "menu.contatoBtn": "Contact",
+                "menu.rodape": "© <span class=\"ano-atual\">2026</span> DROPNET VPN • Tous droits réservés",
+                "inicio.titulo": "Bienvenue sur DROPNET VPN",
+                "inicio.subtitulo": "Connexion sécurisée et stable, conçue spécialement pour tout le Brésil",
+                "inicio.garantia": "GARANTIE DE 3 JOURS : Si ça ne fonctionne pas, nous remboursons 100% de votre argent !",
+                "inicio.ajudaTitulo": "Besoin d'aide rapide ?",
+                "inicio.ajudaTexto": "Notre support est prêt à répondre à vos questions",
+                "inicio.ajudaBotao": "Parler au Support",
+                "inicio.dadoEstabilidade": "Stabilité",
+                "inicio.dadoUsuarios": "Utilisateurs Actifs",
+                "inicio.dadoRapidoNum": "Rapide",
+                "inicio.dadoAtendimento": "Support",
+                "inicio.dadoIlimitadoNum": "Illimité",
+                "inicio.dadoDados": "Données",
+                "inicio.card1": "<strong>DROPNET VPN</strong> fonctionne parfaitement avec <strong>Vivo</strong>, <strong>TIM</strong> et <strong>Claro</strong>. Naviguez en toute confidentialité, sans coupures et avec la vitesse dont vous avez besoin.",
+                "inicio.card2": "Idéal pour les jeux, le streaming, les réseaux sociaux et le travail sans interruption !",
+                "inicio.opcao1": "Option 1 - Play Store",
+                "inicio.opcao2": "Option 2 - APK Direct",
+                "inicio.comprarBotao": "Acheter l'Accès Maintenant",
+                "sobre.titulo": "À Propos du Service",
+                "sobre.subtitulo": "En savoir plus sur nous",
+                "sobre.p1": "Conçu spécialement pour bien fonctionner au <strong>Brésil</strong>, là où d'autres services échouent à cause d'incompatibilités ou de coupures constantes.",
+                "sobre.p2": "Notre priorité est de vous offrir <strong>stabilité</strong>, <strong>sécurité</strong> et un <strong>support rapide</strong> !",
+                "sobre.p3": "Nous utilisons des serveurs haute performance situés dans le pays, garantissant la latence la plus faible possible pour les jeux et le streaming.",
+                "recursos.titulo": "Nos Fonctionnalités",
+                "recursos.subtitulo": "Tout ce que nous vous offrons",
+                "recursos.item1": "✅ <strong>Haute vitesse</strong> pour les jeux, le streaming et les téléchargements",
+                "recursos.item2": "✅ <strong>Chiffrement fort</strong> protégeant toutes vos données",
+                "recursos.item3": "✅ <strong>Aucun journal conservé</strong> de ce que vous consultez",
+                "recursos.item4": "✅ <strong>Reconnexion automatique</strong> en cas de coupure",
+                "recursos.item5": "✅ <strong>Fonctionne en 3G, 4G et 5G</strong> sur tous les opérateurs",
+                "recursos.item6": "✅ <strong>Sans limite de données</strong> et sans réduction de vitesse",
+                "recursos.item7": "✅ <strong>Changement d'appareil</strong> gratuit quand vous en avez besoin",
+                "operadoras.titulo": "Opérateurs Compatibles",
+                "operadoras.subtitulo": "Fonctionne parfaitement avec ces cartes SIM",
+                "operadoras.extra": "Fonctionne aussi avec <strong>Algar, Sercomtel, Correios Celular</strong> et d'autres opérateurs régionaux !",
+                "planos.titulo": "Forfaits et Tarifs",
+                "planos.subtitulo": "Choisissez l'option idéale pour vous",
+                "planos.basicoTitulo": "Forfait Basique",
+                "planos.basicoVantagens": "Idéal pour tester ou une utilisation courte",
+                "planos.dias7": "7 Jours",
+                "planos.dias15": "15 Jours",
+                "planos.dias30": "30 Jours",
+                "planos.primeTitulo": "Forfait Prime",
+                "planos.maisVendido": "MEILLEURE VENTE",
+                "planos.primeVantagens": "Meilleur rapport qualité-prix",
+                "planos.dias60": "60 Jours",
+                "planos.dias90": "90 Jours",
+                "planos.dias100": "100 Jours",
+                "planos.embreve": "Bientôt disponible : Forfait Annuel avec une remise spéciale !",
+                "revenda.titulo": "Programme de Revendeurs DROPNET",
+                "revenda.subtitulo": "Transformez votre réseau de contacts en revenu récurrent avec le panneau CELESTROX",
+                "revenda.heroTitulo": "Votre Propre Entreprise VPN Sans Gros Investissement Initial",
+                "revenda.heroTexto": "Revendez le service DROPNET VPN à des prix de gros exclusifs, gérez tout via le <strong>Panneau Officiel CELESTROX</strong> et gagnez jusqu'à <strong>400% par vente</strong>. Idéal pour un revenu supplémentaire ou pour développer une activité numérique.",
+                "revenda.heroMarca": "Propulsé par CELESTROX — Système Officiel de Revendeurs",
+                "revenda.kpi1Num": "Jusqu'à 400%",
+                "revenda.kpi1Rotulo": "Marge Bénéficiaire",
+                "revenda.kpi2Num": "Immédiate",
+                "revenda.kpi2Rotulo": "Livraison des Accès",
+                "revenda.kpi3Num": "Prioritaire",
+                "revenda.kpi3Rotulo": "Support Exclusif",
+                "revenda.kpi4Rotulo": "Clients Servis",
+                "revenda.tabelaTitulo": "💰 TABLEAU OFFICIEL DES PROFITS REVENDEUR",
+                "revenda.tabelaSubtitulo": "Prix exacts du Panneau CELESTROX • Plus vous achetez, PLUS VOUS GAGNEZ",
+                "revenda.resumo1": "Prix de revente suggéré",
+                "revenda.resumo2": "Validité par login",
+                "revenda.resumo2valor": "30 JOURS",
+                "revenda.resumo3": "Coût le plus bas par login",
+                "revenda.resumo4": "Profit total le plus élevé",
+                "revenda.col1": "Pack",
+                "revenda.col2": "Vous Investissez",
+                "revenda.col3": "Coût / Login",
+                "revenda.col4": "Profit / Login",
+                "revenda.col5": "🤑 PROFIT TOTAL",
+                "revenda.pacote10": "10 LOGINS",
+                "revenda.pacote20": "20 LOGINS",
+                "revenda.pacote30": "30 LOGINS",
+                "revenda.avisoCalculo": "<strong>Calcul basé sur la revente de chaque login à R$ 15,00 (30 jours)</strong> • Vous pouvez vendre au prix que vous voulez et augmenter encore plus votre profit !",
+                "revenda.seloIniciar": "Idéal pour Débuter",
+                "revenda.card1dias": "10 Logins",
+                "revenda.avista": "comptant",
+                "revenda.card1info": "<strong>R$ 4,00 par login</strong><br>Parfait pour débuter avec peu de risque et tester le marché",
+                "revenda.card1lucro": "💰 Profit estimé : R$ 110,00",
+                "revenda.seloMaisVendido": "Meilleure Vente",
+                "revenda.card2dias": "20 Logins",
+                "revenda.card2info": "<strong>R$ 3,50 par login</strong><br>Meilleur équilibre entre investissement et retour financier",
+                "revenda.card2lucro": "💰 Profit estimé : R$ 230,00",
+                "revenda.seloMaiorLucro": "Profit Maximal",
+                "revenda.card3dias": "30 Logins",
+                "revenda.card3info": "<strong>R$ 3,00 par login</strong><br>Marge de profit maximale pour ceux qui ont déjà un portefeuille de clients",
+                "revenda.card3lucro": "💰 Profit estimé : R$ 360,00",
+                "revenda.vantagensTitulo": "🎯 Avantages Exclusifs pour Nos Revendeurs",
+                "revenda.v1titulo": "Panneau CELESTROX Complet",
+                "revenda.v1texto": "Système professionnel pour créer, renouveler, bloquer et gérer TOUS vos logins en temps réel.",
+                "revenda.v2titulo": "Livraison Immédiate",
+                "revenda.v2texto": "Dès que le paiement est confirmé, votre pack est automatiquement libéré dans le panneau.",
+                "revenda.v3titulo": "Support Prioritaire",
+                "revenda.v3texto": "Support exclusif pour les revendeurs avec un temps de réponse allant jusqu'à 10 minutes pendant les heures ouvrées.",
+                "revenda.v4titulo": "Matériel Marketing",
+                "revenda.v4texto": "Recevez des visuels prêts pour WhatsApp, Instagram et les groupes pour vendre sans rien créer.",
+                "revenda.v5titulo": "Formation Complète",
+                "revenda.v5texto": "Apprenez à partir de zéro : comment vendre, où trouver des clients, les fidéliser et développer votre activité mois après mois.",
+                "revenda.v6titulo": "Sans Frais Cachés",
+                "revenda.v6texto": "Pas de mensualité, pas de cotisation annuelle, pas de pourcentage sur les ventes. Le profit est ENTIÈREMENT À VOUS.",
+                "revenda.passosTitulo": "📝 Comment ça Fonctionne en 4 Étapes Simples",
+                "revenda.passo1titulo": "Choisissez votre Pack",
+                "revenda.passo1texto": "Optez pour 10, 20 ou 30 logins selon votre capacité de vente.",
+                "revenda.passo2titulo": "Effectuez le Paiement",
+                "revenda.passo2texto": "Payez via Pix et envoyez le reçu à notre équipe commerciale.",
+                "revenda.passo3titulo": "Accédez à CELESTROX",
+                "revenda.passo3texto": "Recevez votre identifiant et mot de passe du panneau officiel pour tout gérer.",
+                "revenda.passo4titulo": "Revendez & Profitez",
+                "revenda.passo4texto": "Créez des accès pour vos clients et encaissez toute la marge de profit.",
+                "revenda.ctaTitulo": "Prêt à Lancer Votre Entreprise VPN ?",
+                "revenda.ctaTexto": "Rejoignez des centaines de revendeurs DROPNET qui profitent chaque mois avec le système CELESTROX.",
+                "revenda.ctaBotao1": "Accéder au Panneau CELESTROX",
+                "revenda.ctaBotao2": "Je Veux Être Revendeur",
+                "como.titulo": "Comment Utiliser",
+                "como.subtitulo": "Un guide étape par étape très simple",
+                "como.p1": "1. <strong>Téléchargez l'application</strong> en utilisant l'une des options ci-dessus",
+                "como.p2": "2. <strong>Choisissez votre forfait</strong> et payez via Pix, PicPay ou virement",
+                "como.p3": "3. <strong>Envoyez le reçu</strong> au support via WhatsApp",
+                "como.p4": "4. <strong>Recevez l'accès</strong> en 10 minutes maximum et connectez-vous !",
+                "como.p5": "5. <strong>Ouvrez l'app, entrez vos données et profitez</strong> de la connexion sécurisée !",
+                "faq.titulo": "Questions Fréquentes",
+                "faq.subtitulo": "Réponses aux questions les plus courantes",
+                "faq.p1pergunta": "Qu'est-ce que DROPNET VPN ?",
+                "faq.p1resposta": "C'est un outil qui protège votre navigation, cache votre localisation et permet d'accéder à des contenus sans restrictions, fonctionnant parfaitement sur les réseaux mobiles brésiliens.",
+                "faq.p2pergunta": "Est-ce que ça fonctionne sur mon téléphone ?",
+                "faq.p2resposta": "Oui ! Ça fonctionne sur tous les téléphones avec Android 5.0 ou supérieur, sans root ni configuration compliquée.",
+                "faq.p3pergunta": "Puis-je l'utiliser sur plusieurs appareils ?",
+                "faq.p3resposta": "Chaque accès est valable pour 1 appareil à la fois. Si vous voulez utiliser un autre téléphone, demandez simplement un changement gratuit au support.",
+                "faq.p4pergunta": "Et si ça ne fonctionne pas ?",
+                "faq.p4resposta": "Nous offrons une garantie totale de <strong>3 jours</strong>. Si ça ne fonctionne pas comme prévu, nous remboursons 100% de votre argent sans complications !",
+                "faq.p5pergunta": "Quels moyens de paiement acceptez-vous ?",
+                "faq.p5resposta": "Nous acceptons Pix, PicPay, virement bancaire et cartes de crédit. Tous les paiements sont sécurisés et traités rapidement.",
+                "contato.titulo": "Contactez-nous",
+                "contato.subtitulo": "Nous sommes prêts à vous aider",
+                "contato.segASex": "Lundi au Vendredi",
+                "contato.sabado": "Samedi",
+                "contato.domingo": "Dimanche",
+                "contato.fechado": "FERMÉ",
+                "contato.local": "Situé à <strong>Cametá, Pará</strong>",
+                "contato.resposta": "Réponse rapide pendant les heures d'ouverture !",
+                "status.aberto": "Support OUVERT maintenant !",
+                "status.fechado": "Support FERMÉ pour le moment",
+                "status.verificando": "Vérification des horaires..."
+            },
+            it: {
+                tituloPagina: "DROPNET VPN",
+                htmlLang: "it",
+                "menu.subtitulo": "Sicurezza e privacy online",
+                "menu.inicio": "Home",
+                "menu.sobre": "Chi Siamo",
+                "menu.recursos": "Funzionalità",
+                "menu.operadoras": "Operatori",
+                "menu.planos": "Piani",
+                "menu.revenda": "Diventa Rivenditore",
+                "menu.como": "Come Usare",
+                "menu.faq": "Domande",
+                "menu.contato": "Contatti",
+                "menu.baixarApp": "Scarica l'App",
+                "menu.contatoBtn": "Contatti",
+                "menu.rodape": "© <span class=\"ano-atual\">2026</span> DROPNET VPN • Tutti i diritti riservati",
+                "inicio.titulo": "Benvenuto su DROPNET VPN",
+                "inicio.subtitulo": "Connessione sicura e stabile, creata appositamente per tutto il Brasile",
+                "inicio.garantia": "GARANZIA DI 3 GIORNI: Se non funziona, ti rimborsiamo il 100% dei tuoi soldi!",
+                "inicio.ajudaTitulo": "Hai bisogno di aiuto rapido?",
+                "inicio.ajudaTexto": "Il nostro supporto è pronto a rispondere alle tue domande",
+                "inicio.ajudaBotao": "Parla con il Supporto",
+                "inicio.dadoEstabilidade": "Stabilità",
+                "inicio.dadoUsuarios": "Utenti Attivi",
+                "inicio.dadoRapidoNum": "Veloce",
+                "inicio.dadoAtendimento": "Assistenza",
+                "inicio.dadoIlimitadoNum": "Illimitati",
+                "inicio.dadoDados": "Dati",
+                "inicio.card1": "<strong>DROPNET VPN</strong> funziona perfettamente con <strong>Vivo</strong>, <strong>TIM</strong> e <strong>Claro</strong>. Naviga con totale privacy, senza cadute e con la velocità di cui hai bisogno.",
+                "inicio.card2": "Ideale per giochi, streaming, social network e lavoro senza interruzioni!",
+                "inicio.opcao1": "Opzione 1 - Play Store",
+                "inicio.opcao2": "Opzione 2 - APK Diretto",
+                "inicio.comprarBotao": "Acquista l'Accesso Ora",
+                "sobre.titulo": "Informazioni sul Servizio",
+                "sobre.subtitulo": "Scopri di più su di noi",
+                "sobre.p1": "Creato appositamente per funzionare bene in <strong>Brasile</strong>, dove altri servizi falliscono per incompatibilità o cadute costanti.",
+                "sobre.p2": "Il nostro obiettivo è offrirti <strong>stabilità</strong>, <strong>sicurezza</strong> e un <strong>supporto rapido</strong>!",
+                "sobre.p3": "Utilizziamo server ad alte prestazioni situati nel paese, garantendo la minor latenza possibile per giochi e streaming.",
+                "recursos.titulo": "Le Nostre Funzionalità",
+                "recursos.subtitulo": "Tutto ciò che ti offriamo",
+                "recursos.item1": "✅ <strong>Alta velocità</strong> per giochi, streaming e download",
+                "recursos.item2": "✅ <strong>Crittografia forte</strong> che protegge tutti i tuoi dati",
+                "recursos.item3": "✅ <strong>Nessun registro conservato</strong> di ciò a cui accedi",
+                "recursos.item4": "✅ <strong>Riconnessione automatica</strong> in caso di caduta della connessione",
+                "recursos.item5": "✅ <strong>Funziona su 3G, 4G e 5G</strong> di tutti gli operatori",
+                "recursos.item6": "✅ <strong>Nessun limite di dati</strong> e nessuna riduzione di velocità",
+                "recursos.item7": "✅ <strong>Cambio dispositivo</strong> gratuito quando ne hai bisogno",
+                "operadoras.titulo": "Operatori Compatibili",
+                "operadoras.subtitulo": "Funziona perfettamente con queste SIM",
+                "operadoras.extra": "Funziona anche con <strong>Algar, Sercomtel, Correios Celular</strong> e altri operatori regionali!",
+                "planos.titulo": "Piani e Prezzi",
+                "planos.subtitulo": "Scegli l'opzione ideale per te",
+                "planos.basicoTitulo": "Piano Base",
+                "planos.basicoVantagens": "Ideale per testare o per un uso breve",
+                "planos.dias7": "7 Giorni",
+                "planos.dias15": "15 Giorni",
+                "planos.dias30": "30 Giorni",
+                "planos.primeTitulo": "Piano Prime",
+                "planos.maisVendido": "PIÙ VENDUTO",
+                "planos.primeVantagens": "Miglior rapporto qualità-prezzo",
+                "planos.dias60": "60 Giorni",
+                "planos.dias90": "90 Giorni",
+                "planos.dias100": "100 Giorni",
+                "planos.embreve": "Prossimamente: Piano Annuale con sconto speciale!",
+                "revenda.titulo": "Programma Rivenditori DROPNET",
+                "revenda.subtitulo": "Trasforma la tua rete di contatti in reddito ricorrente con il pannello CELESTROX",
+                "revenda.heroTitulo": "La Tua Attività VPN Senza un Grande Investimento Iniziale",
+                "revenda.heroTexto": "Rivendi il servizio DROPNET VPN a prezzi esclusivi all'ingrosso, gestisci tutto tramite il <strong>Pannello Ufficiale CELESTROX</strong> e guadagna fino al <strong>400% per vendita</strong>. Ideale per un reddito extra o per far crescere un'attività digitale.",
+                "revenda.heroMarca": "Powered by CELESTROX — Sistema Ufficiale dei Rivenditori",
+                "revenda.kpi1Num": "Fino al 400%",
+                "revenda.kpi1Rotulo": "Margine di Profitto",
+                "revenda.kpi2Num": "Immediata",
+                "revenda.kpi2Rotulo": "Consegna Accessi",
+                "revenda.kpi3Num": "Prioritario",
+                "revenda.kpi3Rotulo": "Supporto Esclusivo",
+                "revenda.kpi4Rotulo": "Clienti Serviti",
+                "revenda.tabelaTitulo": "💰 TABELLA UFFICIALE PROFITTI RIVENDITORE",
+                "revenda.tabelaSubtitulo": "Prezzi esatti del Pannello CELESTROX • Più compri, PIÙ GUADAGNI",
+                "revenda.resumo1": "Prezzo di rivendita suggerito",
+                "revenda.resumo2": "Validità per login",
+                "revenda.resumo2valor": "30 GIORNI",
+                "revenda.resumo3": "Costo minimo per login",
+                "revenda.resumo4": "Profitto totale massimo",
+                "revenda.col1": "Pacchetto",
+                "revenda.col2": "Investi",
+                "revenda.col3": "Costo / Login",
+                "revenda.col4": "Profitto / Login",
+                "revenda.col5": "🤑 PROFITTO TOTALE",
+                "revenda.pacote10": "10 LOGIN",
+                "revenda.pacote20": "20 LOGIN",
+                "revenda.pacote30": "30 LOGIN",
+                "revenda.avisoCalculo": "<strong>Calcolo basato sulla rivendita di ogni login a R$ 15,00 (30 giorni)</strong> • Puoi vendere al prezzo che vuoi e aumentare ancora di più il tuo profitto!",
+                "revenda.seloIniciar": "Ideale per Iniziare",
+                "revenda.card1dias": "10 Login",
+                "revenda.avista": "in contanti",
+                "revenda.card1info": "<strong>R$ 4,00 per login</strong><br>Perfetto per iniziare con poco rischio e testare il mercato",
+                "revenda.card1lucro": "💰 Profitto stimato: R$ 110,00",
+                "revenda.seloMaisVendido": "Più Venduto",
+                "revenda.card2dias": "20 Login",
+                "revenda.card2info": "<strong>R$ 3,50 per login</strong><br>Miglior equilibrio tra investimento e rendimento finanziario",
+                "revenda.card2lucro": "💰 Profitto stimato: R$ 230,00",
+                "revenda.seloMaiorLucro": "Massimo Profitto",
+                "revenda.card3dias": "30 Login",
+                "revenda.card3info": "<strong>R$ 3,00 per login</strong><br>Massimo margine di profitto per chi ha già un portafoglio clienti",
+                "revenda.card3lucro": "💰 Profitto stimato: R$ 360,00",
+                "revenda.vantagensTitulo": "🎯 Vantaggi Esclusivi per i Nostri Rivenditori",
+                "revenda.v1titulo": "Pannello CELESTROX Completo",
+                "revenda.v1texto": "Sistema professionale per creare, rinnovare, bloccare e gestire TUTTI i tuoi login in tempo reale.",
+                "revenda.v2titulo": "Consegna Immediata",
+                "revenda.v2texto": "Appena il pagamento viene confermato, il tuo pacchetto viene rilasciato automaticamente nel pannello.",
+                "revenda.v3titulo": "Supporto Prioritario",
+                "revenda.v3texto": "Assistenza esclusiva per rivenditori con tempo di risposta fino a 10 minuti durante l'orario lavorativo.",
+                "revenda.v4titulo": "Materiale Promozionale",
+                "revenda.v4texto": "Ricevi grafiche pronte per WhatsApp, Instagram e gruppi per vendere senza dover creare nulla.",
+                "revenda.v5titulo": "Formazione Completa",
+                "revenda.v5texto": "Impara da zero: come vendere, dove trovare clienti, fidelizzarli e far crescere la tua attività mese dopo mese.",
+                "revenda.v6titulo": "Nessun Costo Nascosto",
+                "revenda.v6texto": "Nessun canone mensile, nessuna quota annuale, nessuna percentuale sulle vendite. Il profitto è TUTTO TUO.",
+                "revenda.passosTitulo": "📝 Come Funziona in 4 Semplici Passi",
+                "revenda.passo1titulo": "Scegli il Tuo Pacchetto",
+                "revenda.passo1texto": "Opta per 10, 20 o 30 login in base alla tua capacità di vendita.",
+                "revenda.passo2titulo": "Effettua il Pagamento",
+                "revenda.passo2texto": "Paga tramite Pix e invia la ricevuta al nostro team commerciale.",
+                "revenda.passo3titulo": "Accedi a CELESTROX",
+                "revenda.passo3texto": "Ricevi il tuo login e password del pannello ufficiale per gestire tutto.",
+                "revenda.passo4titulo": "Rivendi e Guadagna",
+                "revenda.passo4texto": "Crea accessi per i tuoi clienti e incassa tutto il margine di profitto.",
+                "revenda.ctaTitulo": "Pronto ad Avviare la Tua Attività VPN?",
+                "revenda.ctaTexto": "Unisciti a centinaia di rivenditori DROPNET che guadagnano ogni mese con il sistema CELESTROX.",
+                "revenda.ctaBotao1": "Accedi al Pannello CELESTROX",
+                "revenda.ctaBotao2": "Voglio Diventare Rivenditore",
+                "como.titulo": "Come Usare",
+                "como.subtitulo": "Una guida passo dopo passo molto semplice",
+                "como.p1": "1. <strong>Scarica l'applicazione</strong> usando una delle opzioni sopra",
+                "como.p2": "2. <strong>Scegli il tuo piano</strong> e paga tramite Pix, PicPay o bonifico",
+                "como.p3": "3. <strong>Invia la ricevuta</strong> al supporto tramite WhatsApp",
+                "como.p4": "4. <strong>Ricevi l'accesso</strong> entro 10 minuti e connettiti!",
+                "como.p5": "5. <strong>Apri l'app, inserisci i tuoi dati e goditi</strong> la connessione sicura!",
+                "faq.titulo": "Domande Frequenti",
+                "faq.subtitulo": "Risposte alle domande più comuni",
+                "faq.p1pergunta": "Cos'è DROPNET VPN?",
+                "faq.p1resposta": "È uno strumento che protegge la tua navigazione, nasconde la tua posizione e ti permette di accedere a contenuti senza restrizioni, funzionando perfettamente sulle reti mobili brasiliane.",
+                "faq.p2pergunta": "Funziona sul mio cellulare?",
+                "faq.p2resposta": "Sì! Funziona su tutti i cellulari con Android 5.0 o superiore, senza necessità di root o configurazioni complicate.",
+                "faq.p3pergunta": "Posso usarlo su più di un dispositivo?",
+                "faq.p3resposta": "Ogni accesso è valido per 1 dispositivo alla volta. Se vuoi usare un altro cellulare, basta richiedere il cambio gratuito al supporto.",
+                "faq.p4pergunta": "E se non funziona?",
+                "faq.p4resposta": "Offriamo una garanzia totale di <strong>3 giorni</strong>. Se non funziona come previsto, ti rimborsiamo il 100% dei tuoi soldi senza complicazioni!",
+                "faq.p5pergunta": "Quali metodi di pagamento accettate?",
+                "faq.p5resposta": "Accettiamo Pix, PicPay, bonifico bancario e carte di credito. Tutti i pagamenti sono sicuri e vengono elaborati rapidamente.",
+                "contato.titulo": "Contattaci",
+                "contato.subtitulo": "Siamo pronti ad aiutarti",
+                "contato.segASex": "Lunedì al Venerdì",
+                "contato.sabado": "Sabato",
+                "contato.domingo": "Domenica",
+                "contato.fechado": "CHIUSO",
+                "contato.local": "Situati a <strong>Cametá, Pará</strong>",
+                "contato.resposta": "Risposta rapida durante l'orario di assistenza!",
+                "status.aberto": "Assistenza APERTA ora!",
+                "status.fechado": "Assistenza CHIUSA al momento",
+                "status.verificando": "Verifica orario..."
+            }
+        };
+
+        let idiomaAtual = 'pt';
+
+        function aplicarIdioma(lang) {
+            const dic = traducoes[lang];
+            if (!dic) return;
+            idiomaAtual = lang;
+
+            document.title = dic.tituloPagina;
+            document.getElementById('htmlRoot').setAttribute('lang', dic.htmlLang);
+            document.getElementById('metaDescricao').setAttribute('content', dic['inicio.subtitulo']);
+            document.getElementById('ogTitulo').setAttribute('content', dic.tituloPagina);
+            document.getElementById('ogDescricao').setAttribute('content', dic['inicio.subtitulo']);
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const chave = el.getAttribute('data-i18n');
+                if (dic[chave] !== undefined) {
+                    el.innerHTML = dic[chave];
+                }
+            });
+
+            document.querySelectorAll('.btn-idioma').forEach(btn => {
+                const ativo = btn.dataset.lang === lang;
+                btn.classList.toggle('ativo', ativo);
+                btn.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+            });
+
+            atualizarAnoRodape();
+            verificarHorario();
+            localStorage.setItem('idioma', lang);
+        }
+
+        function atualizarAnoRodape() {
+            const anoAtual = new Date().getFullYear();
+            document.querySelectorAll('.ano-atual').forEach(el => { el.textContent = anoAtual; });
+        }
+
+        function trocarIdioma(lang) {
+            aplicarIdioma(lang);
+        }
+
+        const btnMenu = document.getElementById('btnMenu');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuLateral = document.getElementById('menuLateral');
+        const fundoMenu = document.getElementById('fundoMenu');
+        const logoPrincipal = document.getElementById('logoPrincipal');
+        const limiteRolagem = 80;
+
+        function atualizarVisibilidadeLogo() {
+            const menuAberto = menuLateral.classList.contains('aberto');
+            const rolarMuito = window.scrollY > limiteRolagem;
+            if (menuAberto || rolarMuito) {
+                logoPrincipal.classList.add('escondido');
+            } else {
+                logoPrincipal.classList.remove('escondido');
+            }
+        }
+
+        window.addEventListener('scroll', atualizarVisibilidadeLogo);
+
+        function abrirMenu() {
+            menuLateral.classList.add('aberto');
+            fundoMenu.classList.add('aberto');
+            document.body.style.overflow = 'hidden';
+            menuLateral.setAttribute('aria-hidden', 'false');
+            btnMenu.setAttribute('aria-expanded', 'true');
+            atualizarVisibilidadeLogo();
+        }
+
+        function fecharMenu() {
+            menuLateral.classList.remove('aberto');
+            fundoMenu.classList.remove('aberto');
+            document.body.style.overflow = 'auto';
+            menuLateral.setAttribute('aria-hidden', 'true');
+            btnMenu.setAttribute('aria-expanded', 'false');
+            atualizarVisibilidadeLogo();
+        }
+
+        btnMenu.addEventListener('click', abrirMenu);
+        btnFechar.addEventListener('click', fecharMenu);
+        fundoMenu.addEventListener('click', fecharMenu);
+
+        function trocar(classe) {
+            document.body.className = classe;
+            localStorage.setItem('tema', classe);
+            atualizarBotoesTema(classe);
+        }
+
+        function atualizarBotoesTema(classe) {
+            document.querySelectorAll('.btn-cor').forEach(botao => botao.classList.remove('ativo'));
+            if (classe === '') document.querySelector('.btn-cor.v').classList.add('ativo');
+            else if (classe === 'tema-azul') document.querySelector('.btn-cor.a').classList.add('ativo');
+            else if (classe === 'tema-roxo') document.querySelector('.btn-cor.r').classList.add('ativo');
+            else if (classe === 'tema-laranja') document.querySelector('.btn-cor.l').classList.add('ativo');
+        }
+
+        function verificarHorario() {
+            const agora = new Date();
+            const diaSemana = agora.getDay();
+            const hora = agora.getHours();
+            const minuto = agora.getMinutes();
+            const totalMinutos = hora * 60 + minuto;
+
+            const caixa = document.getElementById('caixa-horario');
+            const texto = document.getElementById('texto-status');
+            let aberto = false;
+
+            if (diaSemana >= 1 && diaSemana <= 5) {
+                aberto = totalMinutos >= 480 && totalMinutos <= 1440;
+            } else if (diaSemana === 6) {
+                aberto = totalMinutos >= 480 && totalMinutos <= 1320;
+            } else {
+                aberto = false;
+            }
+
+            const dic = traducoes[idiomaAtual];
+
+            if (aberto) {
+                caixa.className = 'status-atendimento aberto';
+                texto.className = 'status-titulo aberto';
+                texto.innerHTML = '<i class="fas fa-circle"></i> ' + dic['status.aberto'];
+            } else {
+                caixa.className = 'status-atendimento fechado';
+                texto.className = 'status-titulo fechado';
+                texto.innerHTML = '<i class="fas fa-circle"></i> ' + dic['status.fechado'];
+            }
+        }
+
+        function ativarMenuItem(item) {
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('ativo'));
+            document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
+            item.classList.add('ativo');
+            document.getElementById(item.dataset.sec).classList.add('ativa');
+            fecharMenu();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => ativarMenuItem(item));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    ativarMenuItem(item);
+                }
+            });
+        });
+
+        function alternarFaq(pergunta) {
+            pergunta.parentElement.classList.toggle('aberto');
+        }
+
+        document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+            pergunta.addEventListener('click', () => alternarFaq(pergunta));
+            pergunta.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    alternarFaq(pergunta);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const temaSalvo = localStorage.getItem('tema') || '';
+            document.body.className = temaSalvo;
+            atualizarBotoesTema(temaSalvo);
+
+            const idiomaSalvo = localStorage.getItem('idioma') || 'pt';
+            aplicarIdioma(idiomaSalvo);
+
+            atualizarVisibilidadeLogo();
+        });
+    </script>
+</body>
+</html>
