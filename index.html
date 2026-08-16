@@ -255,6 +255,7 @@
             transition: var(--transicao);
             background: transparent;
             border-left: 3px solid transparent;
+            text-decoration: none;
         }
         .menu-item i { 
             color: var(--texto-suave); 
@@ -1216,8 +1217,8 @@
             <div class="menu-item" data-sec="sobre" role="button" tabindex="0"><i class="fas fa-info-circle"></i> <span data-i18n="menu.sobre">Sobre</span></div>
             <div class="menu-item" data-sec="recursos" role="button" tabindex="0"><i class="fas fa-list-check"></i> <span data-i18n="menu.recursos">Recursos</span></div>
             <div class="menu-item" data-sec="operadoras" role="button" tabindex="0"><i class="fas fa-signal"></i> <span data-i18n="menu.operadoras">Operadoras</span></div>
-            <div class="menu-item" data-sec="planos" role="button" tabindex="0"><i class="fas fa-tag"></i> <span data-i18n="menu.planos">Planos</span></div>
-            <div class="menu-item" data-sec="revenda" role="button" tabindex="0"><i class="fas fa-handshake"></i> <span data-i18n="menu.revenda">Seja Revendedor</span></div>
+            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/customer" target="_blank" rel="noopener noreferrer"><i class="fas fa-cart-shopping"></i> <span data-i18n="menu.comprarAcesso">Comprar Acesso</span></a>
+            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/dealer" target="_blank" rel="noopener noreferrer"><i class="fas fa-handshake"></i> <span data-i18n="menu.revenda">Seja Revendedor</span></a>
             <div class="menu-item" data-sec="como" role="button" tabindex="0"><i class="fas fa-book-open"></i> <span data-i18n="menu.como">Como Usar</span></div>
             <div class="menu-item" data-sec="faq" role="button" tabindex="0"><i class="fas fa-question-circle"></i> <span data-i18n="menu.faq">Dúvidas</span></div>
             <div class="menu-item" data-sec="contato" role="button" tabindex="0"><i class="fas fa-headset"></i> <span data-i18n="menu.contato">Contato</span></div>
@@ -1327,51 +1328,6 @@
             </div>
             <div class="card" style="margin-top:20px;">
                 <p data-i18n="operadoras.extra">Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!</p>
-            </div>
-        </section>
-
-        <section id="planos" class="secao">
-            <h2 class="titulo"><i class="fas fa-tag"></i> <span data-i18n="planos.titulo">Planos e Valores</span></h2>
-            <p class="subtitulo" data-i18n="planos.subtitulo">Escolha a opção ideal para você</p>
-
-            <div class="planos">
-                <h3 class="plano-titulo" data-i18n="planos.basicoTitulo">Plano Básico</h3>
-                <p class="plano-vantagens" data-i18n="planos.basicoVantagens">Ideal para testar ou uso curto</p>
-                <div class="grupo-planos">
-                    <div class="plano">
-                        <div class="dias" data-i18n="planos.dias7">7 Dias</div>
-                        <div class="valor">R$ 4,00</div>
-                    </div>
-                    <div class="plano destaque">
-                        <div class="dias" data-i18n="planos.dias15">15 Dias</div>
-                        <div class="valor">R$ 8,00</div>
-                    </div>
-                    <div class="plano">
-                        <div class="dias" data-i18n="planos.dias30">30 Dias</div>
-                        <div class="valor">R$ 15,00</div>
-                    </div>
-                </div>
-
-                <h3 class="plano-titulo"><span data-i18n="planos.primeTitulo">Plano Prime</span> <span class="plano-novo" data-i18n="planos.maisVendido">MAIS VENDIDO</span></h3>
-                <p class="plano-vantagens" data-i18n="planos.primeVantagens">Melhor custo-benefício e economia</p>
-                <div class="grupo-planos">
-                    <div class="plano">
-                        <div class="dias" data-i18n="planos.dias60">60 Dias</div>
-                        <div class="valor">R$ 28,00</div>
-                    </div>
-                    <div class="plano destaque">
-                        <div class="dias" data-i18n="planos.dias90">90 Dias</div>
-                        <div class="valor">R$ 40,00</div>
-                    </div>
-                    <div class="plano">
-                        <div class="dias" data-i18n="planos.dias100">100 Dias</div>
-                        <div class="valor">R$ 50,00</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="em-breve">
-                <i class="fas fa-clock"></i> <span data-i18n="planos.embreve">Em breve: Plano Anual com desconto especial!</span>
             </div>
         </section>
 
@@ -1683,7 +1639,7 @@
             <div class="rodape-legal">
                 <details>
                     <summary>Termos de Uso</summary>
-                    <p>Ao utilizar o DROPNET VPN, você concorda em usar o serviço de forma lícita, não compartilhar seu acesso com terceiros fora das condições contratadas e respeitar os limites de cada plano adquirido. O serviço é fornecido "como está", com garantia de reembolso conforme descrito na seção de planos. Reservamo-nos o direito de suspender contas que violem estes termos.</p>
+                    <p>Ao utilizar o DROPNET VPN, você concorda em usar o serviço de forma lícita, não compartilhar seu acesso com terceiros fora das condições contratadas e respeitar os limites de cada plano adquirido. O serviço é fornecido "como está", com garantia de reembolso de 3 dias conforme as condições de compra. Reservamo-nos o direito de suspender contas que violem estes termos.</p>
                 </details>
                 <details>
                     <summary>Política de Privacidade</summary>
@@ -1705,8 +1661,8 @@
                 "menu.sobre": "Sobre",
                 "menu.recursos": "Recursos",
                 "menu.operadoras": "Operadoras",
-                "menu.planos": "Planos",
                 "menu.revenda": "Seja Revendedor",
+                "menu.comprarAcesso": "Comprar Acesso",
                 "menu.como": "Como Usar",
                 "menu.faq": "Dúvidas",
                 "menu.contato": "Contato",
@@ -1747,20 +1703,6 @@
                 "operadoras.titulo": "Operadoras Compatíveis",
                 "operadoras.subtitulo": "Funciona perfeitamente com esses chips",
                 "operadoras.extra": "Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!",
-                "planos.titulo": "Planos e Valores",
-                "planos.subtitulo": "Escolha a opção ideal para você",
-                "planos.basicoTitulo": "Plano Básico",
-                "planos.basicoVantagens": "Ideal para testar ou uso curto",
-                "planos.dias7": "7 Dias",
-                "planos.dias15": "15 Dias",
-                "planos.dias30": "30 Dias",
-                "planos.primeTitulo": "Plano Prime",
-                "planos.maisVendido": "MAIS VENDIDO",
-                "planos.primeVantagens": "Melhor custo-benefício e economia",
-                "planos.dias60": "60 Dias",
-                "planos.dias90": "90 Dias",
-                "planos.dias100": "100 Dias",
-                "planos.embreve": "Em breve: Plano Anual com desconto especial!",
                 "revenda.titulo": "Programa de Revendedores DROPNET",
                 "revenda.subtitulo": "Transforme sua rede de contatos em renda recorrente com o painel CELESTROX",
                 "revenda.heroTitulo": "Seu Negócio Próprio de VPN com Zero Investimento Alto",
@@ -1867,8 +1809,8 @@
                 "menu.sobre": "About",
                 "menu.recursos": "Features",
                 "menu.operadoras": "Carriers",
-                "menu.planos": "Plans",
                 "menu.revenda": "Become a Reseller",
+                "menu.comprarAcesso": "Buy Access",
                 "menu.como": "How to Use",
                 "menu.faq": "FAQ",
                 "menu.contato": "Contact",
@@ -1909,20 +1851,6 @@
                 "operadoras.titulo": "Compatible Carriers",
                 "operadoras.subtitulo": "Works perfectly with these SIM cards",
                 "operadoras.extra": "Also works with <strong>Algar, Sercomtel, Correios Celular</strong>, and other regional carriers!",
-                "planos.titulo": "Plans and Pricing",
-                "planos.subtitulo": "Choose the best option for you",
-                "planos.basicoTitulo": "Basic Plan",
-                "planos.basicoVantagens": "Great for testing or short-term use",
-                "planos.dias7": "7 Days",
-                "planos.dias15": "15 Days",
-                "planos.dias30": "30 Days",
-                "planos.primeTitulo": "Prime Plan",
-                "planos.maisVendido": "BEST SELLER",
-                "planos.primeVantagens": "Best value and savings",
-                "planos.dias60": "60 Days",
-                "planos.dias90": "90 Days",
-                "planos.dias100": "100 Days",
-                "planos.embreve": "Coming soon: Annual Plan with a special discount!",
                 "revenda.titulo": "DROPNET Reseller Program",
                 "revenda.subtitulo": "Turn your network of contacts into recurring income with the CELESTROX panel",
                 "revenda.heroTitulo": "Your Own VPN Business With No Big Upfront Investment",
@@ -2029,8 +1957,8 @@
                 "menu.sobre": "Sobre Nosotros",
                 "menu.recursos": "Funciones",
                 "menu.operadoras": "Operadoras",
-                "menu.planos": "Planes",
                 "menu.revenda": "Sé Revendedor",
+                "menu.comprarAcesso": "Comprar Acceso",
                 "menu.como": "Cómo Usar",
                 "menu.faq": "Preguntas",
                 "menu.contato": "Contacto",
@@ -2071,20 +1999,6 @@
                 "operadoras.titulo": "Operadoras Compatibles",
                 "operadoras.subtitulo": "Funciona perfectamente con estos chips",
                 "operadoras.extra": "¡También funciona con <strong>Algar, Sercomtel, Correios Celular</strong> y otras operadoras regionales!",
-                "planos.titulo": "Planes y Precios",
-                "planos.subtitulo": "Elige la opción ideal para ti",
-                "planos.basicoTitulo": "Plan Básico",
-                "planos.basicoVantagens": "Ideal para probar o uso corto",
-                "planos.dias7": "7 Días",
-                "planos.dias15": "15 Días",
-                "planos.dias30": "30 Días",
-                "planos.primeTitulo": "Plan Prime",
-                "planos.maisVendido": "MÁS VENDIDO",
-                "planos.primeVantagens": "Mejor relación costo-beneficio y ahorro",
-                "planos.dias60": "60 Días",
-                "planos.dias90": "90 Días",
-                "planos.dias100": "100 Días",
-                "planos.embreve": "¡Próximamente: Plan Anual con descuento especial!",
                 "revenda.titulo": "Programa de Revendedores DROPNET",
                 "revenda.subtitulo": "Convierte tu red de contactos en ingresos recurrentes con el panel CELESTROX",
                 "revenda.heroTitulo": "Tu Propio Negocio de VPN Sin una Gran Inversión Inicial",
@@ -2191,8 +2105,8 @@
                 "menu.sobre": "À propos",
                 "menu.recursos": "Fonctionnalités",
                 "menu.operadoras": "Opérateurs",
-                "menu.planos": "Forfaits",
                 "menu.revenda": "Devenir Revendeur",
+                "menu.comprarAcesso": "Acheter l'Accès",
                 "menu.como": "Comment Utiliser",
                 "menu.faq": "FAQ",
                 "menu.contato": "Contact",
@@ -2233,20 +2147,6 @@
                 "operadoras.titulo": "Opérateurs Compatibles",
                 "operadoras.subtitulo": "Fonctionne parfaitement avec ces cartes SIM",
                 "operadoras.extra": "Fonctionne aussi avec <strong>Algar, Sercomtel, Correios Celular</strong> et d'autres opérateurs régionaux !",
-                "planos.titulo": "Forfaits et Tarifs",
-                "planos.subtitulo": "Choisissez l'option idéale pour vous",
-                "planos.basicoTitulo": "Forfait Basique",
-                "planos.basicoVantagens": "Idéal pour tester ou une utilisation courte",
-                "planos.dias7": "7 Jours",
-                "planos.dias15": "15 Jours",
-                "planos.dias30": "30 Jours",
-                "planos.primeTitulo": "Forfait Prime",
-                "planos.maisVendido": "MEILLEURE VENTE",
-                "planos.primeVantagens": "Meilleur rapport qualité-prix",
-                "planos.dias60": "60 Jours",
-                "planos.dias90": "90 Jours",
-                "planos.dias100": "100 Jours",
-                "planos.embreve": "Bientôt disponible : Forfait Annuel avec une remise spéciale !",
                 "revenda.titulo": "Programme de Revendeurs DROPNET",
                 "revenda.subtitulo": "Transformez votre réseau de contacts en revenu récurrent avec le panneau CELESTROX",
                 "revenda.heroTitulo": "Votre Propre Entreprise VPN Sans Gros Investissement Initial",
@@ -2353,8 +2253,8 @@
                 "menu.sobre": "Chi Siamo",
                 "menu.recursos": "Funzionalità",
                 "menu.operadoras": "Operatori",
-                "menu.planos": "Piani",
                 "menu.revenda": "Diventa Rivenditore",
+                "menu.comprarAcesso": "Acquista Accesso",
                 "menu.como": "Come Usare",
                 "menu.faq": "Domande",
                 "menu.contato": "Contatti",
@@ -2395,20 +2295,6 @@
                 "operadoras.titulo": "Operatori Compatibili",
                 "operadoras.subtitulo": "Funziona perfettamente con queste SIM",
                 "operadoras.extra": "Funziona anche con <strong>Algar, Sercomtel, Correios Celular</strong> e altri operatori regionali!",
-                "planos.titulo": "Piani e Prezzi",
-                "planos.subtitulo": "Scegli l'opzione ideale per te",
-                "planos.basicoTitulo": "Piano Base",
-                "planos.basicoVantagens": "Ideale per testare o per un uso breve",
-                "planos.dias7": "7 Giorni",
-                "planos.dias15": "15 Giorni",
-                "planos.dias30": "30 Giorni",
-                "planos.primeTitulo": "Piano Prime",
-                "planos.maisVendido": "PIÙ VENDUTO",
-                "planos.primeVantagens": "Miglior rapporto qualità-prezzo",
-                "planos.dias60": "60 Giorni",
-                "planos.dias90": "90 Giorni",
-                "planos.dias100": "100 Giorni",
-                "planos.embreve": "Prossimamente: Piano Annuale con sconto speciale!",
                 "revenda.titulo": "Programma Rivenditori DROPNET",
                 "revenda.subtitulo": "Trasforma la tua rete di contatti in reddito ricorrente con il pannello CELESTROX",
                 "revenda.heroTitulo": "La Tua Attività VPN Senza un Grande Investimento Iniziale",
