@@ -439,76 +439,6 @@
         .card p { color: var(--texto-suave); font-size: 17px; line-height: 1.6; margin-bottom: 15px; }
         .card strong { color: var(--cor-destaque); font-weight: 600; font-size: 18px; transition: color var(--transicao); }
 
-        /* CARROSSEL DE SLIDES */
-        .carrossel {
-            position: relative;
-            width: 100%;
-            border-radius: 14px;
-            overflow: hidden;
-            margin: 20px 0 15px;
-            background: var(--fundo-card);
-            border: 1px solid var(--borda);
-        }
-        .carrossel-trilha {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carrossel-slide {
-            min-width: 100%;
-            aspect-ratio: 16 / 10;
-        }
-        .carrossel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .carrossel-dots {
-            position: absolute;
-            bottom: 12px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
-        .carrossel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: var(--transicao);
-        }
-        .carrossel-dot.ativo {
-            background: var(--cor-destaque);
-            width: 22px;
-            border-radius: 5px;
-        }
-        .carrossel-seta {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.45);
-            color: #fff;
-            border: none;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 2;
-            transition: var(--transicao);
-        }
-        .carrossel-seta:hover { background: var(--cor-destaque); }
-        .carrossel-seta.esquerda { left: 10px; }
-        .carrossel-seta.direita { right: 10px; }
-
         .botoes-download {
             display: flex;
             gap: 12px;
@@ -1307,6 +1237,53 @@
             <h1 class="titulo"><i class="fas fa-bolt"></i> <span data-i18n="inicio.titulo">Bem-vindo ao DROPNET VPN</span></h1>
             <p class="subtitulo" data-i18n="inicio.subtitulo">Conexão segura, estável e feita especialmente para todo o Brasil</p>
 
+            <div class="dropnet-slideshow" id="dropnetSlideshow">
+                <div class="dropnet-slideshow-track">
+                    <img src="https://i.ibb.co/d4jpwJnv/1000503680.png" class="dropnet-slide ativo" alt="Slide 1">
+                    <img src="https://i.ibb.co/DNVZCbH/1000503698.png" class="dropnet-slide" alt="Slide 2">
+                    <img src="https://i.ibb.co/Ps5bCNRJ/1000503697.png" class="dropnet-slide" alt="Slide 3">
+                    <img src="https://i.ibb.co/sdpMD4dw/1000503678.png" class="dropnet-slide" alt="Slide 4">
+                    <img src="https://i.ibb.co/GQGSj54g/1000503667.png" class="dropnet-slide" alt="Slide 5">
+                    <img src="https://i.ibb.co/nMWnQZcS/1000503669.png" class="dropnet-slide" alt="Slide 6">
+                </div>
+                <div class="dropnet-slideshow-dots" id="dropnetSlideshowDots"></div>
+            </div>
+            <style>
+                .dropnet-slideshow { position: relative; width: 100%; max-width: 600px; margin: 15px auto; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px var(--sombra); }
+                .dropnet-slideshow-track { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+                .dropnet-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.8s ease; }
+                .dropnet-slide.ativo { opacity: 1; }
+                .dropnet-slideshow-dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
+                .dropnet-slideshow-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: background 0.3s ease; }
+                .dropnet-slideshow-dots span.ativo { background: #fff; }
+            </style>
+            <script>
+                (function() {
+                    const slides = document.querySelectorAll('#dropnetSlideshow .dropnet-slide');
+                    const dotsContainer = document.getElementById('dropnetSlideshowDots');
+                    let indiceAtual = 0;
+
+                    slides.forEach((_, i) => {
+                        const dot = document.createElement('span');
+                        if (i === 0) dot.classList.add('ativo');
+                        dotsContainer.appendChild(dot);
+                    });
+                    const dots = dotsContainer.querySelectorAll('span');
+
+                    function mostrarSlide(indice) {
+                        slides.forEach(s => s.classList.remove('ativo'));
+                        dots.forEach(d => d.classList.remove('ativo'));
+                        slides[indice].classList.add('ativo');
+                        dots[indice].classList.add('ativo');
+                    }
+
+                    setInterval(() => {
+                        indiceAtual = (indiceAtual + 1) % slides.length;
+                        mostrarSlide(indiceAtual);
+                    }, 10000);
+                })();
+            </script>
+
             <div class="destaque-garantia">
                 <i class="fas fa-shield-alt"></i> <span data-i18n="inicio.garantia">GARANTIA DE 3 DIAS: Se não funcionar, devolvemos 100% do seu dinheiro!</span>
             </div>
@@ -1317,20 +1294,6 @@
                 <a href="https://wa.me/5591993276833" class="btn-ajuda" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> <span data-i18n="inicio.ajudaBotao">Falar com o Atendimento</span>
                 </a>
-            </div>
-
-            <div class="carrossel" id="carrossel">
-                <div class="carrossel-trilha" id="carrosselTrilha">
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/d4jpwJnv/1000503680.png" alt="DROPNET VPN - slide 1" loading="lazy"></div>
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/DNVZCbH/1000503698.png" alt="DROPNET VPN - slide 2" loading="lazy"></div>
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/Ps5bCNRJ/1000503697.png" alt="DROPNET VPN - slide 3" loading="lazy"></div>
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/sdpMD4dw/1000503678.png" alt="DROPNET VPN - slide 4" loading="lazy"></div>
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/GQGSj54g/1000503667.png" alt="DROPNET VPN - slide 5" loading="lazy"></div>
-                    <div class="carrossel-slide"><img src="https://i.ibb.co/nMWnQZcS/1000503669.png" alt="DROPNET VPN - slide 6" loading="lazy"></div>
-                </div>
-                <button class="carrossel-seta esquerda" onclick="moverCarrossel(-1)" aria-label="Slide anterior"><i class="fas fa-chevron-left"></i></button>
-                <button class="carrossel-seta direita" onclick="moverCarrossel(1)" aria-label="Próximo slide"><i class="fas fa-chevron-right"></i></button>
-                <div class="carrossel-dots" id="carrosselDots"></div>
             </div>
 
             <div class="dados-rapidos">
@@ -2018,4 +1981,11 @@
                 "faq.p3pergunta": "Can I use it on more than one device?",
                 "faq.p3resposta": "Each access is valid for 1 device at a time. If you want to use another phone, just request a free swap from support.",
                 "faq.p4pergunta": "What if it doesn't work?",
-                "faq.p4resposta": "We offer a full <strong>3-day</strong> guarantee. If it doesn't work as expected, we refund 100% of your money, no has
+                "faq.p4resposta": "We offer a full <strong>3-day</strong> guarantee. If it doesn't work as expected, we refund 100% of your money, no hassle!",
+                "faq.p5pergunta": "What payment methods do you accept?",
+                "faq.p5resposta": "We accept Pix, PicPay, bank transfer, and credit cards. All payments are secure and processed quickly.",
+                "contato.titulo": "Contact Us",
+                "contato.subtitulo": "We're ready to help",
+                "contato.segASex": "Monday to Friday",
+                "contato.sabado": "Saturday",
+  
