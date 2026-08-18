@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="tituloPagina">DROPNET VPN</title>
+    <meta name="description" id="metaDescricao" content="DROPNET VPN: conexão segura e estável para todo o Brasil. Compatível com Vivo, TIM e Claro. Garantia de 3 dias.">
+    <meta property="og:title" id="ogTitulo" content="DROPNET VPN">
+    <meta property="og:description" id="ogDescricao" content="Conexão segura e estável para todo o Brasil. Compatível com Vivo, TIM e Claro. Garantia de 3 dias.">
+    <meta property="og:image" content="https://i.ibb.co/JFqgmkLX/1000359558.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dropnetvpn.com/">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="DROPNET VPN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DROPNET VPN">
+    <meta name="twitter:description" content="Conexão segura e estável para todo o Brasil. Compatível com Vivo, TIM e Claro.">
+    <meta name="twitter:image" content="https://i.ibb.co/JFqgmkLX/1000359558.png">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#121214">
+    <link rel="canonical" href="https://dropnetvpn.com/">
+    <link rel="icon" href="https://i.ibb.co/JFqgmkLX/1000359558.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/JFqgmkLX/1000359558.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DROPNET VPN",
+        "operatingSystem": "ANDROID",
+        "applicationCategory": "UtilitiesApplication",
+        "description": "Conexão VPN segura e estável para todo o Brasil, compatível com Vivo, TIM e Claro. Garantia de 3 dias.",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "BRL",
+            "price": "4.00"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "DROPNET VPN",
+            "areaServed": "BR"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- LOGO QUE DESAPARECE AO ROLAR OU ABRIR MENU -->
+    <div class="logo-fixo" id="logoPrincipal">
+        <img src="https://i.ibb.co/JFqgmkLX/1000359558.png" alt="Logo DROPNET VPN">
+    </div>
+
+    <button class="btn-hamburguer" id="btnMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuLateral">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="fundo-menu" id="fundoMenu"></div>
+
+    <aside class="sidebar" id="menuLateral" aria-hidden="true">
+        <button class="btn-fechar" id="btnFechar" aria-label="Fechar menu">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="nome-menu">DROPNET VPN</div>
+        <div class="subtitulo-menu" data-i18n="menu.subtitulo">Segurança e privacidade online</div>
+
+        <div class="seletor-idioma">
+            <button class="btn-idioma ativo" data-lang="pt" onclick="trocarIdioma('pt')" aria-pressed="true">🇧🇷 PT</button>
+            <button class="btn-idioma" data-lang="en" onclick="trocarIdioma('en')" aria-pressed="false">🇺🇸 EN</button>
+            <button class="btn-idioma" data-lang="es" onclick="trocarIdioma('es')" aria-pressed="false">🇪🇸 ES</button>
+            <button class="btn-idioma" data-lang="fr" onclick="trocarIdioma('fr')" aria-pressed="false">🇫🇷 FR</button>
+            <button class="btn-idioma" data-lang="it" onclick="trocarIdioma('it')" aria-pressed="false">🇮🇹 IT</button>
+        </div>
+
+        <div class="seletor-tema">
+            <button class="btn-cor v" onclick="trocar('')" title="Verde"></button>
+            <button class="btn-cor a" onclick="trocar('tema-azul')" title="Azul"></button>
+            <button class="btn-cor r" onclick="trocar('tema-roxo')" title="Roxo"></button>
+            <button class="btn-cor l" onclick="trocar('tema-laranja')" title="Laranja"></button>
+        </div>
+
+        <nav class="menu-lista">
+            <div class="menu-item ativo" data-sec="inicio" role="button" tabindex="0"><i class="fas fa-home"></i> <span data-i18n="menu.inicio">Início</span></div>
+            <div class="menu-item" data-sec="sobre" role="button" tabindex="0"><i class="fas fa-info-circle"></i> <span data-i18n="menu.sobre">Sobre</span></div>
+            <div class="menu-item" data-sec="recursos" role="button" tabindex="0"><i class="fas fa-list-check"></i> <span data-i18n="menu.recursos">Recursos</span></div>
+            <div class="menu-item" data-sec="operadoras" role="button" tabindex="0"><i class="fas fa-signal"></i> <span data-i18n="menu.operadoras">Operadoras</span></div>
+            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/customer" target="_blank" rel="noopener noreferrer"><i class="fas fa-cart-shopping"></i> <span data-i18n="menu.comprarAcesso">Comprar Acesso</span></a>
+            <a class="menu-item" href="https://celestrox.com/3b639de9-db5c-4aae-a49f-8e01ace2fa3e/store/dealer" target="_blank" rel="noopener noreferrer"><i class="fas fa-handshake"></i> <span data-i18n="menu.revenda">Seja Revendedor</span></a>
+            <div class="menu-item" data-sec="como" role="button" tabindex="0"><i class="fas fa-book-open"></i> <span data-i18n="menu.como">Como Usar</span></div>
+            <div class="menu-item" data-sec="faq" role="button" tabindex="0"><i class="fas fa-question-circle"></i> <span data-i18n="menu.faq">Dúvidas</span></div>
+            <div class="menu-item" data-sec="contato" role="button" tabindex="0"><i class="fas fa-headset"></i> <span data-i18n="menu.contato">Contato</span></div>
+        </nav>
+
+        <div class="sidebar-botoes">
+            <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn btn-principal" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> <span data-i18n="menu.baixarApp">Baixar App</span></a>
+            <a href="https://wa.me/5591993276833" class="btn btn-secundario" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> <span data-i18n="menu.contatoBtn">Contato</span></a>
+        </div>
+
+        <div class="sidebar-rodape" data-i18n="menu.rodape">© <span class="ano-atual">2026</span> DROPNET VPN • Todos os direitos reservados</div>
+    </aside>
+
+    <main class="conteudo">
+        <section id="inicio" class="secao ativa">
+            <h1 class="titulo"><i class="fas fa-bolt"></i> <span data-i18n="inicio.titulo">Bem-vindo ao DROPNET VPN</span></h1>
+            <p class="subtitulo" data-i18n="inicio.subtitulo">Conexão segura, estável e feita especialmente para todo o Brasil</p>
+
+            <div class="destaque-garantia">
+                <i class="fas fa-shield-alt"></i> <span data-i18n="inicio.garantia">GARANTIA DE 3 DIAS: Se não funcionar, devolvemos 100% do seu dinheiro!</span>
+            </div>
+
+            <div class="ajuda-rapida">
+                <h4 data-i18n="inicio.ajudaTitulo">Precisa de ajuda rápida?</h4>
+                <p data-i18n="inicio.ajudaTexto">Temos suporte pronto para responder suas dúvidas</p>
+                <a href="https://wa.me/5591993276833" class="btn-ajuda" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> <span data-i18n="inicio.ajudaBotao">Falar com o Atendimento</span>
+                </a>
+            </div>
+
+            <div class="dados-rapidos">
+                <div class="dado">
+                    <div class="dado-numero">99.9%</div>
+                    <div class="dado-texto" data-i18n="inicio.dadoEstabilidade">Estabilidade</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero">+5.000</div>
+                    <div class="dado-texto" data-i18n="inicio.dadoUsuarios">Usuários Ativos</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero" data-i18n="inicio.dadoRapidoNum">Rápido</div>
+                    <div class="dado-texto" data-i18n="inicio.dadoAtendimento">Atendimento</div>
+                </div>
+                <div class="dado">
+                    <div class="dado-numero" data-i18n="inicio.dadoIlimitadoNum">Ilimitado</div>
+                    <div class="dado-texto" data-i18n="inicio.dadoDados">Dados</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <p data-i18n="inicio.card1"><strong>DROPNET VPN</strong> funciona perfeitamente com <strong>Vivo</strong>, <strong>TIM</strong> e <strong>Claro</strong>. Navegue com total privacidade, sem quedas e com a velocidade que você precisa.</p>
+                <p data-i18n="inicio.card2">Ideal para jogos, streaming, redes sociais e trabalho sem interrupções!</p>
+                
+                <div class="botoes-download">
+                    <a href="https://play.google.com/store/apps/details?id=app.dropnet" class="btn-download link-play" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-google-play"></i> <span data-i18n="inicio.opcao1">Opção 1 - Play Store</span>
+                    </a>
+                    <a href="https://www.mediafire.com/file/jac5mj8ogiy7e58/DROPNET+VPN.apk/file" class="btn-download link-media" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> <span data-i18n="inicio.opcao2">Opção 2 - APK Direto</span>
+                    </a>
+                </div>
+
+                <a href="https://wa.me/5591993276833?text=Quero%20comprar%20acesso%20ao%20DROPNET%20VPN" class="btn-comprar-grande" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> <span data-i18n="inicio.comprarBotao">Comprar Acesso Agora</span>
+                </a>
+
+                <div class="selos-confianca">
+                    <span><i class="fas fa-shield-halved"></i> Garantia de 3 dias</span>
+                    <span><i class="fas fa-lock"></i> Pagamento seguro</span>
+                    <span><i class="fas fa-bolt"></i> Ativação rápida</span>
+                    <span><i class="fas fa-headset"></i> Suporte humano</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="secao">
+            <h2 class="titulo"><i class="fas fa-info-circle"></i> <span data-i18n="sobre.titulo">Sobre o Serviço</span></h2>
+            <p class="subtitulo" data-i18n="sobre.subtitulo">Conheça mais sobre nós</p>
+            <div class="card">
+                <p data-i18n="sobre.p1">Criado especialmente para funcionar bem no <strong>Brasil</strong>, onde outros serviços falham por incompatibilidade ou quedas constantes.</p>
+                <p data-i18n="sobre.p2">Nosso foco é entregar <strong>estabilidade</strong>, <strong>segurança</strong> e um <strong>suporte rápido</strong> para você!</p>
+                <p data-i18n="sobre.p3">Usamos servidores de alta performance localizados no país, garantindo a menor latência possível para jogos e transmissões.</p>
+            </div>
+        </section>
+
+        <section id="recursos" class="secao">
+            <h2 class="titulo"><i class="fas fa-list-check"></i> <span data-i18n="recursos.titulo">Nossos Recursos</span></h2>
+            <p class="subtitulo" data-i18n="recursos.subtitulo">Tudo o que oferecemos para você</p>
+            <div class="card">
+                <p data-i18n="recursos.item1">✅ <strong>Alta velocidade</strong> para jogos, streaming e downloads</p>
+                <p data-i18n="recursos.item2">✅ <strong>Criptografia forte</strong> que protege todos os seus dados</p>
+                <p data-i18n="recursos.item3">✅ <strong>Não guardamos registros</strong> do que você acessa</p>
+                <p data-i18n="recursos.item4">✅ <strong>Reconecta automaticamente</strong> se a conexão cair</p>
+                <p data-i18n="recursos.item5">✅ <strong>Funciona em 3G, 4G e 5G</strong> de todas as operadoras</p>
+                <p data-i18n="recursos.item6">✅ <strong>Sem limite de dados</strong> e sem cortes de velocidade</p>
+                <p data-i18n="recursos.item7">✅ <strong>Troca de aparelho</strong> gratuita quando precisar</p>
+            </div>
+        </section>
+
+        <section id="operadoras" class="secao">
+            <h2 class="titulo"><i class="fas fa-signal"></i> <span data-i18n="operadoras.titulo">Operadoras Compatíveis</span></h2>
+            <p class="subtitulo" data-i18n="operadoras.subtitulo">Funciona perfeitamente com esses chips</p>
+            <div class="operadoras">
+                <div class="op"><img src="https://i.postimg.cc/g2KtH179/ic-vivo.png" alt="Logo Vivo" loading="lazy"></div>
+                <div class="op"><img src="https://i.postimg.cc/634hgPMp/ic-tim.png" alt="Logo TIM" loading="lazy"></div>
+                <div class="op"><img src="https://i.postimg.cc/RV5P5M55/claro.png" alt="Logo Claro" loading="lazy"></div>
+            </div>
+            <div class="card" style="margin-top:20px;">
+                <p data-i18n="operadoras.extra">Também funciona com <strong>Algar, Sercomtel, Correios Celular</strong> e outras operadoras regionais!</p>
+            </div>
+        </section>
+
+        <section id="revenda" class="secao">
+            <h2 class="titulo"><i class="fas fa-handshake"></i> <span data-i18n="revenda.titulo">Programa de Revendedores DROPNET</span></h2>
+            <p class="subtitulo" data-i18n="revenda.subtitulo">Transforme sua rede de contatos em renda recorrente com o painel CELESTROX</p>
+
+            <div class="revenda-hero">
+                <h2 data-i18n="revenda.heroTitulo">Seu Negócio Próprio de VPN com Zero Investimento Alto</h2>
+                <p data-i18n="revenda.heroTexto">Revenda o serviço DROPNET VPN com valores exclusivos de atacado, gerencie tudo pelo <strong>Painel Oficial CELESTROX</strong> e lucre até <strong>400% por venda</strong>. Ideal para quem quer renda extra ou escalar um negócio digital.</p>
+                <div class="marca"><i class="fas fa-crown"></i> <span data-i18n="revenda.heroMarca">Powered by CELESTROX — Sistema Oficial de Revendas</span></div>
+            </div>
+
+            <div class="kpis-revenda">
+                <div class="kpi">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="numero" data-i18n="revenda.kpi1Num">Até 400%</div>
+                    <div class="rotulo" data-i18n="revenda.kpi1Rotulo">Margem de Lucro</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-clock"></i>
+                    <div class="numero" data-i18n="revenda.kpi2Num">Imediata</div>
+                    <div class="rotulo" data-i18n="revenda.kpi2Rotulo">Liberação de Acessos</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-headset"></i>
+                    <div class="numero" data-i18n="revenda.kpi3Num">Prioritário</div>
+                    <div class="rotulo" data-i18n="revenda.kpi3Rotulo">Suporte Exclusivo</div>
+                </div>
+                <div class="kpi">
+                    <i class="fas fa-trophy"></i>
+                    <div class="numero">+5.000</div>
+                    <div class="rotulo" data-i18n="revenda.kpi4Rotulo">Clientes na Base</div>
+                </div>
+            </div>
+
+            <h3 class="plano-titulo" data-i18n="revenda.tabelaTitulo">💰 TABELA OFICIAL DE LUCRO REVENDEDOR</h3>
+            <p class="plano-vantagens" data-i18n="revenda.tabelaSubtitulo">Valores exatos do Painel CELESTROX • Quanto mais comprar, MAIS VOCÊ GANHA</p>
+
+            <div class="resumo-lucro">
+                <div class="resumo-item">
+                    <div class="rotulo" data-i18n="revenda.resumo1">Preço de venda sugerido</div>
+                    <div class="valor">R$ 15,00</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo" data-i18n="revenda.resumo2">Validade por login</div>
+                    <div class="valor" data-i18n="revenda.resumo2valor">30 DIAS</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo" data-i18n="revenda.resumo3">Menor custo por login</div>
+                    <div class="valor">R$ 3,00</div>
+                </div>
+                <div class="resumo-item">
+                    <div class="rotulo" data-i18n="revenda.resumo4">Maior lucro total</div>
+                    <div class="valor lucro">R$ 360,00</div>
+                </div>
+            </div>
+            
+            <table class="tabela-lucro-nova">
+                <thead>
+                    <tr>
+                        <th data-i18n="revenda.col1">Pacote</th>
+                        <th data-i18n="revenda.col2">Você Investe</th>
+                        <th data-i18n="revenda.col3">Custo / Login</th>
+                        <th data-i18n="revenda.col4">Lucro / Login</th>
+                        <th data-i18n="revenda.col5">🤑 LUCRO TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Pacote"><span class="icone-pacote">📦</span><span data-i18n="revenda.pacote10">10 LOGINS</span></td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 40,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 4,00</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 11,00 <span class="seta">▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 110,00</td>
+                    </tr>
+                    <tr class="linha-destaque" data-badge="MAIS VENDIDO">
+                        <td data-label="Pacote"><span class="icone-pacote">🔥</span><span data-i18n="revenda.pacote20">20 LOGINS</span></td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 70,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 3,50</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 11,50 <span class="seta">▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 230,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Pacote"><span class="icone-pacote">💎</span><span data-i18n="revenda.pacote30">30 LOGINS</span></td>
+                        <td data-label="Você Investe" class="valor-investe">R$ 90,00</td>
+                        <td data-label="Custo / Login" class="custo-unit">R$ 3,00</td>
+                        <td data-label="Lucro / Login" class="lucro-unit">R$ 12,00 <span class="seta">▲▲</span></td>
+                        <td data-label="Lucro Total" class="lucro-total">R$ 360,00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="aviso-calculo">
+                💡 <span data-i18n="revenda.avisoCalculo"><strong>Cálculo baseado na revenda de cada login por R$ 15,00 (30 dias)</strong> • Você pode vender pelo preço que quiser e aumentar ainda mais seu lucro!</span>
+            </div>
+
+            <div class="grupo-planos">
+                <div class="plano">
+                    <div class="selo iniciar" data-i18n="revenda.seloIniciar">Ideal Iniciar</div>
+                    <div class="dias">📦 <span data-i18n="revenda.card1dias">10 Logins</span></div>
+                    <div class="valor">R$ 40,00 <small data-i18n="revenda.avista">à vista</small></div>
+                    <div class="info" data-i18n="revenda.card1info">
+                        <strong>R$ 4,00 por login</strong><br>
+                        Perfeito para começar com pouco risco e testar o mercado
+                    </div>
+                    <div class="lucro" data-i18n="revenda.card1lucro">
+                        💰 Lucro estimado: R$ 110,00
+                    </div>
+                </div>
+                <div class="plano destaque">
+                    <div class="selo" data-i18n="revenda.seloMaisVendido">Mais Vendido</div>
+                    <div class="dias">🔥 <span data-i18n="revenda.card2dias">20 Logins</span></div>
+                    <div class="valor">R$ 70,00 <small data-i18n="revenda.avista">à vista</small></div>
+                    <div class="info" data-i18n="revenda.card2info">
+                        <strong>R$ 3,50 por login</strong><br>
+                        Melhor equilíbrio entre investimento e retorno financeiro
+                    </div>
+                    <div class="lucro" data-i18n="revenda.card2lucro">
+                        💰 Lucro estimado: R$ 230,00
+                    </div>
+                </div>
+                <div class="plano">
+                    <div class="selo lucro" data-i18n="revenda.seloMaiorLucro">Maior Lucro</div>
+                    <div class="dias">💎 <span data-i18n="revenda.card3dias">30 Logins</span></div>
+                    <div class="valor">R$ 90,00 <small data-i18n="revenda.avista">à vista</small></div>
+                    <div class="info" data-i18n="revenda.card3info">
+                        <strong>R$ 3,00 por login</strong><br>
+                        Máxima margem de lucro para quem já tem carteira de clientes
+                    </div>
+                    <div class="lucro" data-i18n="revenda.card3lucro">
+                        💰 Lucro estimado: R$ 360,00
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="plano-titulo" style="margin-top:40px;" data-i18n="revenda.vantagensTitulo">🎯 Vantagens Exclusivas do Nosso Revendedor</h3>
+            <div class="vantagens-revenda">
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-laptop-code"></i></div>
+                    <h4 data-i18n="revenda.v1titulo">Painel CELESTROX Completo</h4>
+                    <p data-i18n="revenda.v1texto">Sistema profissional para criar, renovar, bloquear e gerenciar TODOS os seus logins em tempo real.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-bolt"></i></div>
+                    <h4 data-i18n="revenda.v2titulo">Liberação Imediata</h4>
+                    <p data-i18n="revenda.v2texto">Assim que o pagamento é confirmado, seu pacote é liberado automaticamente no painel.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-headset"></i></div>
+                    <h4 data-i18n="revenda.v3titulo">Suporte Prioritário</h4>
+                    <p data-i18n="revenda.v3texto">Atendimento exclusivo para revendedores com resposta em até 10 minutos durante o horário comercial.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-bullhorn"></i></div>
+                    <h4 data-i18n="revenda.v4titulo">Material de Divulgação</h4>
+                    <p data-i18n="revenda.v4texto">Receba artes prontas para WhatsApp, Instagram e grupos para vender sem precisar criar nada.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-graduation-cap"></i></div>
+                    <h4 data-i18n="revenda.v5titulo">Treinamento Completo</h4>
+                    <p data-i18n="revenda.v5texto">Aprenda do zero: como vender, onde encontrar clientes, fidelizar e escalar seu negócio mês a mês.</p>
+                </div>
+                <div class="vantagem">
+                    <div class="icone"><i class="fas fa-ban"></i></div>
+                    <h4 data-i18n="revenda.v6titulo">Sem Taxas Ocultas</h4>
+                    <p data-i18n="revenda.v6texto">Sem mensalidade, sem anuidade, sem porcentagem sobre venda. O lucro é TODO SEU.</p>
+                </div>
+            </div>
+
+            <h3 class="plano-titulo" style="margin-top:40px;" data-i18n="revenda.passosTitulo">📝 Como Funciona em 4 Passos Simples</h3>
+            <div class="passos-revenda">
+                <div class="passo">
+                    <div class="numero-passo">1</div>
+                    <h4 data-i18n="revenda.passo1titulo">Escolha seu Pacote</h4>
+                    <p data-i18n="revenda.passo1texto">Opte por 10, 20 ou 30 logins conforme sua capacidade de venda.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">2</div>
+                    <h4 data-i18n="revenda.passo2titulo">Efetue o Pagamento</h4>
+                    <p data-i18n="revenda.passo2texto">Pague via Pix e envie o comprovante para nosso time comercial.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">3</div>
+                    <h4 data-i18n="revenda.passo3titulo">Acesse o CELESTROX</h4>
+                    <p data-i18n="revenda.passo3texto">Receba seu login e senha do painel oficial para gerenciar tudo.</p>
+                </div>
+                <div class="passo">
+                    <div class="numero-passo">4</div>
+                    <h4 data-i18n="revenda.passo4titulo">Revenda & Lucre</h4>
+                    <p data-i18n="revenda.passo4texto">Crie acessos para seus clientes e fature toda a margem de lucro.</p>
+                </div>
+            </div>
+
+            <div class="cta-final-revenda">
+                <h3 data-i18n="revenda.ctaTitulo">Pronto para Começar seu Negócio de VPN?</h3>
+                <p data-i18n="revenda.ctaTexto">Junte-se a centenas de revendedores DROPNET que lucram todos os meses com o sistema CELESTROX.</p>
+                <div class="botoes-cta">
+                    <a href="https://celestrox.com/dealer/signin" class="btn-cta branco" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> <span data-i18n="revenda.ctaBotao1">Acessar Painel CELESTROX</span>
+                    </a>
+                    <a href="https://wa.me/5591993276833?text=Quero%20ser%20REVENDEDOR%20DROPNET%20VPN%20-%20Pacote%2010%20/%2020%20ou%2030%20logins" class="btn-cta preto" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> <span data-i18n="revenda.ctaBotao2">Quero Ser Revendedor</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="como" class="secao">
+            <h2 class="titulo"><i class="fas fa-book-open"></i> <span data-i18n="como.titulo">Como Usar</span></h2>
+            <p class="subtitulo" data-i18n="como.subtitulo">Passo a passo bem simples</p>
+            <div class="card">
+                <p data-i18n="como.p1">1. <strong>Baixe o aplicativo</strong> usando uma das opções acima</p>
+                <p data-i18n="como.p2">2. <strong>Escolha seu plano</strong> e pague via Pix, PicPay ou transferência</p>
+                <p data-i18n="como.p3">3. <strong>Envie o comprovante</strong> para o atendimento pelo WhatsApp</p>
+                <p data-i18n="como.p4">4. <strong>Receba o acesso</strong> em até 10 minutos e conecte-se!</p>
+                <p data-i18n="como.p5">5. <strong>Abra o app, insira seus dados e aproveite</strong> a conexão segura!</p>
+            </div>
+        </section>
+
+        <section id="faq" class="secao">
+            <h2 class="titulo"><i class="fas fa-question-circle"></i> <span data-i18n="faq.titulo">Dúvidas Frequentes</span></h2>
+            <p class="subtitulo" data-i18n="faq.subtitulo">Respostas para as perguntas mais comuns</p>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-pergunta" role="button" tabindex="0"><span data-i18n="faq.p1pergunta">O que é o DROPNET VPN?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta" data-i18n="faq.p1resposta">É uma ferramenta que protege sua navegação, esconde sua localização e permite acessar conteúdos sem restrições, funcionando perfeitamente em redes móveis brasileiras.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta" role="button" tabindex="0"><span data-i18n="faq.p2pergunta">Funciona no meu celular?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta" data-i18n="faq.p2resposta">Sim! Funciona em todos os celulares com sistema Android 5.0 ou superior, sem necessidade de root ou configurações complicadas.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta" role="button" tabindex="0"><span data-i18n="faq.p3pergunta">Posso usar em mais de um aparelho?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta" data-i18n="faq.p3resposta">Cada acesso é válido para 1 aparelho por vez. Se quiser usar em outro celular, basta solicitar a troca gratuitamente ao suporte.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta" role="button" tabindex="0"><span data-i18n="faq.p4pergunta">E se não funcionar?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta" data-i18n="faq.p4resposta">Oferecemos garantia total de <strong>3 dias</strong>. Se não funcionar como esperado, devolvemos 100% do seu dinheiro sem burocracia!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta" role="button" tabindex="0"><span data-i18n="faq.p5pergunta">Quais formas de pagamento?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta" data-i18n="faq.p5resposta">Aceitamos Pix, PicPay, transferência bancária e cartões de crédito. Todos os pagamentos são seguros e processados rapidamente.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="secao">
+            <h2 class="titulo"><i class="fas fa-headset"></i> <span data-i18n="contato.titulo">Fale Conosco</span></h2>
+            <p class="subtitulo" data-i18n="contato.subtitulo">Estamos prontos para ajudar</p>
+
+            <div class="status-atendimento" id="caixa-horario">
+                <div class="status-titulo" id="texto-status">Verificando horário...</div>
+                <div class="horario-lista">
+                    <p>📅 <span data-i18n="contato.segASex">Segunda a Sexta</span>: <strong>08:00 às 00:00</strong></p>
+                    <p>📅 <span data-i18n="contato.sabado">Sábado</span>: <strong>08:00 às 22:00</strong></p>
+                    <p class="fechado">📅 <span data-i18n="contato.domingo">Domingo</span>: <strong data-i18n="contato.fechado">FECHADO</strong></p>
+                </div>
+            </div>
+
+            <div class="contato">
+                <a href="https://wa.me/5591993276833" class="link wpp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://t.me/BIEL_SSH" class="link tg" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram"></i>
+                    Telegram
+                </a>
+                <a href="https://instagram.com/dropnetvpn" class="link ig" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+                <a href="mailto:bielsshdropnet@gmail.com" class="link mail" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i>
+                    E-mail
+                </a>
+            </div>
+
+            <div class="card" style="margin-top:25px;">
+                <p data-i18n="contato.local">Localizado em <strong>Cametá, Pará</strong></p>
+                <p data-i18n="contato.resposta">Resposta rápida durante o horário de atendimento!</p>
+            </div>
+        </section>
+
+        <footer class="rodape-site">
+            <div class="rodape-colunas">
+                <div class="rodape-coluna rodape-marca">
+                    <img src="https://i.ibb.co/JFqgmkLX/1000359558.png" alt="DROPNET VPN" class="rodape-logo">
+                    <p>Conexão VPN segura e estável para todo o Brasil, compatível com Vivo, TIM e Claro.</p>
+                </div>
+
+                <div class="rodape-coluna">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5591993276833" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/BIEL_SSH" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://instagram.com/dropnetvpn" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+
+                <div class="rodape-coluna">
+                    <h4>Confiança</h4>
+                    <span><i class="fas fa-shield-halved"></i> Garantia de 3 dias</span>
+                    <span><i class="fas fa-lock"></i> Pagamento seguro</span>
+                    <span><i class="fas fa-headset"></i> Suporte humano</span>
+                </div>
+            </div>
+
+            <div class="rodape-legal">
+                <details>
+                    <summary>Termos de Uso</summary>
+                    <p>Ao utilizar o DROPNET VPN, você concorda em usar o serviço de forma lícita, não compartilhar seu acesso com terceiros fora das condições contratadas e respeitar os limites de cada plano adquirido. O serviço é fornecido "como está", com garantia de reembolso de 3 dias conforme as condições de compra. Reservamo-nos o direito de suspender contas que violem estes termos.</p>
+                </details>
+                <details>
+                    <summary>Política de Privacidade</summary>
+                    <p>Coletamos apenas os dados necessários para prestar o serviço (contato e informações de pagamento). Não vendemos nem compartilhamos seus dados com terceiros para fins de marketing. As comunicações são feitas via WhatsApp, Telegram e e-mail apenas para suporte e envio de acesso.</p>
+                </details>
+            </div>
+
+            <div class="rodape-copy">© <span class="ano-atual">2026</span> DROPNET VPN • Todos os direitos reservados</div>
+        </footer>
+    </main>
+
+    
+
+    <!-- ============================================================
+         DROPNET VPN — Tela de bloqueio: exige login com Google
+         antes de mostrar o site
+         ============================================================ -->
+    <div id="dropnet-login-gate" style="
+        position:fixed; inset:0; z-index:99999;
+        background:#0b0b0d;
+        display:flex; flex-direction:column; align-items:center; justify-content:center;
+        gap:24px; padding:24px; text-align:center;
+        font-family:Segoe UI, Arial, sans-serif;
+      ">
+      <img src="https://i.ibb.co/JFqgmkLX/1000359558.png" style="width:auto;max-width:220px;height:auto;max-height:110px;object-fit:contain;">
+      <div>
+        <h1 style="color:#fff;font-size:22px;margin:0 0 8px;">DROPNET VPN</h1>
+        <p style="color:#9ca3af;font-size:14px;margin:0;">Entre com sua conta Google para continuar</p>
+      </div>
+      <div id="dropnet-google-btn"></div>
+      <p style="color:#4b5563;font-size:11px;max-width:280px;">Ao continuar, você concorda com os Termos de Uso e a Política de Privacidade do DROPNET VPN.</p>
+    </div>
+
+    
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
