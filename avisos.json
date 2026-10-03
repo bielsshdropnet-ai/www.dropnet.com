@@ -1,0 +1,22 @@
+{
+  "avisos": [
+    {
+      "id": 3,
+      "titulo": "Teste",
+      "mensagem": "Notificação de teste.",
+      "data": "03/10/2026"
+    },
+    {
+      "id": 2,
+      "titulo": "Manutenção",
+      "mensagem": "Hoje às 22h o serviço fica fora do ar por 10 minutos.",
+      "data": "03/10/2026"
+    },
+    {
+      "id": 1,
+      "titulo": "Bem-vindo!",
+      "mensagem": "Agora você recebe as novidades do DROPNET VPN por aqui.",
+      "data": "03/10/2026"
+    }
+  ]
+}
