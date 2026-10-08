@@ -3,20 +3,20 @@
     {
       "id": 3,
       "titulo": "CLARO CONEXÃO",
-      "mensagem": "CLARO PLANO TODOS OS DDDS (CONEXÃO  RÁPIDA 🐎)\nCLARO PRÉ SOMENTE  EM ALGUNS  DDDS (CONEXÃO  LENTA 🐌)",
-      "data": "04/10/2026"
+      "mensagem": "CLARO PLANO & CLARO PRÉ )",
+      "data": "08/10/2026"
     },
     {
       "id": 2,
       "titulo": "TIM CONEXÃO",
-      "mensagem": "TIM PLANO TODOS OS DDDS (CONEXÃO  RÁPIDA )🐎\nTIM PRÉ TODOS OS DDDS (CONEXÃO  RÁPIDA) 🐎",
-      "data": "04/10/2026"
+      "mensagem": "TIM PLANO TODOS OS DDDS )",
+      "data": "08/10/2026"
     },
     {
       "id": 1,
       "titulo": "VIVO CONEXÃO",
-      "mensagem": "VIVO PRÉ TODOS OS DDDS (CONEXÃO  LENTA 🐌)\nVIVO PLANO TODOS OS DDDS (CONEXÃO  RÁPIDA 🐎)",
-      "data": "04/10/2026"
+      "mensagem": "VIVO PRÉ TODOS OS DDDS )",
+      "data": "08/10/2026"
     }
   ]
 }
