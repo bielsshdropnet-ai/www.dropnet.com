@@ -1,15 +1,9 @@
 {
   "avisos": [
     {
-      "id": 8,
-      "titulo": "🔔 FIQUE LIGADO NAS NOVIDADES 🔔",
-      "mensagem": "💙━━━━━━━━━━━━━━━━━━💙\n\n🙏 OBRIGADO POR FAZER PARTE DA FAMÍLIA DROPNET VPN!\n\n🌎 Estamos sempre trabalhando para melhorar sua conexão e oferecer a você uma experiência cada vez melhor.\n\n🔔 FIQUE LIGADO! Acompanhe as notificações do nosso site para não perder nenhuma novidade, atualização ou aviso importante.\n\n🚀 Novidades vêm por aí!\n\n💙 DROPNET VPN\n🌐 Conectando você ao mundo!\n\n💙━━━━━━━━━━━━━━━━━━💙",
-      "data": "08/10/2026"
-    },
-    {
       "id": 7,
       "titulo": "🔔 AVISO IMPORTANTE 🔔",
-      "mensagem": "🙏 Agradecemos a todos pela preferência e confiança no DROPNET VPN! 💙\n\n📢 Fiquem ligados nas notificações do site para acompanhar atualizações, novidades, melhorias e avisos sobre as conexões.\n\n🚀 Estamos sempre trabalhando para oferecer a melhor experiência para vocês!\n\n💙 DROPNET VPN — Conectando você ao mundo! 🌎💙",
+      "mensagem": "CDN ATUALIZADA : CLOUDFLARE, CLOUDFRONT, BUNNY, CACHEFLY, GCORE, AZION",
       "data": "08/10/2026"
     },
     {
@@ -21,7 +15,7 @@
     {
       "id": 5,
       "titulo": "🔴CLARO PLANOS🔴",
-      "mensagem": "FUNCIONANDO  COM EM TODO DDDS COM VELOCIDADE MÁXIMA",
+      "mensagem": "FUNCIONANDO  EM TODO DDDS COM VELOCIDADE MÁXIMA",
       "data": "08/10/2026"
     },
     {
